@@ -186,6 +186,12 @@
 .config/zsh/.zdirs
 
 
+# include .leetcode 
+!.leetcode
+!.leetcode/*
+
 
 
 !version.txt
+
+.leetcode/Problems

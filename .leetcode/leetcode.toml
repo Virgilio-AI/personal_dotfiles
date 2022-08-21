@@ -1,0 +1,59 @@
+# usually you don't wanna change those
+[sys]
+categories = [
+  "algorithms",
+  "concurrency",
+  "database",
+  "shell"
+]
+
+langs = [
+  "bash",
+  "c",
+  "cpp",
+  "csharp",
+  "golang",
+  "java",
+  "javascript",
+  "kotlin",
+  "mysql",
+  "php",
+  "python",
+  "python3",
+  "ruby",
+  "rust",
+  "scala",
+  "swift"
+]
+
+[sys.urls]
+base = "https://leetcode.com"
+graphql = "https://leetcode.com/graphql"
+login = "https://leetcode.com/accounts/login/"
+problems = "https://leetcode.com/api/problems/$category/"
+problem = "https://leetcode.com/problems/$slug/description/"
+tag = "https://leetcode.com/tag/$slug/"
+test = "https://leetcode.com/problems/$slug/interpret_solution/"
+session = "https://leetcode.com/session/"
+submit = "https://leetcode.com/problems/$slug/submit/"
+submissions = "https://leetcode.com/api/submissions/$slug"
+submission = "https://leetcode.com/submissions/detail/$id/"
+verify = "https://leetcode.com/submissions/detail/$id/check/"
+favorites = "https://leetcode.com/list/api/questions"
+favorite_delete = "https://leetcode.com/list/api/questions/$hash/$id"
+
+[code]
+editor = "nvim"
+lang = "python3"
+pick = "${fid}.leetcode.${slug}"
+submission = "${fid}.${slug}.${sid}.${ac}"
+
+[cookies]
+csrf = "7jKG8WDiowZaa9v8QqSPBBVrHNbYdBkf8oUqOFUnaSxyyZawueefPRMM5rjq865g"
+session = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfYXV0aF91c2VyX2lkIjoiMzUzNjAzNCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImFsbGF1dGguYWNjb3VudC5hdXRoX2JhY2tlbmRzLkF1dGhlbnRpY2F0aW9uQmFja2VuZCIsIl9hdXRoX3VzZXJfaGFzaCI6IjdkZjE0NDY0MGI2MDZkYzQwNWMwOTk0OTJlMDE2ZjZkZWQwYmQ4M2EiLCJpZCI6MzUzNjAzNCwiZW1haWwiOiJ2aXJnaWxpb211cmlsbG9vY2hvYTFAZ21haWwuY29tIiwidXNlcm5hbWUiOiJSb2NrX0tuaWdodCIsInVzZXJfc2x1ZyI6IlJvY2tfS25pZ2h0IiwiYXZhdGFyIjoiaHR0cHM6Ly9zMy11cy13ZXN0LTEuYW1hem9uYXdzLmNvbS9zMy1sYy11cGxvYWQvYXNzZXRzL2RlZmF1bHRfYXZhdGFyLmpwZyIsInJlZnJlc2hlZF9hdCI6MTY2MDc2MzkzNiwiaXAiOiIyMDAuNjMuNDEuMjA1IiwiaWRlbnRpdHkiOiI0ODcwMGVmOTQzNzQ5NThjMTFhMDUzMzMzOGY5YjRkNSIsInNlc3Npb25faWQiOjI2MjIyNjMwLCJfc2Vzc2lvbl9leHBpcnkiOjEyMDk2MDB9.Qr2K5fp-aPOwHf1ZqL2gIsrk9coC7xKtmsOJo87lLAw"
+
+[storage]
+cache = "Problems"
+code = "code"
+root = "~/.leetcode"
+scripts = "scripts"
