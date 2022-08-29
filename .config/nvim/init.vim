@@ -23,7 +23,7 @@ au BufEnter * let b:FilePath = expand("%") " path/main.tex
 au BufEnter * let b:FileNameNoExtension = expand("%:t:r") " main
 au BufEnter * let b:CurrentFolder = expand("%:p:h") "pathFolder/folder
 augroup end
-for copy paste
+" for copy paste
 
 let g:mdip_imgdir='img_' . expand("%:t:r")
 " !!!!!=================================
@@ -114,7 +114,6 @@ let g:Hexokinase_highlighters = ['backgroundfull']
 
 " for colors
 set showtabline=2
-set termguicolors
 set foldmethod=indent
 set foldnestmax=1
 set wildmenu
