@@ -66,9 +66,29 @@ Plug 'KabbAmine/vCoolor.vim'
 " now a plugin for live editing html css and bootstrap
 Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
 
+" for the terminal
+Plug 'kassio/neoterm'
+
+
+
 
 " water Linux plugins
+" water linux:
 Plug 'Virgilio-AI/vim-code-runner'
+
+
+
+
+" for interface of neovim and leetcode
+Plug 'Virgilio-AI/leetcode-neovim'
+
+
+" for expanding skeletons for neovim
+Plug 'Virgilio-AI/skeleton_neovim'
+
+
+
+
 call plug#end()
 
 

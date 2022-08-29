@@ -14,7 +14,7 @@
 
 augroup leetCode_sk_trees
 	autocmd!
-	autocmd BufEnter */leetcode/trees/*.py call ExpandSkeleton('sk_tree_lc')
+	autocmd BufEnter */leetcode/trees/*.py :ExpandSkeleton sk_tree_lc
 augroup END
 
 
@@ -25,7 +25,7 @@ augroup END
 
 augroup elm_skeleton
 	autocmd!
-	autocmd BufEnter */src/Main.elm call ExpandSkeleton('sk')
+	autocmd BufEnter */src/Main.elm :ExpandSkeleton sk
 augroup END
 
 " =================================
@@ -36,7 +36,7 @@ augroup END
 
 augroup leetCode_sk
 	autocmd!
-	autocmd BufEnter */leetCode/*.cpp call ExpandSkeleton('leetCode')
+	autocmd BufEnter */leetCode/*.cpp :ExpandSkeleton leetCode
 augroup END
 
 
@@ -48,18 +48,18 @@ augroup END
 
 augroup assembly_avr
 	autocmd!
-	autocmd BufEnter *.asm call ExpandSkeleton('sk')
+	autocmd BufEnter *.asm :ExpandSkeleton sk
 augroup END
 
 augroup assembly_linux
 	autocmd!
-	autocmd BufEnter *.asm call ExpandSkeleton('sk')
+	autocmd BufEnter *.asm :ExpandSkeleton sk
 augroup END
 
 
 augroup assembly_main
 	autocmd!
-	autocmd BufEnter *.asm call ExpandSkeleton('sk')
+	autocmd BufEnter *.asm :ExpandSkeleton sk
 augroup END
 " =================================
 " ========== for html files 
@@ -67,14 +67,14 @@ augroup END
 
 augroup html
 	autocmd!
-	autocmd BufEnter *.html call ExpandSkeleton('sk')
+	autocmd BufEnter *.html :ExpandSkeleton sk
 augroup END
 " =================================
 " ========== markdown template 
 " =================================
 augroup markDown
 	autocmd!
-	autocmd BufEnter *.md call ExpandSkeleton('sk')
+	autocmd BufEnter *.md :ExpandSkeleton sk
 augroup END
 
 " =================================
@@ -82,7 +82,7 @@ augroup END
 " =================================
 augroup zshSkeleton
 	autocmd!
-	autocmd BufEnter *.zsh call ExpandSkeleton('sk')
+	autocmd BufEnter *.zsh :ExpandSkeleton sk
 augroup END
 
 " =================================
@@ -90,7 +90,7 @@ augroup END
 " =================================
 augroup pythonSkeleton
 	autocmd!
-	autocmd BufEnter *.py\(.sync.py\|.sync.sync.py\)\@<! call ExpandSkeleton('sk')
+	autocmd BufEnter *.py\(.sync.py\|.sync.sync.py\)\@<! :ExpandSkeleton sk
 augroup END
 
 
@@ -100,7 +100,7 @@ augroup END
 " =================================
 augroup mariadb_skeleton
 	autocmd!
-	autocmd BufEnter *.sql call ExpandSkeleton('info')
+	autocmd BufEnter *.sql :ExpandSkeleton info
 augroup END
 
 
@@ -110,12 +110,12 @@ augroup END
 " =================================
 augroup json_skeleton
 	autocmd!
-	autocmd BufEnter *.json call ExpandSkeleton('sk')
+	autocmd BufEnter *.json :ExpandSkeleton sk
 augroup END
 
 augroup avr_skeleton
 	autocmd!
-	autocmd! BufEnter *.avr.c call ExpandSkeleton('sk_avr')
+	autocmd! BufEnter *.avr.c :ExpandSkeleton sk_avr
 augroup END
 
 " =================================
@@ -124,7 +124,7 @@ augroup END
 
 augroup sql_squeletons
 	autocmd!
-	autocmd! BufEnter *.sql call ExpandSkeleton('sk')
+	autocmd! BufEnter *.sql :ExpandSkeleton sk
 augroup END
 
 " =================================
@@ -132,7 +132,7 @@ augroup END
 " =================================
 augroup c_squeleton
 	autocmd!
-	autocmd BufEnter *.c call ExpandSkeleton('sk')
+	autocmd BufEnter *.c :ExpandSkeleton sk
 augroup END
 
 

@@ -2,31 +2,30 @@
   "mage} ================================= ========== Main Variables 
 " " =================================
 " 
-let g:CONFIG_PATH = '~/.config/nvim'
-let g:USER = "rockhight"
-let g:GROUP = "wheel"
-let g:CUR_PATH = expand('%:p:h')
-let g:FILE_MANAGER='cfiles'
-let g:SRC_PATH='~/.local/src'
-let g:tex_flavor='latex'
-let &directory = expand( g:CONFIG_PATH .'/.vimdata/swap//')
-let &backupdir = expand( g:CONFIG_PATH . '/.vimdata/backup//')
-let &undodir = expand(   g:CONFIG_PATH . '/.vimdata/undo//')
+" let g:CONFIG_PATH = '~/.config/nvim'
+" let g:USER = "rockhight"
+" let g:GROUP = "wheel"
+" let g:CUR_PATH = expand('%:p:h')
+" let g:SRC_PATH='~/.local/src'
+" let g:tex_flavor='latex'
+" let &directory = expand( g:CONFIG_PATH .'/.vimdata/swap//')
+" let &backupdir = expand( g:CONFIG_PATH . '/.vimdata/backup//')
+" let &undodir = expand(   g:CONFIG_PATH . '/.vimdata/undo//')
 
 " =================================
 " ========== buffer variables 
 " =================================
-augroup BufferVariables
-au BufEnter * let b:FilePathNoExtension = expand("%:r") " path/main
-au BufEnter * let b:Extension = expand("%:e") " tex
-au BufEnter * let b:FileName = expand("%:t") " main.tex
-au BufEnter * let b:FilePath = expand("%") " path/main.tex
-au BufEnter * let b:FileNameNoExtension = expand("%:t:r") " main
-au BufEnter * let b:CurrentFolder = expand("%:p:h") "pathFolder/folder
-augroup end
+" augroup BufferVariables
+" au BufEnter * let b:FilePathNoExtension = expand("%:r") " path/main
+" au BufEnter * let b:Extension = expand("%:e") " tex
+" au BufEnter * let b:FileName = expand("%:t") " main.tex
+" au BufEnter * let b:FilePath = expand("%") " path/main.tex
+" au BufEnter * let b:FileNameNoExtension = expand("%:t:r") " main
+" au BufEnter * let b:CurrentFolder = expand("%:p:h") "pathFolder/folder
+" augroup end
 " for copy paste
 
-let g:mdip_imgdir='img_' . expand("%:t:r")
+" let g:mdip_imgdir='img_' . expand("%:t:r")
 " !!!!!=================================
 " !!!!!========== Source files 
 " !!!!!=================================
@@ -43,29 +42,23 @@ exec 'source ' . g:CONFIG_PATH . '/skeletons.vim'
 exec 'source ' . g:CONFIG_PATH . '/customCommands.vim'
 
 
-" =================================
-" ========== PlugIn Variables 
-" =================================
-" LeetCode:
+
 
 
 " install coc omnisharp by default
-let g:coc_global_extensions=['coc-omnisharp']
+" let g:coc_global_extensions=['coc-omnisharp']
 let g:coc_global_extensions=['coc-pyright']
 
 "let g:OmniSharp_highlighting = 0
-let g:OmniSharp_server_stdio = 1
-let g:OmniSharp_server_use_mono = 1
+" let g:OmniSharp_server_stdio = 1
+" let g:OmniSharp_server_use_mono = 1
 
 " use for correcting issues
 let g:ale_linters = {
-\ 'cs': ['OmniSharp'],
 \ 'python':['pyright','mypy','pylint'],
-\ 'c':[],
 \}
 
 
- let g:OmniSharp_server_use_mono = 1
 let g:livepreview_previewer = 'zathura'    " For Latex
 let NERDTreeIgnore = ['\.aux$','\.idx','\.out$','\.log']   " PlugIn NerdTree
 let g:NERDTreeHijackNetrw=1    " PlugIn NerdTree
@@ -110,7 +103,6 @@ let g:rainbow_conf = {
 \		'css': 0, 
 \	}
 \}
-let g:minimap_width = 10
 
 let g:Hexokinase_highlighters = ['backgroundfull']
 
