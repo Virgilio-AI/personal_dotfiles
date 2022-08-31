@@ -1,3 +1,4 @@
+
 call plug#begin('~/.config/nvim/PlugIns/')
 
 " for color and personalization
@@ -64,20 +65,22 @@ Plug 'KabbAmine/vCoolor.vim'
 " Plug 'RRethy/vim-hexokinase',{ 'do': 'make hexokinase' }
 
 " now a plugin for live editing html css and bootstrap
-Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
-
-" for the terminal
-Plug 'kassio/neoterm'
-
-
+" Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
 
 
 " water Linux plugins
-" water linux:
 Plug 'Virgilio-AI/vim-code-runner'
 
 
+" edit terminal in neovim
+Plug 'brettanomyces/nvim-editcommand'
 
+
+" preview colors
+Plug 'ObserverOfTime/coloresque.vim'
+
+" for the terminal
+Plug 'kassio/neoterm'
 
 " for interface of neovim and leetcode
 Plug 'Virgilio-AI/leetcode-neovim'
@@ -85,9 +88,6 @@ Plug 'Virgilio-AI/leetcode-neovim'
 
 " for expanding skeletons for neovim
 Plug 'Virgilio-AI/skeleton_neovim'
-
-
-
 
 call plug#end()
 

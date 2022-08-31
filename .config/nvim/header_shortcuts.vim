@@ -4,6 +4,20 @@
 " linkedin: https://www.linkedin.com/in/virgilio-murillo-ochoa-b29b59203
 " contact: virgiliomurilloochoa1@gmail.com
 
+
+" =================================
+" ========== copy file 
+" =================================
+
+function! CopyFile()
+	" % - relative path
+	" %:p -absolute path
+	:w
+	let l:terminalExe = ':AsyncRun st -T "floating" -e sh -c "'
+	let l:endTerminalExe = ' ; rean -n1 "'
+	let l:command = 'dragon --and-exit ' . expand('%:p')
+	exe l:terminalExe . l:command . l:endTerminalExe
+endfunction
 " =================================
 " ========== paste a clean text 
 " =================================
@@ -242,10 +256,14 @@ endfunction
 " =================================
 " ========== coc functions 
 " =================================
-function! s:check_back_space() abort
-	let col = col('.') - 1
-	return !col || getline('.')[col - 1]  =~# '\s'
+
+
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
 " =================================
 " ========== Mark Down 
 " =================================

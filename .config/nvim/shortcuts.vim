@@ -6,9 +6,14 @@
 
 
 " =================================
+" ========== copy file 
+" =================================
+nnoremap <leader>cf :call CopyFile()<CR>
+
+" =================================
 " ========== print file
 " =================================
-nnoremap <leader>pp :call PrintFile()
+nnoremap <leader>pp :call PrintFile()<CR>
 
 
 " =================================
@@ -217,21 +222,19 @@ nmap ga <Plug>(EasyAlign)
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
+
+
 inoremap <silent><expr> <C-n>
-			\ pumvisible() ? "\<C-n>" :
-			\ <SID>check_back_space() ? "\<C-n>" :
-			\ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<C-n>" :
+      \ coc#refresh()
+
 
 if has('nvim')
 	inoremap <silent><expr> <c-space> coc#refresh()
 else
 	inoremap <silent><expr> <c-@> coc#refresh()
 endif
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <C-e> pumvisible() ? coc#_select_confirm()
-			\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
