@@ -2,6 +2,15 @@
 
 
 
+
+" =================================
+" ========== coc autocommands
+" =================================
+" Highlight the symbol and its references when holding the cursor.
+
+
+
+
 " =================================
 " ========== save folding 
 " =================================
@@ -10,13 +19,6 @@ augroup remember_folds
   autocmd BufWinLeave * mkview
   autocmd BufWinEnter * silent! loadview
 augroup END
-" =================================
-" ========== when cursor moved 
-" =================================
-"augroup onCursorMoved
-"	autocmd!
-"	autocmd CursorMoved,CursorMovedI * call CentreCursor()
-"augroup END
 " =================================
 " ========== Latex 
 " =================================
@@ -92,15 +94,7 @@ augroup END
 " ========== For competitive programing 
 " =================================
 " Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
 
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
 
 
 augroup onEnterc
