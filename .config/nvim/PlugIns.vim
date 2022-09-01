@@ -89,6 +89,9 @@ Plug 'Virgilio-AI/leetcode-neovim'
 " for expanding skeletons for neovim
 Plug 'Virgilio-AI/skeleton_neovim'
 
+" for github copilot
+Plug 'github/copilot.vim'
+
 call plug#end()
 
 
