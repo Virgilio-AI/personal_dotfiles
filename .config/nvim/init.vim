@@ -86,7 +86,7 @@ exec 'source ' . g:CONFIG_PATH . '/customCommands.vim'
 
 " install coc omnisharp by default
 " let g:coc_global_extensions=['coc-omnisharp']
-let g:coc_global_extensions=['coc-pyright']
+let g:coc_global_extensions=['coc-pyright',"coc-git"]
 
 "let g:OmniSharp_highlighting = 0
 " let g:OmniSharp_server_stdio = 1
@@ -160,7 +160,7 @@ set encoding=utf-8
 set fileencoding=utf-8
 set clipboard=unnamedplus
 set shiftwidth=3
-set tabstop=4
+set tabstop=3
 set nu
 set rnu
 set autochdir
