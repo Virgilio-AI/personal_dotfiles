@@ -198,25 +198,25 @@ augroup end
 " ========== nerdtree 
 " =================================
 
-nnoremap <c-b> :NERDTreeToggle<CR>
-nnoremap <A-b> :NERDTreeFocus<CR>
+nnoremap <c-b>       :NERDTreeToggle<CR>
+nnoremap <A-b>       :NERDTreeFocus<CR>
 "fzf find commands
-nnoremap <leader>sp :Files 
-execute 'nnoremap <leader>sp :Files %:p:h<CR>'
-execute 'nnoremap <leader>sp1 :Files %:p:h:h<CR>'
-execute 'nnoremap <leader>sp2 :Files %:p:h:h:h<CR>'
-nnoremap <leader>sg :GFiles
+nnoremap <leader>sp  :Files
+execute  'nnoremap <leader>sp :Files %:p:h<CR>'
+execute  'nnoremap <leader>sp1 :Files %:p:h:h<CR>'
+execute  'nnoremap <leader>sp2 :Files %:p:h:h:h<CR>'
+nnoremap <leader>sg  :GFiles
 nnoremap <leader>sg? :GFiles?
-nnoremap <leader>sb :Buffers
-nnoremap <leader>sl :Lines
+nnoremap <leader>sb  :Buffers
+nnoremap <leader>sl  :Lines
 nnoremap <leader>slb :BLines
-nnoremap <leader>st :Tags
+nnoremap <leader>st  :Tags
 nnoremap <leader>stb :BTags
 nnoremap <leader>sni :Snippets
-nnoremap <leader>sc :Commits
+nnoremap <leader>sc  :Commits
 nnoremap <leader>scb :BCommits
-nnoremap <leader>sm :Maps
-nnoremap <leader>sh :History
+nnoremap <leader>sm  :Maps
+nnoremap <leader>sh  :History
 nnoremap <leader>shc :History/
 
 
