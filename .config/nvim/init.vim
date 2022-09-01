@@ -1,4 +1,44 @@
 
+
+
+
+
+
+function! TerminalSettings()
+	setlocal nonumber
+	setlocal norelativenumber
+	setlocal noshowmode
+	setlocal noruler
+	setlocal laststatus=0
+endfunction
+
+
+function! TerminalClose()
+	setlocal showmode
+	setlocal laststatus=1
+	setlocal nu
+	setlocal rnu
+	setlocal re=1
+endfunction
+
+
+
+augroup terminal
+	autocmd!
+	autocmd TermEnter * call TerminalSettings()
+	autocmd TermOpen * startinsert
+	" autocmd TermOpen * call TerminalSettings()
+augroup END
+
+
+augroup closeTerminal
+	autocmd!
+	autocmd TermLeave * call TerminalClose()
+	"autocmd TermClose * call TerminalCLose()
+
+	"autocmd BufEnter * call TerminalClose()
+augroup END
+
   "mage} ================================= ========== Main Variables 
 " " =================================
 
@@ -53,10 +93,6 @@ let g:coc_global_extensions=['coc-pyright']
 " let g:OmniSharp_server_use_mono = 1
 
 " use for correcting issues
-let g:ale_linters = {
-\ 'python':['pyright','mypy','pylint'],
-\}
-
 
 let g:livepreview_previewer = 'zathura'    " For Latex
 let NERDTreeIgnore = ['\.aux$','\.idx','\.out$','\.log']   " PlugIn NerdTree
@@ -124,7 +160,7 @@ set encoding=utf-8
 set fileencoding=utf-8
 set clipboard=unnamedplus
 set shiftwidth=3
-set tabstop=3
+set tabstop=4
 set nu
 set rnu
 set autochdir
@@ -141,7 +177,7 @@ set hidden
 set nobackup
 set nowritebackup
 set cmdheight=2
-set updatetime=300
+set updatetime=500
 set shortmess+=c
 set scrolloff=10 " keep the mouse centerd
 
