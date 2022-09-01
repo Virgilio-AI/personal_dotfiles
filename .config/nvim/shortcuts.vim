@@ -5,6 +5,37 @@
 " contact: virgiliomurilloochoa1@gmail.com
 
 
+" github configurations
+" navigate chunks of current buffer
+nmap <g <Plug>(coc-git-prevchunk)
+nmap >g <Plug>(coc-git-nextchunk)
+" navigate conflicts of current buffer
+nmap [c <Plug>(coc-git-prevconflict)
+nmap ]c <Plug>(coc-git-nextconflict)
+" show chunk diff at current position
+nmap gs <Plug>(coc-git-chunkinfo)
+" show commit contains current position
+nmap gc <Plug>(coc-git-commit)
+" create text object for git chunks
+omap ig <Plug>(coc-git-chunk-inner)
+xmap ig <Plug>(coc-git-chunk-inner)
+omap ag <Plug>(coc-git-chunk-outer)
+xmap ag <Plug>(coc-git-chunk-outer)
+
+
+" stage chunk changes
+nmap gS :CocCommand git.chunkStage<CR>
+" show commit of chunk
+nmap gC :CocCommand git.showCommit<CR>
+" unduo chunk changes
+nmap gU :CocCommand git.chunkUndo<CR>
+" unstage chunk changes
+nmap gR :CocCommand git.chunkUnstage<CR>
+" fold unchanged chunks
+nmap gF :CocCommand git.foldUnchanged<CR>
+
+
+
 " =================================
 " ========== copy file 
 " =================================
