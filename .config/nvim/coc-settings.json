@@ -1,5 +1,4 @@
 {
 	// for updating the extensions every week
 	"coc.preferences.extensionUpdateCheck":"weekly"
-	
 }
