@@ -81,10 +81,15 @@
 !/.config/vlc/*
 
 
+!/.config/xmodmap
+!/.config/xmodmap/*
 
- 
+
+
+
 !/.config/mimeapps.list
 !/.config/pavucontrol.ini
+
 
  
 #not ignore .local
