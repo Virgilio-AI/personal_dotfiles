@@ -84,6 +84,9 @@
 !/.config/xmodmap
 !/.config/xmodmap/*
 
+!/.config/xmodmap/configurations
+!/.config/xmodmap/configurations/*
+
 
 
 
