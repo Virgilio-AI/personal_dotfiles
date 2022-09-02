@@ -5,6 +5,16 @@
 " contact: virgiliomurilloochoa1@gmail.com
 
 
+
+
+" Github Copilot mappings
+inoremap <C-h> <Plug>(copilot-next)
+inoremap <C-h>p <Plug>(copilot-previous)
+nnoremap <C-h>o :Copilot disable<CR>
+
+
+
+
 " github configurations
 " navigate chunks of current buffer
 nmap <g <Plug>(coc-git-prevchunk)
@@ -33,7 +43,6 @@ nmap gU :CocCommand git.chunkUndo<CR>
 nmap gR :CocCommand git.chunkUnstage<CR>
 " fold unchanged chunks
 nmap gF :CocCommand git.foldUnchanged<CR>
-
 
 
 " =================================
@@ -198,25 +207,25 @@ augroup end
 " ========== nerdtree 
 " =================================
 
-nnoremap <c-b>       :NERDTreeToggle<CR>
-nnoremap <A-b>       :NERDTreeFocus<CR>
+nnoremap <c-b> :NERDTreeToggle<CR>
+nnoremap <A-b> :NERDTreeFocus<CR>
 "fzf find commands
-nnoremap <leader>sp  :Files
-execute  'nnoremap <leader>sp :Files %:p:h<CR>'
-execute  'nnoremap <leader>sp1 :Files %:p:h:h<CR>'
-execute  'nnoremap <leader>sp2 :Files %:p:h:h:h<CR>'
-nnoremap <leader>sg  :GFiles
+nnoremap <leader>sp :Files 
+execute 'nnoremap <leader>sp :Files %:p:h<CR>'
+execute 'nnoremap <leader>sp1 :Files %:p:h:h<CR>'
+execute 'nnoremap <leader>sp2 :Files %:p:h:h:h<CR>'
+nnoremap <leader>sg :GFiles
 nnoremap <leader>sg? :GFiles?
-nnoremap <leader>sb  :Buffers
-nnoremap <leader>sl  :Lines
+nnoremap <leader>sb :Buffers
+nnoremap <leader>sl :Lines
 nnoremap <leader>slb :BLines
-nnoremap <leader>st  :Tags
+nnoremap <leader>st :Tags
 nnoremap <leader>stb :BTags
 nnoremap <leader>sni :Snippets
-nnoremap <leader>sc  :Commits
+nnoremap <leader>sc :Commits
 nnoremap <leader>scb :BCommits
-nnoremap <leader>sm  :Maps
-nnoremap <leader>sh  :History
+nnoremap <leader>sm :Maps
+nnoremap <leader>sh :History
 nnoremap <leader>shc :History/
 
 
@@ -249,7 +258,6 @@ nmap ga <Plug>(EasyAlign)
 " ========== Competitive programing and developing in cpp 
 " =================================
 
-" start vim coc bindings
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: There's always complete item selected by default, you may want to enable
 " no select by `"suggest.noselect": true` in your configuration file.
@@ -260,14 +268,17 @@ inoremap <silent><expr> <TAB>
       \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice.
 inoremap <silent><expr> <S-TAB> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
 
 
 if has('nvim')
