@@ -203,3 +203,7 @@
 !version.txt
 
 .leetcode/Problems
+
+!.config/zsh
+!.config/zsh/*
+
