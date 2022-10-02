@@ -107,11 +107,15 @@ function! GitAddFile()
 endfunction
 
 function! GitCommit()
+	:w
+	call inputsave()
 	let l:commit_message = input('enter commit message: ')
-	let l:command = "git commit -m \" " . l:commit_message ." \" ; read -n1"
-
-	:echo l:command
-	execute ":AsyncRun st -T \"floating\" -g \"=150x50+250+100\" -e sh -c \"" . l:command . "\""
+	call inputrestore()
+	let l:command = "git commit -m '" . l:commit_message ."' ; read -n1"
+	echo ""
+	let l:vimcommand =  ':AsyncRun st -T "floating" -g "=150x50+250+100" -e sh -c "' . l:command . '"'
+	echo l:vimcommand
+	execute l:vimcommand
 endfunction
 
 function! GitPushMaster()
