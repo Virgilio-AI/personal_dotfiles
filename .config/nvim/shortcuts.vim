@@ -444,3 +444,18 @@ augroup PYTHON
 	exe 'autocmd BufEnter *.py nnoremap <leader>df :w<CR>:AsyncRun st -T "floating" -g "=150x50" -e sh -c "python -m pudb %:p"'
 augroup END
 
+
+" =================================
+" ========== github coc shortcuts 
+" =================================
+
+nnoremap <leader>[c <Plug>(coc-git-prevconflict)
+nnoremap <leader>]c <Plug>(coc-git-nextconflict)
+" show chunk diff at current position
+nnoremap <leader>gs <Plug>(coc-git-chunkinfo)
+
+nnoremap <leader>gS :CocCommand git.chunkStage<cr>
+nnoremap <leader>gU :CocCommand git.chunkUnstage<cr>
+nnoremap <leader>gF :CocCommand git.foldUnchanged<cr>
+nnoremap <leader>gdc :CocCommand git.diffCached
+
