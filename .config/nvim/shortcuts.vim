@@ -403,15 +403,15 @@ autocmd FileType python nmap <buffer><silent> <leader>p :call mdip#MarkdownClipb
 augroup jupyterNoteBook
 	autocmd BufEnter *.sync.py nnoremap <F11> :w<CR>:call jupyter_ascending#execute()<CR>:call jupyter_ascending#execute()<CR>
 	autocmd BufEnter *.sync.py nnoremap <F11><F11> :w<CR>:call jupyter_ascending#execute_all()<CR>
-	autocmd BufEnter *.sync.py inoremap <F11> :w<CR>:call jupyter_ascending#execute()<CR>:call jupyter_ascending#execute()<CR>i
-	autocmd BufEnter *.sync.py inoremap <F11><F11> :w<CR>:call jupyter_ascending#execute_all()<CR>i
+	autocmd BufEnter *.sync.py inoremap <F11> <Esc>:w<CR>:call jupyter_ascending#execute()<CR>:call jupyter_ascending#execute()<CR>i
+	autocmd BufEnter *.sync.py inoremap <F11><F11> <Esc>:w<CR>:call jupyter_ascending#execute_all()<CR>i
 
 
 
 	autocmd BufEnter *.sync.py nnoremap <C-l> $a<CR><Esc>:normal! i# %%<CR>o<Esc>
 	autocmd BufEnter *.sync.py nnoremap <C-a> $a<CR><Esc>:normal! i# %% [markdown]<CR>o<Esc>
-	autocmd BufEnter *.sync.py inoremap <C-l> <CR><Esc>:normal! i# %%<CR>o<Esc>i
-	autocmd BufEnter *.sync.py inoremap <C-a> <CR><Esc>:normal! i# %% [markdown]<CR>o<Esc>i
+	autocmd BufEnter *.sync.py inoremap <C-l> <Esc>:normal! i# %%<CR>o<Esc>i
+	autocmd BufEnter *.sync.py inoremap <C-a> <Esc>:normal! i# %% [markdown]<CR>o<Esc>i
 
 augroup end
 
