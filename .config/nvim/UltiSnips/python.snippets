@@ -1423,29 +1423,23 @@ endsnippet
 
 # options im-> inword
 snippet heatMap "for plotting a heat map"
-# Set the width and height of the figure
-plt.figure(figsize=(14,7))
+def correlation_heatmap(df,title = "default"):
+	_ , ax = plt.subplots(figsize =(14, 12))
+	colormap = sns.diverging_palette(220, 10, as_cmap = True)
 
-# Add title
-plt.title("Average Arrival Delay for Each Airline, by Month")
+	_ = sns.heatmap(
+			df.corr(),
+			cmap = colormap,
+			square=True,
+			cbar_kws={'shrink':.9},
+			ax=ax,
+			annot=True,
+			linewidths=0.1,vmax=1.0, linecolor='white',
+			annot_kws={'fontsize':12 }
+			)
+	plt.title(title, y=1.05, size=15)
 
-# Heatmap showing average arrival delay for each airline by month
-# annot for showing the values on each cell
-
-# for the colors
-
-cmap = matplotlib.colors.LinearSegmentedColormap.from_list("", ["red","violet","blue"])
-
-# simply pass a list of colors if you want it to be discrete
-# ex: ['red','blue']
-
-sns.heatmap(data=flight_data, annot=True,cmap=cmap)
-
-
-
-
-# Add label for horizontal axis
-plt.xlabel("Airline")
+# simply pass a data frame to the function
 endsnippet
 
 
