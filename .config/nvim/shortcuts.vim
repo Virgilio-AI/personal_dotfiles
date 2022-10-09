@@ -13,6 +13,8 @@ inoremap <C-h>p <Plug>(copilot-previous)
 nnoremap <C-h>o :Copilot disable<CR>
 
 
+imap <silent><script><expr> <C-j> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
 
 
 " github configurations
