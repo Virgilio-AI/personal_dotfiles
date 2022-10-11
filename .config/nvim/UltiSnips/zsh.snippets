@@ -267,7 +267,55 @@ snippet sk
 # contact: virgiliomurilloochoa1@gmail.com
 # web: virgiliomurillo.com
 # #########################################
+#!/usr/bin/zsh
+###############################
+# Author: Virgilio Murillo Ochoa
+# Date: 11/October/2022 - Tuesday
+# personal github: Virgilio-AI
+# linkedin: https://www.linkedin.com/in/virgilio-murillo-ochoa-b29b59203
+# contact: virgiliomurilloochoa1@gmail.com
+# web: virgiliomurillo.com
+# #########################################
+
+
+# edit this
+shortOptions="vdm"
+longOptions="verbose,debug,memory:"
+
+
+
+# NOTE: This requires GNU getopt.  On Mac OS X and FreeBSD, you have to install this
+# separately; see below.
+TEMP=$(getopt -o $shortOptions: --long $longOptions \
+	-n 'javawrap' -- "$@")
+
+	if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
+
+# Note the quotes around '$TEMP': they are essential!
+eval set -- "$TEMP"
+
+# edit this
+VERBOSE=false
+DEBUG=false
+MEMORY=
+DEBUGFILE=
+JAVA_MISC_OPT=
+while true; do
+	case "" in
+		-v | --verbose ) VERBOSE=true; shift ;;
+		-d | --debug ) DEBUG=true; shift ;;
+		-m | --memory ) MEMORY=""; shift 2 ;;
+		-- ) shift; break ;;
+		* ) break ;;
+	esac
+done
+
+# -- Body ---------------------------------------------------------
+#  SCRIPT LOGIC GOES HERE
+
 $1
+# -----------------------------------------------------------------
+
 endsnippet
 
 snippet info
