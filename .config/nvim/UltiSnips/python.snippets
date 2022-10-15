@@ -1551,6 +1551,21 @@ snippet setstyle "for setting the style"
 sns.set_style("dark")
 endsnippet
 
+# options im-> inword
+snippet polar_axis "for setting the polar axis in the plot"
+np.random.seed(0)
+N = 20
+theta = np.linspace(0.0, np.pi * 2 , N , endpoint = False)
+radii = 10 * np.random.rand(N)
+width = np.pi / 4 * np.random.rand(N)
+colors = plt.cm.plasma(radii / 10)
+
+plt.figure(dpi = 100)
+ax = plt.subplot(1,1,1, projection = 'polar')
+ax.bar(theta,radii,width = width, bottom = 0, color = colors, alpha = 0.7)
+plt.show()
+endsnippet
+
 
 
 # ==  feature engineering
