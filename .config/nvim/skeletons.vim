@@ -1,6 +1,3 @@
-
-" =================================
-" ========== vim skeletons
 " =================================
 "
 
@@ -39,6 +36,15 @@ augroup leetCode_sk
 	autocmd BufEnter */leetCode/*.cpp :ExpandSkeleton leetCode
 augroup END
 
+augroup jupyter_sk
+	autocmd!
+
+	" delete all the content of the file
+	normal ggdd
+	" expand the skeleton
+	autocmd BufEnter *.sync.py :ExpandSkeleton infoj
+
+augroup END
 
 
 " =================================
@@ -90,7 +96,7 @@ augroup END
 " =================================
 augroup pythonSkeleton
 	autocmd!
-	autocmd BufEnter *.py\(.sync.py\|.sync.sync.py\)\@<! :ExpandSkeleton sk
+	autocmd BufEnter *.py :ExpandSkeleton sk
 augroup END
 
 
