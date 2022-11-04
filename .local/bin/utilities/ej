@@ -9,6 +9,9 @@ configure_jupyter_ascending(){
 	jupyter serverextension enable jupyter_ascending --sys-prefix --py
 }
 
+configure_ipywidgets(){
+	jupyter nbextension enable --py widgetsnbextension
+}
 activate_venv(){
 # check if the venv folder exists
 # if not, create it
@@ -17,8 +20,12 @@ activate_venv(){
 if [[ ! -d venv ]] ; then
 	python3 -m venv venv
 	source venv/bin/activate
-	pip install jupyterlab jupyter-ascending pynvim jupytext
+	# requirements for the notebook to work correctly with neovim
+	pip install jupyterlab jupyter-ascending pynvim jupytext ipywidgets widgetsnbextension
+	# personal commonly used packages
+	pip install numpy pandas matplotlib seaborn scikit-learn scipy statsmodels plotly cufflinks textblob pickle5 mplcyberpunk
 	configure_jupyter_ascending
+	configure_ipywidgets
 else
 	source venv/bin/activate
 fi
@@ -37,8 +44,13 @@ if [[ "$1" == *.sync.ipynb ]] ; then
 	if [ ! -f "$1" ] ; then
 		python $HOME/.local/bin/utilities/create-notebook.py $name ;
 	fi
-	jupytext $1 --to py:percent ;
-	jupyter-notebook $1 &
+
+	if [ -f "$1:r.py" ] ; then
+		jupytext $1 --to py:percent ;
+	else
+		echo "file doesn't exist"
+	fi
+	jupyter-notebook --browser=chromium $1 &
 	st -e sh -c "nvim $1:r.py" &
 elif [[ "$1" == *.ipynb ]] ; then
 	echo "segundo"
@@ -48,8 +60,13 @@ elif [[ "$1" == *.ipynb ]] ; then
 	else
 		mv $1 $name.sync.ipynb 
 	fi
-	jupytext $name.sync.ipynb --to py:percent ;
-	jupyter-notebook $name.sync.ipynb &
+
+	if [ -f "$name.sync.py" ] ; then
+		jupytext $name.sync.ipynb --to py:percent ;
+	else
+		echo "file does not exist"
+	fi
+	jupyter-notebook --browser=chromium $name.sync.ipynb &
 	st -e sh -c "nvim $name.sync.py" &
 else
 	echo "tercero"
@@ -59,7 +76,11 @@ else
 	if [ ! -f "$notebook_name" ] ; then
 		python $HOME/.local/bin/utilities/create-notebook.py $1 ;
 	fi
-	jupytext $notebook_name --to py:percent ;
-	jupyter-notebook $notebook_name &
+	if [ -f "$1.py" ] ; then
+		jupytext $notebook_name --to py:percent ;
+	else
+		echo "file exists"
+	fi
+	jupyter-notebook --browser=chromium $notebook_name &
 	st -e sh -c "nvim $1.sync.py" &
 fi
