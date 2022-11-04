@@ -1,109 +1,32 @@
-# ------------- global functions ------
-	# create matrix placeholders
-	# create matrix
-	# info
-# --------------- gui's with tkinter ---- 
-# figma -- for automatically creating tkinter from figma
-# s-gui
-# gBut -- for a button
-# gLab -- for a label
-# gText -- for a text box with a description
-# gDropMenu -- for a drop menu
-# gImage -- for an image
-# gGrid -- for help on grid
-# gPack -- for help on pack
-# gCheckButtons -- for adding check buttons
-# gRadioButtons -- for crating radio buttons
-# gOptionMenu -- for the menu in the top of the window
-# gMainMenu -- for the main top menu
-# gGridRemove -- for deleting an item grid
-# gPackRemove -- for deleting a pack item
-# gShow -- for showing all the packages
-# gExitTkinter -- for exiting the program main loop
-
-
-
-# ---------------   python
-# printCommands -- for pringting the commands available for a datatype or some other kind of object
-# ==== strings
-# forString - for iterate string c style
-# doubleFor -- for getting a for with two different objects to iterate
-# ins - insert variable into a string
-
-# ==== data structures
-# list - for creating a python list
-# sublist - for getting a sublist
-# set - unordered collection of data type, no duplicate
-# tuple - same to list but inmutable
-# help -- for getting help
-# dir -- for checking what to do with a variable type
-# heap -- for help on heaps
-# bit_masquing -- for using bit masquing in python
-# sort -- for sorting in python
-# bit_count -- for counting the number of bits an int has
-
-# ==== files
-# file_open - open a file and read it line by line
-# file_write - write a file
-# file_append -- for appending information into the file
-# forFolder -- traverse all files in folder
-# recurseFolder -- traverse all files and subdirectories in a folder
-# fmkdir -- for creating a directory with parent directories
-#table_name table_namemove_file -- for moving a file into other location
-# relPath -- for getting the current relative path
-# copy_file -- for file copy
-
-
-
-# ==== POO
-# POOHelp -- for help in POO
-# inheritanceHelp -- for help in using inheritance
-
-# ==== exception handling
-# try -- to use generic try catch statement
-# raise -- to create custom exception on condition
-
-
-# ---------------   matplotlib
-# plotcsv
-# plot2dsk
-# varrange
-# xyaxis
-# label
-# title
-# legend
-# fill_between
-# varlim
-# 2dgrid
-# closestPointInLineToPoint
-# 3din2d
-# plotPoint
-# plotFunction
-
-# ==========================
-# ========== Kaggle ======
-# ==========================
-
-
-# import_kaggle -- for importing the necessary for machine learning plotting and other things
-# === machine learning
-# split_validation -- for split validating a model
-# model_descition_tree -- for using the model descition tree
-# model_random_forest -- for using the random forest model
-# getMAE -- for getting mean absolute error
-# getBsetTreeSize -- basic code to loop through tree sizes
-# export_csv -- for exporting a solution csv file
-
-
-# === pandas
+# {{{1
+# encode -- for encoding a string
+# lookAndFix -- for looking and fixing the needed inconsistencies
+# fuzzyMatching -- for searching and replacing inconsistencies 
+# fileEncodingProblems -- for finding the file encoding
+# parseDate -- for parsing a date
+# normalizeData -- for normalizing the given data for a machine learning algoritm
+# scalingData -- for scaling the needed data
+# contractions -- for creating a dictionary with english common word contractions
+# fillWithNextToItVal -- for fill NaN values with the value that comes directly after it
+# combineDataframe -- for combining a dataframe
+# rename -- for renaming the dataset
+# Nan -- for managing Null values or Not a Number values
+# convertType -- for converting a data type of a column pandas
+# datatype -- for getting the data type of a column
+# multiFunction -- for applying multiple functions to a dataframe
+# sort_values -- for sorting a pandas dataframe
+# group_by -- for grouping by a column
+# applyFunction -- for applying a function to a dataframe
+# dataDrop -- for dropping a column of data
+# describe -- for getting a description of the data
+# columns -- for getting the column names in pandas
+# pcombinecsv -- for combining multiple csv files into one
 # loc_iloc -- for help on loc iloc
-# import_pandas -- for importing pandas
 # create_dataframe -- for creating a pandas dataframe
 # create_series -- for creating a pandas series ( list of values)
 # read_csv -- for reading a pandas csv
 # csv_len -- for getting the length of the csv
 # csv_head -- for getting the top five elements of the csv
-
 # get_column -- for getting the column of a dataframe
 # get_val -- for getting the value of the column and row
 # get_row -- for getting the row of the pandas dataframe
@@ -113,60 +36,82 @@
 # conditional_selection -- for getting a dataframe with a condition
 # assignToColumn -- for assigning a value to a column
 # columnDescription -- for getting the description of a column (mean, describe, etc)
+# mapFunction -- for applying a function to a column
+# }}}1
+# == graphs
+# {{{1
+# graphs -- simple graphs
+# igraphs -- for interactive graphs
+# pairplot -- for creating a pairplot
+# matplotlib -- for help on matplotlib plt
+# folium -- for help on folium
+# }}}1
+# ========== Kaggle ======
+# {{{1
+# {{{2
+# pltFormat -- for configuring the format of the plot
+# ignoreWarnings -- for ignoring warnings
+# install_kaggle -- for installing kaggle
+# import_kaggle -- for importing the necessary for machine learning plotting and other things
+# }}}2
+# === machine learning
+# {{{2
+# split_validation -- for split validating a model
+# model_descition_tree -- for using the model descition tree
+# model_random_forest -- for using the random forest model
+# getMAE -- for getting mean absolute error
+# getBsetTreeSize -- basic code to loop through tree sizes
+# export_csv -- for exporting a solution csv file
+# }}}2
 # == Sumary functions and maps
+# {{{2
 # columnDescription --for getting the description of a column (mean, describe, etc)
 # mapFunction -- for applying a basic function to all cells in a column
 # applyFunction -- for applying a function to all the rows in a dataset
+# }}}2
 # == grouping and sorting
+# {{{2
 # group_by -- for grouping a dataframe by a column name
 # sort_values -- to sort the values by a column name
 # multiFunction -- for apply multiple functions to the group
-
+# }}}2
 # == data types and missing values
+# {{{2
 # datatype -- for getting the datatype of a column
 # convertType -- for converting a data type of a column pandas
 # NaN -- for managing Null values or Not a Number values
 # rename -- for renaming the dataset
 # combineDataframe -- for combining a dataframe
-
+# }}}2
 # == data cleaning
+# {{{2
 # fillWithNextToItVal -- for fill NaN values with the value that comes directly after it
-
+# contractions -- for english contractions in a dictionary
+# }}}2
 # == scaling and normalization
+# {{{2
 # scaleData -- for scaling the used data
 # normalizeData -- for normalizing the given data for a machine learning algoritm
-
+# }}}2
 # == parse dates in dataset
 # parseDate -- for parsing a date
-
 # == char encoding
+# {{{2
 # fileEncodingProblems -- for finding the file encoding
 # encode -- for encoding a string
-
+# }}}2
 # == inconsistencies
+# {{{2
 # lookAndFix -- for looking and fixing inconsistencies
 # fuuzyMatching -- for searching and replacing inconsistencies
-
-
-# == graphs
-# linePlot -- for plotting a line plot
-# barChart -- for plotting a barChart
-# heatMap -- for plotting a heat map
-# scatterPlot -- for creating a scatter plot
-# scatterMultipleSameTarget -- for creating a multiple scatter plots with the same target
-# histogram -- for creating a histogram
-# smoothedHistogram -- for creating a smoothed histogram
-# 2dsmoothedhistogram -- for creating a smoothed 2d histogram
-# setstyle -- for setting the style on the plot
-
+# }}}2
 # ==== feature engineering
+# {{{2
 # mutual_info_regression -- for creating a mutual info regression
 # clustering -- for clustering the information
-
-
-
+# }}}2
 # == intermediate machine learning -- for more refined machine learning
-
+# {{{2
 # scoreModels -- for scoring the models
 # imputter -- for replacing missing values with a simple regression
 # completeImputter -- for using imputer and specifying that the imputter was performed in a column
@@ -177,9 +122,9 @@
 # crossValidation -- for using crossvalidation with a pipeline and a regressionForest
 # xgboost -- for using the better xgboost
 # dataLeackage -- for looking and dropping data leackage
-
-
+# }}}2
 # == sql data analysis big query
+# {{{2
 # loadBigQuery -- for loading the python big query module
 # BQ_query -- for executing a sql command in big query
 # BQ_big_queries -- for executing a big query without exceding the limit
@@ -188,15 +133,17 @@
 # BQ_dates -- for working with dates on big query
 # BQ_with_as -- for nested queries better readability
 # BQ_join -- for join in big query
-
+# }}}2
 # == advanced big query
+# {{{2
 # BQ_left_join -- for doing the big query left join
 # BQ_over_clause -- for using the over clause
 # BQ_partition_clause -- for using the partition clause
 # BQ_unest -- for unesting nested data or repeated data
 # BQ_speed_functions -- usable functions to see the efficiency of the queries
-
+# }}}2
 # == intro to deep learning
+# {{{2
 # model1LinearUnit -- for creating a model with one linear unit
 # getWeightsAndBiases -- for getting weights and biases
 # plotOutputOfUntrained -- for plotting the output of an untrained linear model
@@ -206,9 +153,9 @@
 # animateDeepLearning -- for animating a deep learnig project
 # earlyStopping -- for getting an early stopping
 # binaryClassification -- for classifying in bynary
-
-
+# }}}2
 # === computer vision
+# {{{2
 # define_pretrained_base -- for defining the pre trained base
 # attachHeAD -- for attaching the head
 # CV_train -- for training a simple computer vision algoritm
@@ -222,15 +169,11 @@
 # sliding_window -- for the sliding window tecniques padding and stride
 # customConvents -- for defining a custom convent
 # dataAugmentation -- for adding features to the cv model
-
-
+# }}}2
 # == reinforcement learning
 # definingAgents -- for defining an agent for machine learning
-
-
-
-
 # ==  time series
+# {{{2
 # fitLinearRegression -- for fitting a linear regression model from a forecasting task
 # lagFeature -- for adding a lag feature to a pandas dataframe
 # moving_average_plot -- for a moving average plot
@@ -238,55 +181,28 @@
 # plotSeasonability -- for plotting seasonability
 # seasonalFeatures -- for creating seasonal features
 # hibrid_forecasting -- for creating hibrid models
-
-
+# }}}2
 # === geoespacial analisys
+# {{{2
 # GP_setup -- for setting up a basic geopandas instance
 # interactive_map -- for creating an interactive map
 # choropeth_i_map -- for creating a choroplet map
 # geoencoder_map -- for creating locations in a map
 # measure_distance -- for measuring a distance in a map
 # create_a_buffer -- for creating a buffer in geopandas
-
-
-
-
-
+# }}}2
 # == machine learning explainability
+# {{{2
 # test_score_features -- for testing the score of the features in your model
-
-
-
-
-# ---------------    prevPandas
-# plotcsv
-# pcombinecsv
-# dataDrop
-# readcsv -- for reading a csv as a pandas dataframe
-# describe -- for describing a pandas dataframe
-# columns -- for getting the column names
-# dropna -- to drop missing data in the dataset
-# pd_y -- for setting the target column
-# pd_x -- for setting the input columns
-
-
-
-
-# ----------------    system interaction
-
-# shOutput
-# shCommand
 # notify-send
 # execute sound
 # newFolder-recursive
-
+# }}}2
 # ---------------- organization
 # sec
 # subsec
-
 # ------------ python bases de datos
-
-
+# {{{2
 # sqlite3 --- for creating a connection to sqlite3
 # sqlite3c -- for executing a command in sqlite3j
 # mysql -- for creating a connection with mysql or mariadb 
@@ -294,103 +210,93 @@
 # mysqlq -- for getting the information from a query
 # rowcount -- for getting the number of rows affected after  a commit
 # encryption -- for encripting a password
-
-
+# }}}2
+# }}}1
 # -------------- python django
-
+# {{{1
+# {{{2
 # crateProject -- for creating a django project from scratch
 # migrate -- for applying models.py file. create tables
 # commonPackages -- for a list of common packages for django
-
-
-
+# }}}2
 # --- settings.py ------ MainProjectFolder
+# {{{2
 # createApp -- for creating a django app
 # useMysql -- for using mysql
 # changeLanguage -- for setting the default language in the project
 # addContextProcessor -- these are used for global functions inside the html files
-
+# }}}2
 # --- urls.py --- MainProjectFolder
+# {{{2
 # importUrl -- for importing the url file from an other app into the main app
 # imageRoute -- for using an image from a route
-
+# }}}2
 # --- views.py --- MainAppFolder
-
+# {{{2
 # viewsHelp -- for creating a help file
 # login_page -- for creating a log in page
 # log_out -- for logging out form a page
 # register -- for registering user
 # getSqlObject -- for getting an sql object
-
+# }}}2
 # --- apps.py --- MainAppFolder
 # appsHelp -- for help on the apps.py file
-
 # --- urls.py -- MainAppFolder
 # urlsHelp -- for help in importing directories
-
 # --- forms.py --- MainAppFolder
 # forms_help -- for registering a user in the database
-
-
 # --- layouts.html -- MainAppFolder/templates/layouts/
 # html_template -- for using templates
-
-
 # --- models.py --- SecondaryAppFolder
 # django_createTable -- for creating a table for the app
-
 # --- views.py --- SecondaryAppFolder
 # loginRequired -- require login to acces a page
-
 # --- admin.py -- SecondaryAppFolder
 # modClassDisplay -- for modifications on the django panel search bar and many others
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# ==========================
 # ========== BasesDeDatos ======
-# ==========================
-
 # sec - for creatign a new section
 # -------- sql basic syntax
 # ======== queries ========
+# {{{2
 # showUsers -- to show all users available in the server
 # showAll -- for showing everything in a table
 # describe -- for showing the rows of a table
 # showCurUser -- for showing the current user
 # bunion -- help for creating a union query
 # bjoin -- help for creating a join query
-
+# }}}2
 # =========== databases ============
+# {{{2
 # createDatabase -- for creating a database
 # deleteDatabase -- for deleting a database
-
 # grantAll -- to grant all privileges to user over the database
 # showPrivileges -- to show the privileges
 # helpUsers -- to get help on the users
-
+# }}}2
 # ========== table modifications ========
+# {{{2
 # foreign -- for  a foreign key
 # createTable -- for creating a table interactively
 # deltable -- for deleting a table
 # helpTable -- for help on the table creation and deletion
+# }}}2
 # ========== data modifications =========
+# {{{2
 # insert -- for inserting a new value into the table
 # insertIfne -- for inserting a value if it doesn't exist
 # update -- for updating the database
+# }}}2
+# }}}1
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -508,178 +414,697 @@ endglobal
 # ==========================
 # ========== gui's with tkinter ======
 # ==========================
-# options im-> inword
-snippet dropMenu "for creating a basic drop dow mwnu"
-$3TypeLabel = Label(${4:frame},text="$3:")
-$3TypeLabel.pack(side=TOP)
 
-${1:name of list} = [
-${2:"alarm",
-"alert",
-"zoom",
-"circadian-alert",
-"circadian-zoom",
-"circadian-alarm"}
-]
+snippet tkinter
 
-${3:name} = tk.StringVar()
-$3.set($1[0]) # default value
-
-$3DropMenu = OptionMenu($4, $3, *$1)
-$3DropMenu.pack()
+# snippet dropMenu "for creating a basic drop dow mwnu"
+# \$3TypeLabel = Label(${4:frame},text="\$3:")
+# \$3TypeLabel.pack(side=TOP)
+# 
+# $\{1:name of list} = [
+# $\{2:"alarm",
+# "alert",
+# "zoom",
+# "circadian-alert",
+# "circadian-zoom",
+# "circadian-alarm"}
+# ]
+# 
+# $\{3:name} = tk.StringVar()
+# \$3.set(\$1[0]) # default value
+# 
+# \$3DropMenu = OptionMenu(\$4, \$3, *\$1)
+# \$3DropMenu.pack()
+# 
+# endsnippet
+# 
+# 
+# # options im-> inword
+# snippet figma "for automatically creating tkinter from figma"
+# tkdesigner $FILE_URL $FIGMA_TOKEN
+# endsnippet
+# snippet s-gui
+# # pack is for piling elements and grid is like a spread sheet
+# root = Tk()
+# \${1:frame} = Frame(root)
+# \$1.\${2:pack|grid}()
+# \$3
+# root.mainloop()
+# endsnippet
+# 
+# snippet gBut
+# # opt parameters = fg="color",bg="color",command=lambda: function(params)
+# \${1:name_of_button} = Button(\${2:frame},text="\$3").pack(side=\${4:BUTTON|TOP|LEFT|RIGHT})
+# endsnippet
+# 
+# snippet gLab
+# # opt parameters = fg="color",bg="color"
+# \${1:name_of_label} = Label(\${2:frame},text="\$3").pack(side=\${4:BUTTON|TOP|LEFT|RIGHT})
+# endsnippet
+# 
+# snippet gText
+# \$1Label = Label(level_add_task,text="\$1:")
+# \$1Label.pack(side=TOP)
+# # start entering information
+# \$1 = tk.StringVar()
+# \$1TextBox = tk.Entry(level_add_task, width = 50, textvariable = \$1)
+# \$1TextBox.pack(side=TOP)
+# endsnippet
+# 
+# snippet notify-send
+# os.system("notify-send \"\$1\"")
+# endsnippet
+# 
+# # options im-> inword
+# snippet gImage "for loading image into a tkinter application"
+# # the render and the image variable may be lost in a function or a class,
+# # so make sure you save them somewhere otherwise you will lose them
+# 
+# image = Image.open(\${1:path})
+# hsize = int((float(image.size[1])*float(wpercent)))
+# # resize the image acording to the witdh
+# image = image.resize(({1:basewidth},hsize), Image.ANTIALIAS)
+# 
+# render = ImageTk.PhotoImage(image)
+# self.img_arr.append((image,render))
+# # create the tkinter label and resize
+# img = Label(self.ventana,image=self.img_arr[-1][1])
+# # now just pack or grid the image
+# 
+# endsnippet
+# 
+# 
+# # options im-> inword
+# snippet gGrid "for grid in tkinter"
+# # row -- for the row position
+# # column -- for the column position
+# # rowspan -- for the number of rows it takes
+# # columnspan -- for the number of columns it takes
+# # sticky=N,S,W,E,NE,NW,SE,SW -- if the widget is smaller than the frame is says where it is going to stick to
+# endsnippet
+# # options im-> inword
+# snippet gPack "for the pack information"
+# # fill=X,Y -- to fill the entire window in the desired position
+# # expand=YES -- the widget fills the space in the parent widget
+# # side=BOTTOM,LEFT,RIGHT,UP -- to specify the side to be placed
+# endsnippet
+# # options im-> inword
+# snippet gRadioButtons "for creating radio buttons"
+# # \$4 = StringVar()
+# \${6:rbn} = Radiobutton(
+# 	\${1:ventana},
+# 	text="\${2:text}",
+# 	value="\${3:value}",
+# 	variable=\${4:variable},
+# 	command=lambda: \${5:function(params)},
+# 	)
+# # grid or pack
+# endsnippet # options im-> inword
+# snippet gCheckButtons "for check buttons"
+# # \$3 = IntVar()
+# \${5:cbn} = Checkbutton(
+# 	\${1:ventana},
+# 	text="\${2:text}",
+# 	variable = \${3:variable},
+# 	onvalue=1,
+# 	offvalue=0,
+# 	command=lambda: \${4:function(params)}
+# 	)
+# # grid or pack
+# endsnippet
+# 
+# # options im-> inword
+# snippet gOptionMenu "for the option menu"
+# # \$3 = StringVar()
+# \${1:optionMenu_name} = OptionMenu(
+# 	\${2:ventana},
+# 	\${3:stringVar},
+# 	\${4:"opciones","separadas"}
+# 	)
+# # pack or grid
+# endsnippet
+# 
+# # options im-> inword
+# snippet gDeleteItem "for deleting an item "
+# \${1:name}.grid_remove()
+# endsnippet
+# 
+# # options im-> inword
+# snippet gPackRemove "for deleting a pack item"
+# \${2:name}.pack_forget()
+# endsnippet
+# 
+# # options im-> inword
+# snippet gMainMenu "for adding the main menu"
+# \${1:name} = Menu(\${2:window})
+# # name.add_command(label="",command=lamda: command(params))
+# \$2.config(menu=\$1)
+# endsnippet
+# # options im-> inword
+# snippet gShow "for showing all the pacekd widgets in window"
+# \${1:window}.mainloop()
+# endsnippet
+# 
+# # options im-> inword
+# snippet gExitTkinter "for exiting the main loop"
+# \${1:ventana}.exit
+# endsnippet
 
 endsnippet
 
-
-# options im-> inword
-snippet figma "for automatically creating tkinter from figma"
-tkdesigner $FILE_URL $FIGMA_TOKEN
-endsnippet
-snippet s-gui
-# pack is for piling elements and grid is like a spread sheet
-root = Tk()
-${1:frame} = Frame(root)
-$1.${2:pack|grid}()
-$3
-root.mainloop()
-endsnippet
-
-snippet gBut
-# opt parameters = fg="color",bg="color",command=lambda: function(params)
-${1:name_of_button} = Button(${2:frame},text="$3").pack(side=${4:BUTTON|TOP|LEFT|RIGHT})
-endsnippet
-
-snippet gLab
-# opt parameters = fg="color",bg="color"
-${1:name_of_label} = Label(${2:frame},text="$3").pack(side=${4:BUTTON|TOP|LEFT|RIGHT})
-endsnippet
-
-snippet gText
-$1Label = Label(level_add_task,text="$1:")
-$1Label.pack(side=TOP)
-# start entering information
-$1 = tk.StringVar()
-$1TextBox = tk.Entry(level_add_task, width = 50, textvariable = $1)
-$1TextBox.pack(side=TOP)
-endsnippet
-
-snippet notify-send
-os.system("notify-send \"$1\"")
-endsnippet
-
-# options im-> inword
-snippet gImage "for loading image into a tkinter application"
-# the render and the image variable may be lost in a function or a class,
-# so make sure you save them somewhere otherwise you will lose them
-
-image = Image.open(${1:path})
-hsize = int((float(image.size[1])*float(wpercent)))
-# resize the image acording to the witdh
-image = image.resize(({1:basewidth},hsize), Image.ANTIALIAS)
-
-render = ImageTk.PhotoImage(image)
-self.img_arr.append((image,render))
-# create the tkinter label and resize
-img = Label(self.ventana,image=self.img_arr[-1][1])
-# now just pack or grid the image
-
-endsnippet
-
-
-# options im-> inword
-snippet gGrid "for grid in tkinter"
-# row -- for the row position
-# column -- for the column position
-# rowspan -- for the number of rows it takes
-# columnspan -- for the number of columns it takes
-# sticky=N,S,W,E,NE,NW,SE,SW -- if the widget is smaller than the frame is says where it is going to stick to
-endsnippet
-# options im-> inword
-snippet gPack "for the pack information"
-# fill=X,Y -- to fill the entire window in the desired position
-# expand=YES -- the widget fills the space in the parent widget
-# side=BOTTOM,LEFT,RIGHT,UP -- to specify the side to be placed
-endsnippet
-# options im-> inword
-snippet gRadioButtons "for creating radio buttons"
-# $4 = StringVar()
-${6:rbn} = Radiobutton(
-	${1:ventana},
-	text="${2:text}",
-	value="${3:value}",
-	variable=${4:variable},
-	command=lambda: ${5:function(params)},
-	)
-# grid or pack
-endsnippet # options im-> inword
-snippet gCheckButtons "for check buttons"
-# $3 = IntVar()
-${5:cbn} = Checkbutton(
-	${1:ventana},
-	text="${2:text}",
-	variable = ${3:variable},
-	onvalue=1,
-	offvalue=0,
-	command=lambda: ${4:function(params)}
-	)
-# grid or pack
-endsnippet
-
-# options im-> inword
-snippet gOptionMenu "for the option menu"
-# $3 = StringVar()
-${1:optionMenu_name} = OptionMenu(
-	${2:ventana},
-	${3:stringVar},
-	${4:"opciones","separadas"}
-	)
-# pack or grid
-endsnippet
-
-# options im-> inword
-snippet gDeleteItem "for deleting an item "
-${1:name}.grid_remove()
-endsnippet
-
-# options im-> inword
-snippet gPackRemove "for deleting a pack item"
-${2:name}.pack_forget()
-endsnippet
-
-# options im-> inword
-snippet gMainMenu "for adding the main menu"
-${1:name} = Menu(${2:window})
-# name.add_command(label="",command=lamda: command(params))
-$2.config(menu=$1)
-endsnippet
-# options im-> inword
-snippet gShow "for showing all the pacekd widgets in window"
-${1:window}.mainloop()
-endsnippet
-
-# options im-> inword
-snippet gExitTkinter "for exiting the main loop"
-${1:ventana}.exit
-endsnippet
 
 # ==========================
 # ========== Organization ======
 # ==========================
+snippet sk
+
+# Date: `date +%d/%B/%Y\ -\ %A`
+# Author: Virgilio Murillo Ochoa
+# personal github: Virgilio-AI
+# linkedin: https://www.linkedin.com/in/virgilio-murillo-ochoa-b29b59203
+# contact: virgiliomurilloochoa1@gmail.com
+# web: virgiliomurillo.com
+
+from typing import *
+import heapq as hp
+from collections import deque
+from collections import defaultdict
+import sys
+
+# dic = defaultdict(int)
+# set = set() # .remove(val),.add(val)
+# dic = {} # .remove(id),dic[key] = val
+# arr = []
+
+
+# def input(f=open(".`!p snip.rv = snip.basename`_In1.txt")): return f.readline().rstrip() # uncomment for debugging
+
+
+def main():
+	$1
+
+
+if __name__ == '__main__':
+	main()
+
+endsnippet
+
+snippet infoj
+# %% [markdown]
+- Date: `date +%d/%B/%Y\ -\ %A`
+- Author: Virgilio Murillo Ochoa
+- personal github: Virgilio-AI
+- linkedin: https://www.linkedin.com/in/virgilio-murillo-ochoa-b29b59203
+- contact: data_scientist@virgiliomurillo.com
+- web: virgiliomurillo.com
+endsnippet
+
 
 snippet sec
 # =============
 # ==== $1 =====
 # =============
 endsnippet
+
+
+
 snippet subsec
 # ======== $1
 endsnippet
 
+
+# ==========================
+# ========== system interaction ======
+# ==========================
+
 snippet shOutput
 ${1:strinName}=str(subprocess.check_output([${2:list_commands}]).decode('utf-8'))
 endsnippet
+
 snippet shCommand
 os.system('$1')
+endsnippet
+
+# ==========================
+# ========== python ======
+# ==========================
+
+snippet printCommands "for pringting the commands available for a datatype or some other kind of object"
+for i in dir(${1:dataType}):
+	if i[0] != '_' and "${2:keyword}" in i:
+		print(i)
+endsnippet
+
+snippet help "for getting help"
+help($1)
+endsnippet
+
+# ========== strings ======
+
+snippet forString
+for element in range(0, len(${1:string_name})):
+	print($1[element])
+endsnippet
+
+
+snippet doubleFor "for getting a for iterating two different objects"
+for ob1,ob2 in zip(obar1,obarr2):
+	print(ob1,ob2)
+endsnippet
+
+
+snippet ins "" im
+"+str($1)+"
+endsnippet
+
+# ========== data structures ======
+
+snippet dir "for getting information on a var type"
+print(dir(rolls))
+# where rolls is  a numpy.ndarray
+endsnippet
+
+snippet heap "for help on heaps"
+test = [[]] * 4
+# for pushing into a heap
+# you can use a regular array
+# hp.heappush(test[2],6)
+# hp.heappop(heap)
+endsnippet
+
+snippet bit_masquing "for using bit masquing in python"
+# example with 3 elements
+# when you want to test 010 in the 6 position 110
+# it returns true because there is a 1 in the middle both times
+for i in range(1<<n):
+	for j in range(n):
+		if i & 1<<j:
+			print("there is a one")
+
+endsnippet
+
+snippet sort "for sorting in python"
+li = [[1,4,7],[3,6,9],[2,59,8]]
+li.sort(key=lambda x: int(x[0]))
+sorted(li, key = lambda x: int(x[0]))
+endsnippet
+
+snippet bit_count "for counting the number of bits an int has"
+n = 12
+n.bit_count()
+endsnippet
+
+snippet list
+${1:temp} = [$2]
+endsnippet
+
+# options im-> inword
+snippet sublist "for getting a sublist (slicing)"
+# list[start:end+1:step]
+endsnippet
+
+
+snippet set
+${1:temp} = {$2}
+endsnippet
+
+
+snippet tuple
+${1:temp} = ($2)
+endsnippet
+
+# ========== files ======
+
+snippet file_open
+
+with open('${1:file_name}') as ${2:file_var}:
+	for line in $2:
+		print(line.rstrip())
+
+endsnippet
+
+snippet file_write
+
+# from io import open
+${1:name} = open("${2:file}","w")
+$1.write(${2:string})
+$1.close()
+
+endsnippet
+# options im-> inword
+snippet file_append "for appending text into a file"
+# from io import open
+${1:name} = open("${2:file}","a+")
+$1.write(${2:string})
+$1.close()
+endsnippet
+
+# options im-> inword
+snippet forFolder "iteration of files over folder"
+# iterate over files in
+# that directory
+for filename in os.listdir(directory):
+	f = os.path.join(directory, filename)
+# checking if it is a file
+	if os.path.isfile(f):
+		print(f)
+endsnippet
+# options im-> inword
+snippet recurseFolder "to recurse a folder iteractively"
+def recurseFolder(path):
+	for filename in os.listdir(directory):
+		f = os.path.join(path,filename)
+	if os.path.isfile(f):
+		print(f)
+	else:
+		recurseFolder(minusOne
+endsnippet
+# options im-> inword
+snippet fmkdir "for creating a directory and it's parent directories"
+# import pathlib
+pathlib.Path(${1:abs_path}).mkdir(parents=True,exist_ok=True)
+endsnippet
+# options im-> inword
+snippet move_file "for moving a file into other location"
+# import shutil
+shutil.move(${1:path_original},${2:path_target})
+endsnippet
+# options im-> inword
+snippet copy_file "for copying a file into a new location"
+# import shutil
+shutil.copy(${1:path_original},${2:path_target})
+endsnippet
+
+# options im-> inword
+snippet relPath "create a relative path"
+
+# import pathlib
+
+
+# create the directory creating the parents
+relPath = str(pathlib.Path().absolute()) + "/"
+
+# pathlib.Path(relPath + "/holaa").mkdir(parents=True, exist_ok=True)
+
+# abrir
+ruta = relPath  +"${1:relarivePath}"
+endsnippet
+
+
+# ========== POO ======
+
+snippet POOHelp "for help information on POO with python"
+# create files with a single class inside of them and import them into the main file
+# example:
+# create the class Car inside the car.py file
+# import into the main file using 
+# from car import Car
+#
+# and use it
+# car = Car()
+endsnippet
+
+snippet inheritanceHelp "how to use inheritance in python"
+# class name(fatherName)
+# inside the __init__(self)
+# super().__init__()
+endsnippet
+
+
+# ========== exception handling ======
+# options im-> inword
+snippet try "try catch generic"
+try:
+	$1
+except Exception as e:
+	$2
+fianlly:
+	$3
+endsnippet
+# options im-> inword
+snippet raise "for raising custom exception"
+if $1:
+	raise $2("${3:text for exception}")
+endsnippet
+
+# ==========================
+# ========== pandas ======
+# ==========================
+
+
+snippet encode "for encoding a string"
+# encode it to a different encoding, replacing characters that raise errors
+after = before.encode("utf-8", errors="replace")
+endsnippet
+
+
+# options im-> inword
+snippet lookAndFix "for looking and fixing the needed inconsistencies"
+# get all the unique values in the 'Country' column
+countries = professors['Country'].unique()
+
+# sort them alphabetically and then take a closer look
+countries.sort()
+countries
+
+# convert to lower case
+professors['Country'] = professors['Country'].str.lower()
+# remove trailing white spaces
+professors['Country'] = professors['Country'].str.strip()
+
+endsnippet
+
+# options im-> inword
+snippet fuzzyMatching "for searching and replacing inconsistencies "
+# get the top 10 closest matches to "south korea"
+matches = fuzzywuzzy.process.extract("south korea", countries, limit=10, scorer=fuzzywuzzy.fuzz.token_sort_ratio)
+
+# take a look at them
+matches
+###################################
+######################
+
+
+# function to replace rows in the provided column of the provided dataframe
+# that match the provided string above the provided ratio with the provided string
+def replace_matches_in_column(df, column, string_to_match, min_ratio = 47):
+# get a list of unique strings
+	strings = df[column].unique()
+
+# get the top 10 closest matches to our input string
+matches = fuzzywuzzy.process.extract(string_to_match, strings, 
+		limit=10, scorer=fuzzywuzzy.fuzz.token_sort_ratio)
+
+# only get matches with a ratio > 90
+	close_matches = [matches[0] for matches in matches if matches[1] >= min_ratio]
+
+# get the rows of all the close matches in our dataframe
+rows_with_matches = df[column].isin(close_matches)
+
+# replace all rows with close matches with the input matches 
+	df.loc[rows_with_matches, column] = string_to_match
+
+# let us know the function's done
+	print("All done!")
+
+# use the function we just wrote to replace close matches to "south korea" with "south korea"
+replace_matches_in_column(df=professors, column='Country', string_to_match="south korea")
+
+endsnippet
+
+snippet fileEncodingProblems "for finding the file encoding"
+# get the byte size of the file to predict the needed file encoding
+def getSize(fileobject):
+	fileobject.seek(0,2) # move the cursor to the end of the file
+	size = fileobject.tell()
+	return size
+
+file = open('../input/fatal-police-shootings-in-the-us/PoliceKillingsUS.csv', 'rb')
+print( getSize(file))
+
+
+# now replace with the number of bytes needed
+with open("../input/fatal-police-shootings-in-the-us/PoliceKillingsUS.csv", 'rb') as rawdata:
+	result = chardet.detect(rawdata.read(${1:number_of_bytes}))
+
+# check what the character encoding might be
+print(result)
+
+# now replace the needed file encoding
+police_killings = pd.read_csv("../input/fatal-police-shootings-in-the-us/PoliceKillingsUS.csv",encoding='Windows-1252')
+endsnippet
+
+snippet parseDate "for parsing a date"
+# where pd is for pandas and landslides['date'] is the name of the column
+landslides['date_parsed'] = pd.to_datetime(landslides['date'], format="%m/%d/%y")
+endsnippet
+
+snippet normalizeData "for normalizing the given data for a machine learning algoritm"
+# normalize the exponential data with boxcox
+normalized_data = stats.boxcox(original_data)
+endsnippet
+
+snippet scalingData "for scaling the needed data"
+## this is used to place the data in a matter of 0 - 1
+# generate 1000 data points randomly drawn from an exponential distribution
+original_data = np.random.exponential(size=1000)
+
+# mix-max scale the data between 0 and 1
+# where the columns are the list of columns to be normalized
+scaled_data = minmax_scaling(original_data, columns=[0])
+endsnippet
+
+snippet contractions "for creating a dictionary with english common word contractions"
+
+contractions = { 
+"ain't": "am not",
+"aren't": "are not",
+"can't": "cannot",
+"can't've": "cannot have",
+"'cause": "because",
+"could've": "could have",
+"couldn't": "could not",
+"couldn't've": "could not have",
+"didn't": "did not",
+"doesn't": "does not",
+"don't": "do not",
+"hadn't": "had not",
+"hadn't've": "had not have",
+"hasn't": "has not",
+"haven't": "have not",
+"he'd": "he would",
+"he'd've": "he would have",
+"he'll": "he will",
+"he'll've": "he will have",
+"he's": "he is",
+"how'd": "how did",
+"how'd'y": "how do you",
+"how'll": "how will",
+"how's": "how does",
+"i'd": "i would",
+"i'd've": "i would have",
+"i'll": "i will",
+"i'll've": "i will have",
+"i'm": "i am",
+"i've": "i have",
+"isn't": "is not",
+"it'd": "it would",
+"it'd've": "it would have",
+"it'll": "it will",
+"it'll've": "it will have",
+"it's": "it is",
+"let's": "let us",
+"ma'am": "madam",
+"mayn't": "may not",
+"might've": "might have",
+"mightn't": "might not",
+"mightn't've": "might not have",
+"must've": "must have",
+"mustn't": "must not",
+"mustn't've": "must not have",
+"needn't": "need not",
+"needn't've": "need not have",
+"o'clock": "of the clock",
+"oughtn't": "ought not",
+"oughtn't've": "ought not have",
+"shan't": "shall not",
+"sha'n't": "shall not",
+"shan't've": "shall not have",
+"she'd": "she would",
+"she'd've": "she would have",
+"she'll": "she will",
+"she'll've": "she will have",
+"she's": "she is",
+"should've": "should have",
+"shouldn't": "should not",
+"shouldn't've": "should not have",
+"so've": "so have",
+"so's": "so is",
+"that'd": "that would",
+"that'd've": "that would have",
+"that's": "that is",
+"there'd": "there would",
+"there'd've": "there would have",
+"there's": "there is",
+"they'd": "they would",
+"they'd've": "they would have",
+"they'll": "they will",
+"they'll've": "they will have",
+"they're": "they are",
+"they've": "they have",
+"to've": "to have",
+"wasn't": "was not",
+" u ": " you ",
+" ur ": " your ",
+" n ": " and "}
+
+endsnippet
+
+snippet fillWithNextToItVal "for fill NaN values with the value that comes directly after it"
+sf_permits_with_na_imputed = sf_permits.fillna(method='bfill', axis=0)
+endsnippet
+
+snippet combineDataframe "for combining a dataframe"
+# when you have different dataframes with the same columns
+pd.concat([canadian_youtube, british_youtube])
+
+
+# combine dataframes that have an index in common
+# where MeetID is the index in common and can be different
+powerlifting_combined = powerlifting_meets.set_index("MeetID").join(powerlifting_competitors.set_index("MeetID"))
+endsnippet
+
+snippet rename "for renaming the dataset"
+reviews.rename(columns={'points': 'score'})
+reviews.rename(index={0: 'firstEntry', 1: 'secondEntry'})
+reviews.rename_axis("wines", axis='rows').rename_axis("fields", axis='columns')
+endsnippet
+
+
+snippet NaN "for managing Null values or Not a Number values"
+reviews[pd.isnull(reviews.country)]
+reviews[pd.notnull(reviews.country)]
+reviews.region_2.fillna("Unknown")
+
+# also for replacing the values
+reviews.taster_twitter_handle.replace("@kerinokeefe", "@kerino")
+endsnippet
+
+snippet convertType "for converting a data type of a column pandas"
+reviews.points.astype('float64')
+endsnippet
+
+snippet datatype "for getting the data type of a column"
+reviews.price.dtype
+
+# for getting all columns
+reviews.dtypes
+endsnippet
+
+snippet multiFunction "to apply multiple funcitons to the dataframe"
+# example
+
+price_extremes = reviews.groupby('variety').price.agg([min, max])
+endsnippet
+
+snippet sort_values "for sorting a pandas dataframe"
+countries_reviewed.sort_values(by=['country', 'len'])
+endsnippet
+
+# options im-> inword
+snippet group_by "for grouping a dataframe by a column name"
+reviews.groupby(['col_name','col_name2']).apply(function,axis='columns')
+
+# reset to normal index
+# reviews.reset_index()
+endsnippet
+
+snippet applyFunction "for applying a function to all the rows in a dataset"
+def function(row):
+	row.col_name = row.col_name - 5
+	return row
+
+dataFrame.apply(function, axis='columns')
 endsnippet
 
 snippet dataDrop
@@ -688,14 +1113,6 @@ labels=["name","example"],
 axis=1, # 0 -> rows 1 -> columns
 inplace=False # alter the dataFrame
 )
-endsnippet
-# options im-> inword
-snippet readCsv "for reading a pandas csv"
-${2:name} = pd.read_csv(${1:path/to/csv.csv})
-
-
-# for specific encoding
-# kickstarter_2016 = pd.read_csv("../input/kickstarter-projects/ks-projects-201612.csv", encoding='Windows-1252')
 endsnippet
 
 # options im-> inword
@@ -708,77 +1125,323 @@ snippet columns "for getting the column names in pandas"
 ${1:name}.columns
 endsnippet
 
-# options im-> inword
-snippet pd_y "for setting the y variable"
-y = ${1:data_frame}.${2:column_name}
-endsnippet
-# options im-> inword
-snippet pd_x "for setting the X input variables"
-x_column = [${1:'name1','name2'}]
-X = ${2:data_frame}.x_column
+snippet pcombinecsv
+${1:name_of_files} = glob.glob("${2:PATH/TO/FILES/file*_.csv}")
+${1}_dt = pd.concat)[pd.read_csv(f) for f in ${1} ])
 endsnippet
 
 
+# options im-> inword
+snippet loc_iloc "for information on loc and iloc"
+# the iloc if for using the integer position of the dataframe
+# the loc is for using the label position on the dataframe
+endsnippet
 
+
+# options im-> inword
+snippet create_dataframe "for creating a pandas dataframe"
+# optionales
+# index=['idx1','idx2']
+pd.DataFrame({'${1:col_name}':[${2:vals,separated,by,comman|series}]})
+endsnippet
+
+# options im-> inword
+snippet create_series "for creating a pandas series ( list of values)"
+# optionals
+# index=['index1','index2', ... , 'index5'] -- to assigning a name to the indices
+# name = "name of series" -- for assigning a name to the whole series
+pd.Series([1, 2, 3, 4, 5])
+endsnippet
+
+
+snippet read_csv "for reading a pandas csv"
+# optionals
+# set the index col manually
+# index_col=num
+dt_name = pd.read_csv("path/to/file.csv")
+
+
+# for specific encoding
+# kickstarter_2016 = pd.read_csv("../input/kickstarter-projects/ks-projects-201612.csv", encoding='Windows-1252')
+
+# for loading dates as index
+# museum_data = pd.read_csv(museum_filepath,index_col="Date",parse_dates=True)
+
+endsnippet
+
+# options im-> inword
+
+# options im-> inword
+snippet csv_len "for getting the length of the csv"
+dt_name.shape
+endsnippet
+
+# options im-> inword
+snippet csv_head "for getting the top 5 elements of the csv"
+dt_name.head()
+endsnippet
+
+# options im-> inword
+snippet get_column "for getting the column of a dataframe"
+# dataframe.title
+# dataframe["title"]
+endsnippet
+
+# options im-> inword
+snippet get_val "for getting the value of the column and row"
+# dataframe["title"][num]
+endsnippet
+
+# options im-> inword
+snippet get_row "for getting the row of the pandas dataframe"
+#dataframe.iloc[index_num]
+endsnippet
+
+
+# options im-> inword
+snippet getRange_col "for getting a range in a column"
+# dataframe.loc[row_start:row_end,column]
+# you can pass a list instead to get only the needed indices
+# dataframe.loc[[1,2,3,4],[col1,col2]]
+endsnippet
+
+# options im-> inword
+snippet getRange_row "for getting a range in a row"
+# dataframe.iloc[start:end-1]
+
+# also you can do
+# museum_data.loc[first_slice_q:second_slice_q]
+# because for dates it tends to work because you use a specific index and cannot be -1
+endsnippet
+
+# options im-> inword
+snippet getRange_row_index "for getting a range of rows using the index"
+# remember that loc takes the last element of the range unlike python
+dataframe.loc[row_start:row_end,'index_name_1','index_name_2']
+# you can use a list [1,2,5] instead of a range 1:2
+endsnippet
+
+# options im-> inword
+snippet set_index "for setting the index column for the dataframe"
+dataframe.set_index("title")
+endsnippet
+
+# options im-> inword
+snippet conditional_selection "for getting a dataframe with a condition"
+dataframe.loc[dataframe.title == "Italy"]
+# optional
+# dataframe.loc[dataframe.title.isin(['Italy','France'])]
+# dataframe.loc[dataframe.title.notnull())]
+# use always parenthesis since it tends to fail
+# use & and | instead of and or
+endsnippet
+
+# options im-> inword
+snippet assignToColumn "for assigning a value to a column"
+dataframe['col_title'] = 'constant'
+dataframe['col_title'] = range(len(dataframe),0,-1)
+endsnippet
+
+# options im-> inword
+snippet columnDescription "for getting the column description"
+# for getting general information on the dataframe
+# dt_dataframe['col_name'].describe()
+# for getting the mean needed
+# dt_dataframe['col_name'].mean()
+# for getting the unique values
+# dt_dataframe['col_name'].unique()
+# for getting the times each element appears in the list
+# dt_dataframe['col_name'].value_counts()
+
+endsnippet
+
+
+snippet mapFunction "for applying a basic function to all cells in a column"
+# column_mean = dataFrame.col_name.mean()
+# also you can put a function instead of a lambda function
+# dataFrame.col_name.map(lambda p: p - column_mean)
+
+# also you can apply a operand like
+# and it will be the same
+# dataFrame.col_name - column_mean
+
+# also < > ==  etc
+# example:
+# dataFrame.col_name + " - " + dataFrame.second_col_name
+endsnippet
+
+
+
+# ==========================
+# ========== matplotlib ======
+# ==========================
+
+# options im-> inword
+snippet matplotlib "for matplotlib information"
+
+plt.xlabel('\${1:x_description}')
+plt.xlabel('\${2:y_description}')
+
+
+plt.title('\$1')
+
+
+#pass a list and respect the order of the plots
+# format (['f(x)','g(x)'])
+
+plt.legend(['\${1:function_mathematical_representation}\$2'])
+
+
+
+
+plt.xlim(\${1:left_lim},\${2:right_lim})
+plt.ylim(\${3:left_lim},\${4:right_lim})
+
+
+plt.grid(True)
+
+
+
+def getClosestPointToLine(p1,p2,p3):
+	x1, y1 = p1
+	x2, y2 = p2
+	x3, y3 = p3
+	dx, dy = x2-x1, y2-y1
+	det = dx*dx + dy*dy
+	a = (dy*(y3-y1)+dx*(x3-x1))/det
+	return x1+a*dx, y1+a*dy
+
+
+
+\${1:x_var} = np.linspace(\${2:x_lower_bound},\${3:x_upper_bound},\${4:step})
+\${5:y_var} = np.linspace(\${6:y_lower_bound},\${7:y_upper_bound},\${8:step})
+X_, Y_ = np.meshgrid(\$1, \$5)
+Z_ = mainFunction(X_, Y_)
+plt.contour(X_,Y_,Z_,\${9:number_of_curves})
+
+
+plt.scatter(\${1:x},\${2:y})
+
+
+
+
+\${1:x_var} = np.arange(\${2:left_range},\${3:right_range},\${4:step})
+
+plt.plot(\$1,\${5:f(x)})
+
+
+# here you have to identify the lower function and the bigger function
+# you can use something like below
+# botton = np.maximum(y1,0)
+
+plt.fill_between(\${1:function_1},\${2:function_2},\${3:function_3},where=\${4:x_conditions} )
+
+
+endsnippet
+
+
+snippet folium "for folium information"
+
+m = folium.Map(location=[0,0], tiles = 'cartodbpositron',min_zoom = 1, max_zoom = 4, zoom_start=1)
+
+for i in range(0,len(data)):
+   tooltip = '<li><bold> Country:' + str(data.iloc[i]['Country']) +
+	'<li><bold> Year:' + str(data.iloc[i]['Year'])
+	folium.Circle(
+			location=[data.iloc[i]['lat'], data.iloc[i]['lon']],
+			popup=data.iloc[i]['name'],
+			radius=100000,
+			color='crimson',
+			fill=True,
+			fill_color='crimson'
+			).add_to(m)
+
+endsnippet
+
+# ==========================
+# ========== Kaggle ======
+# ==========================
+
+# options im-> inword
+snippet pltFormat "for configureing the format of the plot"
+%config InlineBackend.figure_formats = ['${1:svg|png}']
+endsnippet
+
+# options im-> inword
+snippet ignoreWarnings "for ignoring warnings"
+with warnings.catch_warnings():
+	warnings.simplefilter('ignore')
+endsnippet
 
 snippet install_kaggle
-
-
+# upgrade pip
+!pip install --upgrade pip
 # dependencies
-!pip install chart_studio
-
+!pip install --upgrade chart_studio
 # necessary
-
-# !pip install numpy
-# !pip install pandas
-# !pip install matplotlib
-# !pip install seaborn
-
-
-
+# !pip install --upgrade numpy
+# !pip install --upgrade pandas
+# !pip install --upgrade matplotlib
+# !pip install --upgrade seaborn
 # for visualization tools
-
-# !pip install cufflinks
-# !pip install plotly
-# !pip install numpy
-
+# !pip install --upgrade cufflinks
+# !pip install --upgrade plotly
+# !pip install --upgrade numpy
 # for machine learning
-
-# !pip install sklearn
-# !pip install xgboost
-# !pip install lightgbm
-# !pip install catboost
-# !pip install keras
-# !pip install tensorflow
-
+# !pip install --upgrade sklearn
+# !pip install --upgrade xgboost
+# !pip install --upgrade lightgbm
+# !pip install --upgrade catboost
+# !pip install --upgrade keras
+# !pip install --upgrade tensorflow
+# for data cleaning
+!pip install --upgrade textblob
+# for importing pickle files
+!pip install --upgrade pickle5
+# for plotting maps
+!pip install --upgrade folium
 endsnippet
-
-
 
 # options im-> inword
 snippet import_kaggle "for importing the necessary for machine learning plotting and other things"
+%config InlineBackend.figure_formats = ['svg']
 # from sklearn.ensemble import RandomForestRegressor # random forest regressor
 # from sklearn.model_selection import cross_val_score # the cross validation module
-
-
-
 # Setup feedback system
 # from learntools.core import binder # the binder
 # binder.bind(globals())
 # from learntools.feature_engineering_new.ex2 import * # for importing all in feature engineering
-# 
 # import matplotlib.pyplot as plt # for importing matplotlib
 # import numpy as np # for importing numpy
 # import pandas as pd # for importing pandas
 # import seaborn as sns # seaborn is used to plot
 # from numpy.random import randint
+# import random
 # from matplotlib.patches import Polygon
 # from matplotlib.animation import FuncAnimation
-
+# import pickle as pkl
 # import plotly.offline as py # for importing plotly
 # import cufflinks as cf
+# import plotly.graph_objects as go
+# import plotly.express as px
+# import plotly.figure_factory as ff
+# plot maps
+import folium
+# for data cleaning
+from textblob import TextBlob
+# offline interactive plotly
+# cf.go_offline()
+# themes
+# import mplcyberpunk
+# set matplotlib formats
+%matplotlib inline
+import time
 endsnippet
 
+
+# ==========================
+# ========== machine learning ======
+# ==========================
 
 # options im-> inword
 snippet split_validation "for setting the split validation"
@@ -873,597 +1536,15 @@ output = pd.DataFrame({'Id': test_data.Id,
 output.to_csv('submission.csv', index=False)
 endsnippet
 
-
-
-# ==========================
-# ========== python ======
-# ==========================
-
-snippet list
-${1:temp} = [$2]
-endsnippet
-
-# options im-> inword
-snippet sublist "for getting a sublist (slicing)"
-# list[start:end+1:step]
-endsnippet
-
-# options im-> inword
-snippet printCommands "for pringting the commands available for a datatype or some other kind of object"
-for i in dir(${1:dataType}):
-	if i[0] != '_' and "${2:keyword}" in i:
-		print(i)
-endsnippet
-
-snippet forString
-for element in range(0, len(${1:string_name})):
-	print($1[element])
-endsnippet
-
-
-# options im-> inword
-snippet doubleFor "for getting a for iterating two different objects"
-for ob1,ob2 in zip(obar1,obarr2):
-	print(ob1,ob2)
-endsnippet
-snippet set
-${1:temp} = {$2}
-endsnippet
-# options im-> inword
-snippet sublist "getting information on sublist"
-
-endsnippet
-
-snippet tuple
-${1:temp} = ($2)
-endsnippet
-
-# options im-> inword
-snippet help "for getting help"
-help($1)
-endsnippet
-
-# options im-> inword
-snippet dir "for getting information on a var type"
-print(dir(rolls))
-# where rolls is  a numpy.ndarray
-endsnippet
-
-# options im-> inword
-snippet heap "for help on heaps"
-test = [[]] * 4
-# for pushing into a heap
-# you can use a regular array
-# hp.heappush(test[2],6)
-# hp.heappop(heap)
-endsnippet
-
-# options im-> inword
-snippet bit_masquing "for using bit masquing in python"
-# example with 3 elements
-# when you want to test 010 in the 6 position 110
-# it returns true because there is a 1 in the middle both times
-for i in range(1<<n):
-	for j in range(n):
-		if i & 1<<j:
-			print("there is a one")
-
-endsnippet
-
-# options im-> inword
-snippet bit_count "for counting the number of bits an int has"
-n = 12
-n.bit_count()
-endsnippet
-
-# options im-> inword
-snippet sort "for sorting in python"
-li = [[1,4,7],[3,6,9],[2,59,8]]
-li.sort(key=lambda x: int(x[0]))
-
-sorted(li, key = lambda x: int(x[0]))
-endsnippet
-
-snippet ins "" im
-"+str($1)+"
-endsnippet
-# ==========================
-# ========== files ======
-# ==========================
-snippet file_open
-with open('${1:file_name}') as ${2:file_var}:
-	for line in $2:
-		print(line.rstrip())
-endsnippet
-
-snippet file_write
-# from io import open
-${1:name} = open("${2:file}","w")
-$1.write(${2:string})
-$1.close()
-endsnippet
-# options im-> inword
-snippet file_append "for appending text into a file"
-# from io import open
-${1:name} = open("${2:file}","a+")
-$1.write(${2:string})
-$1.close()
-endsnippet
-
-# options im-> inword
-snippet forFolder "iteration of files over folder"
-# iterate over files in
-# that directory
-for filename in os.listdir(directory):
-	f = os.path.join(directory, filename)
-# checking if it is a file
-	if os.path.isfile(f):
-		print(f)
-endsnippet
-# options im-> inword
-snippet recurseFolder "to recurse a folder iteractively"
-def recurseFolder(path):
-	for filename in os.listdir(directory):
-		f = os.path.join(path,filename)
-	if os.path.isfile(f):
-		print(f)
-	else:
-		recurseFolder(minusOne
-endsnippet
-# options im-> inword
-snippet fmkdir "for creating a directory and it's parent directories"
-# import pathlib
-pathlib.Path(${1:abs_path}).mkdir(parents=True,exist_ok=True)
-endsnippet
-# options im-> inword
-snippet move_file "for moving a file into other location"
-# import shutil
-shutil.move(${1:path_original},${2:path_target})
-endsnippet
-# options im-> inword
-snippet copy_file "for copying a file into a new location"
-# import shutil
-shutil.copy(${1:path_original},${2:path_target})
-endsnippet
-
-# options im-> inword
-snippet relPath "create a relative path"
-
-# import pathlib
-
-
-# create the directory creating the parents
-relPath = str(pathlib.Path().absolute()) + "/"
-
-# pathlib.Path(relPath + "/holaa").mkdir(parents=True, exist_ok=True)
-
-# abrir
-ruta = relPath  +"${1:relarivePath}"
-endsnippet
-
-# ==========================
-# ========== POO ======
-# ==========================
-# options im-> inword
-snippet POOHelp "for help information on POO with python"
-# create files with a single class inside of them and import them into the main file
-# example:
-# create the class Car inside the car.py file
-# import into the main file using 
-# from car import Car
-#
-# and use it
-# car = Car()
-endsnippet
-
-# options im-> inword
-snippet inheritanceHelp "how to use inheritance in python"
-# class name(fatherName)
-# inside the __init__(self)
-# super().__init__()
-endsnippet
-
-# ==========================
-# ========== exception handling ======
-# ==========================
-# options im-> inword
-snippet try "try catch generic"
-try:
-	$1
-except Exception as e:
-	$2
-fianlly:
-	$3
-endsnippet
-# options im-> inword
-snippet raise "for raising custom exception"
-if $1:
-	raise $2("${3:text for exception}")
-endsnippet
-
-
-# ==========================
-# ========== pandas ======
-# ==========================
-# options im-> inword
-
-# options im-> inword
-snippet loc_iloc "for information on loc and iloc"
-# the iloc if for using the integer position of the dataframe
-# the loc is for using the label position on the dataframe
-endsnippet
-snippet import_pandas "for importing pandas"
-import pandas as pd
-endsnippet
-
-# options im-> inword
-snippet create_dataframe "for creating a pandas dataframe"
-# optionales
-# index=['idx1','idx2']
-pd.DataFrame({'${1:col_name}':[${2:vals,separated,by,comman}]})
-endsnippet
-
-# options im-> inword
-snippet create_series "for creating a pandas series ( list of values)"
-# optionals
-# index=['index1','index2', ... , 'index5'] -- to assigning a name to the indices
-# name = "name of series" -- for assigning a name to the whole series
-pd.Series([1, 2, 3, 4, 5])
-endsnippet
-
-# options im-> inword
-snippet read_csv "for reading a pandas csv"
-# optionals
-# set the index col manually
-# index_col=num
-dt_name = pd.read_csv("path/to/file.csv")
-
-
-# for specific encoding
-# kickstarter_2016 = pd.read_csv("../input/kickstarter-projects/ks-projects-201612.csv", encoding='Windows-1252')
-
-# for loading dates as index
-# museum_data = pd.read_csv(museum_filepath,index_col="Date",parse_dates=True)
-
-endsnippet
-# options im-> inword
-snippet csv_len "for getting the length of the csv"
-dt_name.shape
-endsnippet
-
-# options im-> inword
-snippet csv_head "for getting the top 5 elements of the csv"
-dt_name.head()
-endsnippet
-
-# options im-> inword
-snippet get_column "for getting the column of a dataframe"
-# dataframe.title
-# dataframe["title"]
-endsnippet
-
-# options im-> inword
-snippet get_val "for getting the value of the column and row"
-# dataframe["title"][num]
-endsnippet
-
-# options im-> inword
-snippet get_row "for getting the row of the pandas dataframe"
-#dataframe.iloc[index_num]
-endsnippet
-
-
-# options im-> inword
-snippet getRange_col "for getting a range in a column"
-# dataframe.loc[row_start:row_end,column]
-# you can pass a list instead to get only the needed indices
-# dataframe.loc[[1,2,3,4],[col1,col2]]
-endsnippet
-
-# options im-> inword
-snippet getRange_row "for getting a range in a row"
-# dataframe.iloc[start:end-1]
-
-# also you can do
-# museum_data.loc[first_slice_q:second_slice_q]
-# because for dates it tends to work because you use a specific index and cannot be -1
-endsnippet
-
-# options im-> inword
-snippet getRange_row_index "for getting a range of rows using the index"
-# remember that loc takes the last element of the range unlike python
-dataframe.loc[row_start:row_end,'index_name_1','index_name_2']
-# you can use a list [1,2,5] instead of a range 1:2
-endsnippet
-
-# options im-> inword
-snippet set_index "for setting the index column for the dataframe"
-dataframe.set_index("title")
-endsnippet
-
-# options im-> inword
-snippet conditional_selection "for getting a dataframe with a condition"
-dataframe.loc[dataframe.title == "Italy"]
-# optional
-# dataframe.loc[dataframe.title.isin(['Italy','France'])]
-# dataframe.loc[dataframe.title.notnull())]
-# use always parenthesis since it tends to fail
-# use & and | instead of and or
-endsnippet
-
-# options im-> inword
-snippet assignToColumn "for assigning a value to a column"
-dataframe['col_title'] = 'constant'
-dataframe['col_title'] = range(len(dataframe),0,-1)
-endsnippet
-
-# options im-> inword
-snippet columnDescription "for getting the column description"
-# for getting general information on the dataframe
-# dt_dataframe['col_name'].describe()
-# for getting the mean needed
-# dt_dataframe['col_name'].mean()
-# for getting the unique values
-# dt_dataframe['col_name'].unique()
-# for getting the times each element appears in the list
-# dt_dataframe['col_name'].value_counts()
-
-endsnippet
-
-
-# options im-> inword
-snippet mapFunction "for applying a basic function to all cells in a column"
-# column_mean = dataFrame.col_name.mean()
-# also you can put a function instead of a lambda function
-# dataFrame.col_name.map(lambda p: p - column_mean)
-
-# also you can apply a operand like
-# and it will be the same
-# dataFrame.col_name - column_mean
-
-# also < > ==  etc
-# example:
-# dataFrame.col_name + " - " + dataFrame.second_col_name
-endsnippet
-
-
-# options im-> inword
-snippet applyFunction "for applying a function to all the rows in a dataset"
-def function(row):
-	row.col_name = row.col_name - 5
-	return row
-
-dataFrame.apply(function, axis='columns')
-endsnippet
-
-
-
-
-
-# options im-> inword
-snippet group_by "for grouping a dataframe by a column name"
-reviews.groupby(['col_name','col_name2']).apply(function,axis='columns')
-
-# reset to normal index
-# reviews.reset_index()
-endsnippet
-
-# options im-> inword
-snippet sort_values "for sorting a pandas dataframe"
-countries_reviewed.sort_values(by=['country', 'len'])
-endsnippet
-
-
-# options im-> inword
-snippet multiFunction "to apply multiple funcitons to the dataframe"
-# example
-
-price_extremes = reviews.groupby('variety').price.agg([min, max])
-endsnippet
-
-
-# options im-> inword
-snippet datatype "for getting the data type of a column"
-reviews.price.dtype
-
-# for getting all columns
-reviews.dtypes
-endsnippet
-
-# options im-> inword
-snippet convertType "for converting a data type of a column pandas"
-reviews.points.astype('float64')
-endsnippet
-
-# options im-> inword
-snippet NaN "for managing Null values or Not a Number values"
-reviews[pd.isnull(reviews.country)]
-reviews[pd.notnull(reviews.country)]
-reviews.region_2.fillna("Unknown")
-
-# also for replacing the values
-reviews.taster_twitter_handle.replace("@kerinokeefe", "@kerino")
-endsnippet
-
-# options im-> inword
-snippet rename "for renaming the dataset"
-reviews.rename(columns={'points': 'score'})
-reviews.rename(index={0: 'firstEntry', 1: 'secondEntry'})
-
-reviews.rename_axis("wines", axis='rows').rename_axis("fields", axis='columns')
-
-
-endsnippet
-
-
-# options im-> inword
-snippet combineDataframe "for combining a dataframe"
-# when you have different dataframes with the same columns
-pd.concat([canadian_youtube, british_youtube])
-
-
-# combine dataframes that have an index in common
-# where MeetID is the index in common and can be different
-powerlifting_combined = powerlifting_meets.set_index("MeetID").join(powerlifting_competitors.set_index("MeetID"))
-endsnippet
-
-
-# options im-> inword
-snippet fillWithNextToItVal "for fill NaN values with the value that comes directly after it"
-sf_permits_with_na_imputed = sf_permits.fillna(method='bfill', axis=0)
-endsnippet
-
-
-# options im-> inword
-snippet scalingData "for scaling the needed data"
-## this is used to place the data in a matter of 0 - 1
-# generate 1000 data points randomly drawn from an exponential distribution
-original_data = np.random.exponential(size=1000)
-
-# mix-max scale the data between 0 and 1
-# where the columns are the list of columns to be normalized
-scaled_data = minmax_scaling(original_data, columns=[0])
-endsnippet
-
-# options im-> inword
-snippet normalizeData "for normalizing the given data for a machine learning algoritm"
-# normalize the exponential data with boxcox
-normalized_data = stats.boxcox(original_data)
-endsnippet
-
-
-# options im-> inword
-snippet parseDate "for parsing a date"
-# where pd is for pandas and landslides['date'] is the name of the column
-landslides['date_parsed'] = pd.to_datetime(landslides['date'], format="%m/%d/%y")
-endsnippet
-
-# options im-> inword
-snippet fileEncodingProblems "for finding the file encoding"
-# get the byte size of the file to predict the needed file encoding
-def getSize(fileobject):
-	fileobject.seek(0,2) # move the cursor to the end of the file
-	size = fileobject.tell()
-	return size
-
-file = open('../input/fatal-police-shootings-in-the-us/PoliceKillingsUS.csv', 'rb')
-print( getSize(file))
-
-
-# now replace with the number of bytes needed
-with open("../input/fatal-police-shootings-in-the-us/PoliceKillingsUS.csv", 'rb') as rawdata:
-	result = chardet.detect(rawdata.read(${1:number_of_bytes}))
-
-# check what the character encoding might be
-print(result)
-
-# now replace the needed file encoding
-police_killings = pd.read_csv("../input/fatal-police-shootings-in-the-us/PoliceKillingsUS.csv",encoding='Windows-1252')
-endsnippet
-
-
-# options im-> inword
-snippet encode "for encoding a string"
-# encode it to a different encoding, replacing characters that raise errors
-after = before.encode("utf-8", errors="replace")
-endsnippet
-
-
-# options im-> inword
-snippet lookAndFix "for looking and fixing the needed inconsistencies"
-# get all the unique values in the 'Country' column
-countries = professors['Country'].unique()
-
-# sort them alphabetically and then take a closer look
-countries.sort()
-countries
-
-# convert to lower case
-professors['Country'] = professors['Country'].str.lower()
-# remove trailing white spaces
-professors['Country'] = professors['Country'].str.strip()
-
-endsnippet
-
-# options im-> inword
-snippet fuuzyMatching "for searching and replacing inconsistencies "
-# get the top 10 closest matches to "south korea"
-matches = fuzzywuzzy.process.extract("south korea", countries, limit=10, scorer=fuzzywuzzy.fuzz.token_sort_ratio)
-
-# take a look at them
-matches
-###################################
-######################
-
-
-# function to replace rows in the provided column of the provided dataframe
-# that match the provided string above the provided ratio with the provided string
-def replace_matches_in_column(df, column, string_to_match, min_ratio = 47):
-# get a list of unique strings
-	strings = df[column].unique()
-
-# get the top 10 closest matches to our input string
-matches = fuzzywuzzy.process.extract(string_to_match, strings, 
-		limit=10, scorer=fuzzywuzzy.fuzz.token_sort_ratio)
-
-# only get matches with a ratio > 90
-	close_matches = [matches[0] for matches in matches if matches[1] >= min_ratio]
-
-# get the rows of all the close matches in our dataframe
-rows_with_matches = df[column].isin(close_matches)
-
-# replace all rows with close matches with the input matches 
-	df.loc[rows_with_matches, column] = string_to_match
-
-# let us know the function's done
-	print("All done!")
-
-# use the function we just wrote to replace close matches to "south korea" with "south korea"
-replace_matches_in_column(df=professors, column='Country', string_to_match="south korea")
-
-endsnippet
-
-
-# options im-> inword
-snippet linePlot "for plotting a line plot"
-# Set the width and height of the figure
-# to set the plot figure size
-plt.figure(figsize=(16,6))
-
-# Line chart showing how FIFA rankings evolved over time 
-# where data is the pandas dataframe
-# this will plot all the columns as lines
+# ================================
+# ========== graphs ==============
+# ================================
+
+snippet graphs "for importing the necessary for machine learning plotting and other things"
 sns.lineplot(data=fifa_data)
-
-
-# to add a line to the plot just use the
-# sns.lineplot(data=column)
-
-plt.plot()
-endsnippet
-
-# options im-> inword
-snippet barChart "for plotting a bar chart"
-# Set the width and height of the figure
-plt.figure(figsize=(10,6))
-
-# Add title
-plt.title("Average Arrival Delay for Spirit Airlines Flights, by Month")
-
-# Bar chart showing average arrival delay for Spirit Airlines flights by month
 sns.barplot(x=flight_data.index, y=flight_data['NK'])
-
-# Add label for vertical axis
-plt.ylabel("Arrival delay (in minutes)")
-endsnippet
-
-# options im-> inword
-snippet heatMap "for plotting a heat map"
-def correlation_heatmap(df,title = "default"):
-	_ , ax = plt.subplots(figsize =(14, 12))
-	colormap = sns.diverging_palette(220, 10, as_cmap = True)
-
-	_ = sns.heatmap(
+# must of the arguments here apply to all the graphs
+sns.heatmap(
 			df.corr(),
 			cmap = colormap,
 			square=True,
@@ -1471,88 +1552,17 @@ def correlation_heatmap(df,title = "default"):
 			ax=ax,
 			annot=True,
 			linewidths=0.1,vmax=1.0, linecolor='white',
-			annot_kws={'fontsize':12 }
-			)
-	plt.title(title, y=1.05, size=15)
-
-# simply pass a data frame to the function
-endsnippet
-
-
-
-# options im-> inword
-snippet scatterPlot "for creating a scatter plot"
-
-
-# Set the width and height of the figure
-plt.figure(figsize=(14,7))
-
-# note that the scatter plot should only be used once
-# for creating a scatter plot
+			annot_kws={'fontsize':12 },
+			col = 'value',
+			col_wrap = 3
+)
 sns.scatterplot(x=insurance_data['bmi'], y=insurance_data['charges'])
-
-# now for creating a regresion line plot
 sns.regplot(x=insurance_data['bmi'], y=insurance_data['charges'])
-
-
-
-# now for plotting multiple variables
-sns.scatterplot(x=insurance_data['bmi'], y=insurance_data['charges'], hue=insurance_data['smoker'])
-
-# sns.lmplot(x="bmi", y="charges", hue="smoker", data=insurance_data)
-
-# also a variable is the swarm plot
-sns.swarmplot(x=insurance_data['smoker'],y=insurance_data['charges'])
-
-endsnippet
-
-# options im-> inword
-snippet scatterMultipleSameTarget "for creating a multiple scatter plots with the same target"
-features = ["YearBuilt", "MoSold", "ScreenPorch"]
-# in this the y is the target and the x is the list behind
-sns.relplot(
-	x="value", y="SalePrice", col="variable", data=df.melt(id_vars="SalePrice", value_vars=features), facet_kws=dict(sharex=False),
-);
-endsnippet
-
-# options im-> inword
-snippet histogram "for creating a histogram"
-# Histograms for each species
-sns.distplot(a=iris_set_data['Petal Length (cm)'], label="Iris-setosa", kde=False)
-sns.distplot(a=iris_ver_data['Petal Length (cm)'], label="Iris-versicolor", kde=False)
 sns.distplot(a=iris_vir_data['Petal Length (cm)'], label="Iris-virginica", kde=False)
-
-# Add title
-plt.title("Histogram of Petal Lengths, by Species")
-
-# Force legend to appear
-plt.legend()
-endsnippet
-
-# options im-> inword
-snippet smoothedHistogram "for creating a smoothed histogram"
-# KDE plots for each species
-sns.kdeplot(data=iris_set_data['Petal Length (cm)'], label="Iris-setosa", shade=True)
 sns.kdeplot(data=iris_ver_data['Petal Length (cm)'], label="Iris-versicolor", shade=True)
-sns.kdeplot(data=iris_vir_data['Petal Length (cm)'], label="Iris-virginica", shade=True)
-
-# Add title
-plt.title("Distribution of Petal Lengths, by Species")
-endsnippet
-
-# options im-> inword
-snippet 2dsmoothedhistogram "for a 2d smoothed histogram"
-# 2D KDE plot
 sns.jointplot(x=iris_data['Petal Length (cm)'], y=iris_data['Sepal Width (cm)'], kind="kde")
-endsnippet
-
-# options im-> inword
-snippet setstyle "for setting the style"
 sns.set_style("dark")
-endsnippet
 
-# options im-> inword
-snippet polar_axis "for setting the polar axis in the plot"
 np.random.seed(0)
 N = 20
 theta = np.linspace(0.0, np.pi * 2 , N , endpoint = False)
@@ -1564,12 +1574,124 @@ plt.figure(dpi = 100)
 ax = plt.subplot(1,1,1, projection = 'polar')
 ax.bar(theta,radii,width = width, bottom = 0, color = colors, alpha = 0.7)
 plt.show()
+
+
+endsnippet
+
+# options im-> inword
+snippet igraphs "for plotting interactive graphs"
+# treemap and example for plotting
+fig = px.treemap(full_latest.sort_values(by = 'Confirmed', ascending = False).reset_index(drop = True),
+		path = ['Country', 'Province/State'], values = 'Confirmed', height = 700,
+		title = 'Number of Confirmed Cases',
+		color_discrete_sequence = px.colors.qualitative.Dark2)
+
+# line graph with hue as a columns
+fig = px.line(country_daywise, x = 'Date', y = 'Confirmed', color = 'Country', height = 600,
+		title='Confirmed', color_discrete_sequence = px.colors.cyclical.mygbm)
+fig.show()
+
+# choropleth map animation
+fig = px.choropleth(country_daywise, locations= 'Country', locationmode='country names', color = np.log(country_daywise['Confirmed']),
+						  hover_name = 'Country', animation_frame=country_daywise['Date'].dt.strftime('%Y-%m-%d'),
+						  title='Cases over time', color_continuous_scale=px.colors.sequential.Inferno)
+
+fig.show()
+
+endsnippet
+
+snippet pairplot "for creating a pair plot"
+
+# %%
+
+
+
+def PairGrid(data, hue = None, regplot = False):
+
+	# measure the time it takes to run the code
+	prev = time.time()
+	column_names = data.columns.to_list()
+
+	# plot the data using seaborn
+	if hue == None:
+		g = sns.PairGrid(data)
+	else:
+		g = sns.PairGrid(data, hue = hue,palette = ["blue","orange","green"])
+
+	g.map_upper(sns.scatterplot, s = 6)
+	g.map_lower(sns.kdeplot, alpha = 0.5)
+	g.map_diag(sns.histplot, kde = True, alpha = 0.5)
+
+	xlabels,ylabels = [],[]
+
+	# get the x labels
+	for ax in g.axes[-1,:]:
+		xlabel = ax.xaxis.get_label_text()
+		xlabels.append(xlabel)
+
+	# get the y labels
+	for ax in g.axes[:,0]:
+		ylabel = ax.yaxis.get_label_text()
+		ylabels.append(ylabel)
+
+	# set all the axes
+	for i in range(len(xlabels)):
+		for j in range(len(ylabels)):
+			g.axes[j,i].xaxis.set_label_text(xlabels[i], visible = True)
+			g.axes[j,i].yaxis.set_label_text(ylabels[j],visible = True)
+
+	for ax in g.axes.flat:
+		# get the ax position
+		pos = ax.get_position()
+		# check if the ax is below the main diagonal
+		# example
+		# 0 1 2
+		# 3 4 5
+		# 6 7 8
+		# if the ax is 3, 6, 7 then it is below the main diagonal
+
+
+		xlabel = ax.xaxis.get_label_text()
+		ylabel = ax.yaxis.get_label_text()
+		xindex = column_names.index(xlabel)
+		yindex = column_names.index(ylabel)
+
+		below = False
+		if xindex < yindex:
+			below = True
+
+
+		# set xlabel and y label text visible
+		ax.tick_params(labelleft = True, labelbottom = True)
+		ax.xaxis.label.set_visible(True)
+		ax.yaxis.label.set_visible(True)
+		ax.grid(True)
+
+		color_palette = ["blue","orange","green"]
+		# create a regplot for the current ax
+		if hue != None and regplot == True and below == False:
+			colors = {}
+			for i in range(len(data[hue].unique())):
+				colors[data[hue].unique()[i]] = color_palette[i%len(color_palette)]
+			if ax.get_xlabel() != ax.get_ylabel():
+				tcounter = 0
+				for cat in data[hue].unique():
+					tmp_data = data[data[hue] == cat]
+					sns.regplot(x = ax.get_xlabel(), y = ax.get_ylabel(), data = tmp_data, ax = ax, color = colors[cat], scatter = False, line_kws = {"alpha":0.5})
+					tcounter+=1
+
+	g.tight_layout()
+	# show hue legend
+	g.add_legend()
+	print( "time(s) : "  + str(time.time() - prev))
+
 endsnippet
 
 
+# ================================
+# ==  feature engineering ========
+# ================================
 
-# ==  feature engineering
-# options im-> inword
 snippet mutual_info_regression "for creating a mutual info regression"
 from sklearn.feature_selection import mutual_info_regression
 
@@ -1586,7 +1708,6 @@ mi_scores[::3]  # show a few features with their MI scores
 endsnippet
 
 
-# options im-> inword
 snippet clustering "for clustering information"
 # Create cluster feature
 kmeans = KMeans(n_clusters=6)
@@ -1601,6 +1722,10 @@ sns.relplot(
 );
 endsnippet
 
+
+# ==================================
+# == intermediate machine learning =
+# ==================================
 
 # options im-> inword
 snippet scoreModels "for scoring the models"
@@ -3211,193 +3336,6 @@ endsnippet
 
 
 
-
-# ==========================
-# ========== prevPandas ======
-# ==========================
-
-snippet plotcsv
-
-${1:nombre} = "${2:path}"
-$1_dt = pd.read_csv($1)
-
-endsnippet
-
-snippet plot2dsk
-import matplotlib.pyplot as plt
-import numpy as np
-
-# varrange - for range and step
-# varlim - for limit the min and max
-# legend - for creating the legend of the different functions
-# fill_between - to fill in between two functions
-# closestPointInLineToPoint - creates a function for a point to be the closest
-# 3din2d - to plot a 3d function into a 2d plane
-# plotPoint - to plot a simple point
-# plotFunction - to plot a simple function
-
-# main parameters
-x_lower_bound = $1
-x_upper_bound = $2
-
-y_lower_bound = $3
-y_upper_bound = $4
-
-#plot settings
-plt.grid(True)
-
-plt.xlim(x_lower_bound,x_upper_bound)
-plt.ylim(y_lower_bound,y_upper_bound)
-plt.hlines(0,x_lower_bound,x_upper_bound,color='k')
-plt.vlines(0,y_lower_bound,y_upper_bound,color='k')
-plt.xlabel('x1')
-plt.xlabel('y1')
-plt.title('Clase3Actividad4')
-plt.xlabel('${5:x_label}')
-plt.xlabel('${6:y_label}')
-plt.title('$7')
-
-endsnippet
-
-snippet varrange
-x = np.arange(${1:lower_bound},${2:upper_bound},${3:jump})
-y = np.arange($4,$5,$6)
-endsnippet
-
-
-snippet xyaxis
-plt.xlim(${1:lower_bound},${2:upper_bound})
-plt.ylim(${3:lower_bound},${4:upper_bound})
-endsnippet
-
-
-
-snippet infoj
-# %% [markdown]
-- Date: 20/October/2021 - Wednesday
-- Author: Virgilio Murillo Ochoa
-- personal github: Virgilio-AI
-- linkedin: https://www.linkedin.com/in/virgilio-murillo-ochoa-b29b59203
-- contact: virgiliomurilloochoa1@gmail.com
-- web: virgiliomurillo.com
-endsnippet
-
-
-
-
-snippet pcombinecsv
-${1:name_of_files} = glob.glob("${2:PATH/TO/FILES/file*_.csv}")
-${1}_dt = pd.concat)[pd.read_csv(f) for f in ${1} ])
-endsnippet
-
-
-
-
-
-snippet plotFunction
-${1:x_var} = np.arange(${2:left_range},${3:right_range},${4:step})
-
-plt.plot($1,${5:f(x)})
-endsnippet
-
-snippet plotPoint
-
-plt.scatter(${1:x},${2:y})
-endsnippet
-
-snippet 3din2d
-${1:x_var} = np.linspace(${2:x_lower_bound},${3:x_upper_bound},${4:step})
-${5:y_var} = np.linspace(${6:y_lower_bound},${7:y_upper_bound},${8:step})
-X_, Y_ = np.meshgrid($1, $5)
-Z_ = mainFunction(X_, Y_)
-plt.contour(X_,Y_,Z_,${9:number_of_curves})
-
-endsnippet
-
-snippet closestPointInLineToPoint
-def getClosestPointToLine(p1,p2,p3):
-	x1, y1 = p1
-	x2, y2 = p2
-	x3, y3 = p3
-	dx, dy = x2-x1, y2-y1
-	det = dx*dx + dy*dy
-	a = (dy*(y3-y1)+dx*(x3-x1))/det
-	return x1+a*dx, y1+a*dy
-endsnippet
-
-snippet 2dgrid
-plt.grid(True)
-endsnippet
-
-snippet varlim
-plt.xlim(${1:left_lim},${2:right_lim})
-plt.ylim(${3:left_lim},${4:right_lim})
-endsnippet
-
-
-snippet fill_between
-
-# here you have to identify the lower function and the bigger function
-# you can use something like below
-# botton = np.maximum(y1,0)
-
-plt.fill_between(${1:function_1},${2:function_2},${3:function_3},where=${4:x_conditions} )
-endsnippet
-
-snippet title
-plt.title('$1')
-endsnippet
-
-snippet legend
-#pass a list and respect the order of the plots
-# format (['f(x)','g(x)'])
-
-plt.legend(['${1:function_mathematical_representation}$2'])
-endsnippet
-
-
-snippet label
-plt.xlabel('${1:x_description}')
-plt.xlabel('${2:y_description}')
-endsnippet
-
-
-
-
-
-snippet sk
-
-# Date: `date +%d/%B/%Y\ -\ %A`
-# Author: Virgilio Murillo Ochoa
-# personal github: Virgilio-AI
-# linkedin: https://www.linkedin.com/in/virgilio-murillo-ochoa-b29b59203
-# contact: virgiliomurilloochoa1@gmail.com
-# web: virgiliomurillo.com
-
-from typing import *
-import heapq as hp
-from collections import deque
-from collections import defaultdict
-import sys
-
-# dic = defaultdict(int)
-# set = set() # .remove(val),.add(val)
-# dic = {} # .remove(id),dic[key] = val
-# arr = []
-
-
-# def input(f=open(".`!p snip.rv = snip.basename`_In1.txt")): return f.readline().rstrip() # uncomment for debugging
-
-
-def main():
-	$1
-
-
-if __name__ == '__main__':
-	main()
-
-endsnippet
-
 # options im-> inword
 snippet sk_tree_lc "for leetcode trees"
 
@@ -3472,7 +3410,7 @@ snippet info
 # Author: Virgilio Murillo Ochoa
 # personal github: Virgilio-AI
 # linkedin: https://www.linkedin.com/in/virgilio-murillo-ochoa-b29b59203
-# contact: virgiliomurilloochoa1@gmail.com
+# contact: data_scientist@virgiliomurillo.com
 # web: virgiliomurillo.com
 endsnippet
 
