@@ -1,24 +1,5 @@
-" creando un comentario de prueba
 
 
-
-
-" =================================
-" ========== coc autocommands
-" =================================
-" Highlight the symbol and its references when holding the cursor.
-
-
-
-
-" =================================
-" ========== save folding 
-" =================================
-augroup remember_folds
-  autocmd!
-  autocmd BufWinLeave * mkview
-  autocmd BufWinEnter * silent! loadview
-augroup END
 " =================================
 " ========== Latex 
 " =================================
@@ -42,10 +23,11 @@ augroup END
 " =================================
 
 
-augroup saveChanges
-	autocmd!
-	exec 'autocmd BufWritePre ' . g:CONFIG_PATH . '/* :so $MYVIMRC'
-augroup END
+" current bug on this one
+" augroup saveChanges
+" 	autocmd!
+" 	exec 'autocmd BufWritePre ' . g:CONFIG_PATH . '/* :so $MYVIMRC'
+" augroup END
 
 augroup changeModifiable
 	autocmd!
@@ -54,6 +36,8 @@ augroup END
 " =================================
 " ========== dwm 
 " =================================
+
+
 
 
 augroup install_dwm
@@ -84,18 +68,9 @@ augroup END
 
 
 " =================================
-" ========== One Vim Plug Startup 
-" =================================
-" autocmd VimEnter *
-"   \  if !empty(filter(copy(g:plugs), '!isdirectory(v:val.dir)'))
-"   \|   PlugInstall |
-"   \| endif
-" =================================
 " ========== For competitive programing 
 " =================================
 " Highlight the symbol and its references when holding the cursor.
-
-
 
 augroup onEnterc
 	autocmd!
@@ -124,13 +99,6 @@ autocmd VimEnter *
   \|   PlugInstall --sync | q
   \| endif
 augroup end
-" =================================
-" ========== jupyter notebooks autocommands 
-" =================================
-" augroup jupyterNotebooks
-" 	autocmd!
-" 	autocmd TextChanged,InsertLeave * :w
-" augroup end
 
 " =================================
 " ========== configurations for firenvim 
@@ -174,9 +142,11 @@ augroup END
 " =================================
 " ========== c avr 
 " =================================
-
 augroup avr_autocommands
 	autocmd!
 	autocmd BufEnter *.avr.c silent! call FormatCAvrEnter()
 	autocmd BufWinLeave *.avr.c silent! call FormatCAvrExit()
 augroup END
+
+
+
