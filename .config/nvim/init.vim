@@ -1,9 +1,5 @@
 
 
-
-
-
-
 function! TerminalSettings()
 	setlocal nonumber
 	setlocal norelativenumber
@@ -11,7 +7,6 @@ function! TerminalSettings()
 	setlocal noruler
 	setlocal laststatus=0
 endfunction
-
 
 function! TerminalClose()
 	setlocal showmode
@@ -34,13 +29,12 @@ augroup END
 augroup closeTerminal
 	autocmd!
 	autocmd TermLeave * call TerminalClose()
-	"autocmd TermClose * call TerminalCLose()
-
-	"autocmd BufEnter * call TerminalClose()
 augroup END
 
   "mage} ================================= ========== Main Variables 
 " " =================================
+
+
 
 let g:CONFIG_PATH = '~/.config/nvim'
 let g:USER = "rockhight"
@@ -66,6 +60,7 @@ augroup end
 " for copy paste
 
 let g:mdip_imgdir='img_' . expand("%:t:r")
+
 " !!!!!=================================
 " !!!!!========== Source files 
 " !!!!!=================================
@@ -145,12 +140,14 @@ let g:Hexokinase_highlighters = ['backgroundfull']
 " =================================
 " ========== Set variables 
 " =================================
-"
-"
+
+
+
+
 
 " for colors
 set showtabline=2
-set foldmethod=indent
+set foldmethod=marker
 set foldnestmax=1
 set wildmenu
 set wildmode=longest,list,full
