@@ -1,8 +1,41 @@
-" Fecha: 10/October/2021 - Sunday
-" Autor: Virgilio Murillo Ochoa
 " personal github: Virgilio-AI
 " linkedin: https://www.linkedin.com/in/virgilio-murillo-ochoa-b29b59203
 " contact: virgiliomurilloochoa1@gmail.com
+
+
+" firenvim configurations
+
+
+function! OnUIEnter(event) abort
+	if 'Firenvim' ==# get(get(nvim_get_chan_info(a:event.chan), 'client', {}), 'name', '')
+
+	let g:firenvim_config = { 
+				\ 'globalSettings': {
+				\ 'alt': 'all',
+				\  },
+				\ 'localSettings': {
+				\ '.*': {
+				\ 'cmdline': 'neovim',
+				\ 'content': 'text',
+				\ 'priority': 0,
+				\ 'selector': 'textarea',
+				\ 'takeover': 'always',
+				\ },
+				\ }
+				\ }
+
+	let fc = g:firenvim_config['localSettings']
+	let fc['.*'] = { 'selector': 'textarea' }
+	nnoremap z :w<CR>
+	nnoremap <C-z> :w<CR>
+
+	endif
+endfunction
+
+
+
+autocmd UIEnter * call OnUIEnter(deepcopy(v:event))
+
 
 
 
@@ -267,7 +300,7 @@ nmap ga <Plug>(EasyAlign)
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
+      \ CheckBackspace() ? "\<C-h>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
