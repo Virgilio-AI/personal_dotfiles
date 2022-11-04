@@ -92,11 +92,6 @@ Plug 'Virgilio-AI/skeleton_neovim'
 " for github copilot
 Plug 'github/copilot.vim'
 
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 call plug#end()
-
-
-
-
-
-
 
