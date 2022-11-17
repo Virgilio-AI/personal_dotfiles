@@ -258,6 +258,7 @@ endsnippet
 # ==========================
 
 snippet sk
+
 #!/usr/bin/zsh
 ###############################
 # Author: Virgilio Murillo Ochoa
@@ -275,27 +276,16 @@ WARNING=""
 VERBOSE=0
 
 
-
-# NOTE: This requires GNU getopt.  On Mac OS X and FreeBSD, you have to install this
-# separately; see below.
-TEMP=$(getopt -o $shortOptions: --long $longOptions \
-	-n 'javawrap' -- "$@")
-
-	if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
-
-# Note the quotes around '$TEMP': they are essential!
-eval set -- "$TEMP"
-
 # edit this
 while [[ $# -gt 0 ]]; do
-	case $1 in
+	case \$1 in
 		-w|--warnig)
-			WARNING="$2"
+			WARNING="\$2"
 			shift
 			shift
 			;;
 		-p|--path)
-			PATH="$2"
+			PATH="\$2"
 			shift
 			shift
 			;;
@@ -304,7 +294,7 @@ while [[ $# -gt 0 ]]; do
 			shift
 			;;
 		*)
-			echo "Invalid argument $1"
+			echo "Invalid argument "
 			exit 1
 			;;
 	esac
@@ -316,19 +306,23 @@ done
 #  SCRIPT LOGIC GOES HERE
 
 $1
+
 # -----------------------------------------------------------------
+
 
 endsnippet
 
 snippet info
-# #############################
-# Date: `date +%d/%B/%Y\ -\ %A`
+
+###############################
 # Author: Virgilio Murillo Ochoa
+# Date: `date +%d/%B/%Y\ -\ %A`
 # personal github: Virgilio-AI
 # linkedin: https://www.linkedin.com/in/virgilio-murillo-ochoa-b29b59203
 # contact: virgiliomurilloochoa1@gmail.com
 # web: virgiliomurillo.com
-# ############################
+# #########################################
+
 endsnippet
 
 
