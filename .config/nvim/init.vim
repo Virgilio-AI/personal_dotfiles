@@ -31,8 +31,8 @@ augroup closeTerminal
 	autocmd TermLeave * call TerminalClose()
 augroup END
 
-  "mage} ================================= ========== Main Variables 
-" " =================================
+" age} ================================= ========== Main Variables 
+" =================================
 
 
 
@@ -49,6 +49,7 @@ let &undodir = expand(   g:CONFIG_PATH . '/.vimdata/undo//')
 " =================================
 " ========== buffer variables 
 " =================================
+
 augroup BufferVariables
 au BufEnter * let b:FilePathNoExtension = expand("%:r") " path/main
 au BufEnter * let b:Extension = expand("%:e") " tex
@@ -57,9 +58,10 @@ au BufEnter * let b:FilePath = expand("%") " path/main.tex
 au BufEnter * let b:FileNameNoExtension = expand("%:t:r") " main
 au BufEnter * let b:CurrentFolder = expand("%:p:h") "pathFolder/folder
 augroup end
+
 " for copy paste
 
-let g:mdip_imgdir='img_' . expand("%:t:r")
+"let g:mdip_imgdir='img_' . expand("%:t:r")
 
 " !!!!!=================================
 " !!!!!========== Source files 
@@ -142,6 +144,7 @@ let g:Hexokinase_highlighters = ['backgroundfull']
 " =================================
 
 
+" create an autocommand for .snippets files
 
 
 
@@ -177,6 +180,7 @@ set cmdheight=2
 set updatetime=500
 set shortmess+=c
 set scrolloff=10 " keep the mouse centerd
+set wrap
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.

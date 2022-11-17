@@ -1,4 +1,8 @@
-
+" snippets
+augroup snippets
+	autocmd!
+	autocmd BufEnter *.snippets set foldmethod=marker
+ augroup END
 
 " =================================
 " ========== Latex 
@@ -7,7 +11,7 @@
 augroup onEnter
 	autocmd!
 	au FileType python,tex,c,cpp,c++ :RainbowToggle
-"	au BufEnter * :HexokinaseTurnOn
+	"	au BufEnter * :HexokinaseTurnOn
 
 
 	" Close the tab if NERDTree is the only window remaining in it.
@@ -15,19 +19,63 @@ augroup onEnter
 
 	" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
 	autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+				\ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 augroup END
 
 " =================================
 " ========== vimrc
 " =================================
 
+" c style conditionals == != && || 
 
-" current bug on this one
-" augroup saveChanges
-" 	autocmd!
-" 	exec 'autocmd BufWritePre ' . g:CONFIG_PATH . '/* :so $MYVIMRC'
-" augroup END
+function SetFirenvimSql()
+
+	" check if the seconf line is equal to a string
+
+	let l:string = '-- Author: Virgilio Murillo Ochoa'
+	let l:line = getline(2)
+
+
+	if l:line != l:string
+		normal ggO
+		let l:sni = 'info'
+		:execute "normal! i" . l:sni ."\<C-r>=UltiSnips#ExpandSnippet()\<CR>"
+	endif
+
+
+
+	normal ggVG=
+endfunction
+
+
+function SetFirenvimPython()
+
+
+
+
+
+	let l:string = '-- Author: Virgilio Murillo Ochoa'
+	let l:line = getline(2)
+
+
+	if l:line != l:string
+		normal ggO
+		let l:sni = 'info'
+		:execute "normal! i" . l:sni ."\<C-r>=UltiSnips#ExpandSnippet()\<CR>"
+	endif
+
+
+
+
+	normal ggVG=
+endfunction
+
+augroup Firenvim
+	autocmd!
+	au BufEnter leetcode.com_*.py :call SetFirenvimPython()
+	au BufEnter leetcode.com_*.sql :call SetFirenvimSql()
+augroup END
+
 
 augroup changeModifiable
 	autocmd!
@@ -94,18 +142,18 @@ augroup end
 " =================================
 augroup ViEnter
 	autocmd!
-autocmd VimEnter *
-  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \|   PlugInstall --sync | q
-  \| endif
+	autocmd VimEnter *
+				\  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+				\|   PlugInstall --sync | q
+				\| endif
 augroup end
 
 " =================================
 " ========== configurations for firenvim 
 " =================================
-augroup frenvim
-au BufEnter github.com_*.txt set filetype=markdown
-au BufEnter txti.es_*.txt et filetype=typescript
+augroup firenvim
+	au BufEnter github.com_*.txt set filetype=markdown
+	au BufEnter txti.es_*.txt et filetype=typescript
 augroup end
 
 " shortcuts for hacker rank
@@ -113,14 +161,14 @@ augroup end
 " ========== Mark Down 
 " =================================
 augroup markdown_autocmd
-autocmd FileType markdown let g:PasteImageFunction = 'g:MarkdownPasteImage'
+	autocmd FileType markdown let g:PasteImageFunction = 'g:MarkdownPasteImage'
 augroup END
 
 " =================================
 " ========== latex 
 " =======================
 augroup tex_autocmds
-autocmd FileType tex let g:PasteImageFunction = 'g:LatexPasteImage'
+	autocmd FileType tex let g:PasteImageFunction = 'g:LatexPasteImage'
 augroup END
 
 " =================================
@@ -135,7 +183,7 @@ augroup END
 " =================================
 augroup csharpAutoCommands
 	autocmd!
-  autocmd BufWinEnter *.cs silent! call FormatTheFile()
+	autocmd BufWinEnter *.cs silent! call FormatTheFile()
 augroup END
 
 

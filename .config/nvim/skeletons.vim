@@ -102,16 +102,6 @@ augroup END
 
 
 " =================================
-" ========== for databases 
-" =================================
-augroup mariadb_skeleton
-	autocmd!
-	autocmd BufEnter *.sql :ExpandSkeleton info
-augroup END
-
-
-
-" =================================
 " ========== for json files 
 " =================================
 augroup json_skeleton
@@ -130,7 +120,8 @@ augroup END
 
 augroup sql_squeletons
 	autocmd!
-	autocmd! BufEnter *.sql :ExpandSkeleton sk
+	autocmd! BufEnter *.sql :ExpandSkeleton info
+" 	autocmd! BufEnter *-query-* :ExpandSkeleton info
 augroup END
 
 " =================================
