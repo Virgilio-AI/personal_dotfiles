@@ -1,3 +1,4 @@
+# for pandas dataframe
 # {{{1
 # encode -- for encoding a string
 # lookAndFix -- for looking and fixing the needed inconsistencies
@@ -41,6 +42,7 @@
 # == graphs
 # {{{1
 # graphs -- simple graphs
+# graphsSubplots -- for subplots
 # igraphs -- for interactive graphs
 # pairplot -- for creating a pairplot
 # matplotlib -- for help on matplotlib plt
@@ -592,9 +594,9 @@ from collections import defaultdict
 import sys
 
 # dic = defaultdict(int)
-# set = set() # .remove(val),.add(val)
-# dic = {} # .remove(id),dic[key] = val
-# arr = []
+# set = set() # .remove(val),.add(val),.discard(val),.pop(),.clear()
+# dic = {} # .remove(id),dic[key] = val, dic.get(key,0)
+# arr = [] # .append(val),.pop(),.remove(val),.sort(),.reverse(),.insert(pos,val),.clear()
 
 
 # def input(f=open(".`!p snip.rv = snip.basename`_In1.txt")): return f.readline().rstrip() # uncomment for debugging
@@ -1345,7 +1347,7 @@ snippet folium "for folium information"
 m = folium.Map(location=[0,0], tiles = 'cartodbpositron',min_zoom = 1, max_zoom = 4, zoom_start=1)
 
 for i in range(0,len(data)):
-   tooltip = '<li><bold> Country:' + str(data.iloc[i]['Country']) +
+	tooltip = '<li><bold> Country:' + str(data.iloc[i]['Country']) +
 	'<li><bold> Year:' + str(data.iloc[i]['Year'])
 	folium.Circle(
 			location=[data.iloc[i]['lat'], data.iloc[i]['lon']],
@@ -1563,6 +1565,7 @@ sns.distplot(a=iris_vir_data['Petal Length (cm)'], label="Iris-virginica", kde=F
 sns.kdeplot(data=iris_ver_data['Petal Length (cm)'], label="Iris-versicolor", shade=True)
 sns.jointplot(x=iris_data['Petal Length (cm)'], y=iris_data['Sepal Width (cm)'], kind="kde")
 sns.set_style("dark")
+sns.countplot(x = 'pclass', data = titanic, hue = 'survived')
 
 np.random.seed(0)
 N = 20
@@ -1575,29 +1578,125 @@ plt.figure(dpi = 100)
 ax = plt.subplot(1,1,1, projection = 'polar')
 ax.bar(theta,radii,width = width, bottom = 0, color = colors, alpha = 0.7)
 plt.show()
+endsnippet
+
+# options im-> inword
+snippet graphsSubplots "for plotting subplots"
+rows = 4
+cols = 4
+
+fig, ax = plt.subplots(rows, cols, figsize = (20,20))
+
+	col = data.columns
+	index = 0
+	limit = 14
+
+	for i in range(rows):
+		for j in range(cols):
+
+			if index >= limit:
+			continue
+			sns.scatterplot(x = 'Price', y = col[index], data = data, ax = ax[i][j])
+			ax[i][j].tick_params('x', labelrotation=45)
+# change font size of y axis label
+ax[i][j].yaxis.label.set_size(20)
+# change font size of x axis label
+ax[i][j].xaxis.label.set_size(20)
+	index = index + 1
+
+
+	plt.tight_layout()
+plt.show()
+
+# =========================
+# ====== graphs over graphs ===========
+# =========================
+
+
+# %%
+# create a subplot with a small subplot inside it
+fig, ax = plt.subplots(1,1,figsize = (10,10))
+sns.lineplot( y = 'arr1', x = df.index, data = df, ax = ax)
+ax2 = fig.add_axes([0.8,0.8,0.2,0.2])
+sns.scatterplot(x = 'arr2', y = 'arr3', data = df, ax = ax2)
+plt.show()
+
+# ==== overlap joinplot
+g = sns.jointplot(x = data['RM'], y = data['Price'], kind = 'kde', color = 'm')
+g.plot_joint(plt.scatter, c = 'r', s = 40, linewidth = 1, marker = '+')
+g.ax_joint.collections[0].set_alpha(0.3)
 
 
 endsnippet
 
 # options im-> inword
 snippet igraphs "for plotting interactive graphs"
-# treemap and example for plotting
+# ============================ treemap and example for plotting
 fig = px.treemap(full_latest.sort_values(by = 'Confirmed', ascending = False).reset_index(drop = True),
 		path = ['Country', 'Province/State'], values = 'Confirmed', height = 700,
 		title = 'Number of Confirmed Cases',
 		color_discrete_sequence = px.colors.qualitative.Dark2)
 
-# line graph with hue as a columns
+#  ===================== line graph with hue as a columns
 fig = px.line(country_daywise, x = 'Date', y = 'Confirmed', color = 'Country', height = 600,
 		title='Confirmed', color_discrete_sequence = px.colors.cyclical.mygbm)
 fig.show()
 
-# choropleth map animation
-fig = px.choropleth(country_daywise, locations= 'Country', locationmode='country names', color = np.log(country_daywise['Confirmed']),
-						  hover_name = 'Country', animation_frame=country_daywise['Date'].dt.strftime('%Y-%m-%d'),
-						  title='Cases over time', color_continuous_scale=px.colors.sequential.Inferno)
+#  ======================= choropleth map animation
+	fig = px.choropleth(country_daywise, locations= 'Country', locationmode='country names', color = np.log(country_daywise['Confirmed']),
+			hover_name = 'Country', animation_frame=country_daywise['Date'].dt.strftime('%Y-%m-%d'),
+			title='Cases over time', color_continuous_scale=px.colors.sequential.Inferno)
 
 fig.show()
+
+
+# ======================== heatmap
+	fig = px.density_mapbox(df, lat = 'Lat', lon = 'Long', hover_name = 'Country', hover_data = ['Confirmed', 'Recovered', 'Deaths'], animation_frame='Date', color_continuous_scale='Portland', radius = 7, zoom = 0, height= 700)
+	fig.update_layout(title = 'Worldwide Covid-19 Cases with Time Laps')
+	fig.update_layout(mapbox_style = 'open-street-map', mapbox_center_lon = 0)
+fig.show()
+
+
+
+
+	top = 15
+	fig = px.scatter(countywise.sort_values('Deaths', ascending = False).head(top),
+			x = 'Confirmed', y = 'Deaths', color = 'Country', size = 'Confirmed', height = 600,
+			text = 'Country', log_x = True, log_y = True, title='Deaths vs Confirmed Cases (Cases are on log10 scale)')
+
+	fig.update_traces(textposition = 'top center')
+fig.update_layout(showlegend = False)
+fig.update_layout(xaxis_rangeslider_visible = True)
+fig.show()
+
+# =================== timeline
+
+first_date = df[df['Confirmed'] > 0 ]
+first_date = first_date.groupby('Country')['Date'].agg(['min']).reset_index()
+last_date = df.groupby('Country')['Date'].agg(['max']).reset_index()
+last_date = last_date.drop(columns = ['Country'],axis = 1)
+first_last = pd.concat([first_date,last_date],axis = 1)
+first_last = first_last.rename(columns = {"max":"Finish","min":"Start","Country":"Task"})
+fig = ff.create_gantt(first_last,height = 3000)
+fig.show()
+
+
+
+# =========================== folium
+
+m = folium.Map(location=[0,0], tiles = 'cartodbpositron',min_zoom = 1, max_zoom = 4, zoom_start=1)
+
+for i in range(0,len(data)):
+	tooltip = '<li><bold> Country:' + str(data.iloc[i]['Country']) +
+	'<li><bold> Year:' + str(data.iloc[i]['Year'])
+	folium.Circle(
+			location=[data.iloc[i]['lat'], data.iloc[i]['lon']],
+			popup=data.iloc[i]['name'],
+			radius=100000,
+			color='crimson',
+			fill=True,
+			fill_color='crimson'
+			).add_to(m)
 
 endsnippet
 
@@ -3404,6 +3503,26 @@ def main():
 
 if __name__ == '__main__':
 	main()
+endsnippet
+
+snippet info_firenvim
+
+
+
+# Date: `date +%d/%B/%Y\ -\ %A`
+# Author: Virgilio Murillo Ochoa
+# personal github: Virgilio-AI
+# linkedin: https://www.linkedin.com/in/virgilio-murillo-ochoa-b29b59203
+# contact: data_scientist@virgiliomurillo.com
+# web: virgiliomurillo.com
+
+
+# dic = defaultdict(int)
+# set = set() # .remove(val),.add(val),.discard(val),.pop(),.clear()
+# dic = {} # .remove(id),dic[key] = val, dic.get(key,0)
+# arr = [] # .append(val),.pop(),.remove(val),.sort(),.reverse(),.insert(pos,val),.clear()
+
+
 endsnippet
 
 snippet info

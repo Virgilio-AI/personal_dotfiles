@@ -178,18 +178,35 @@ endsnippet
 # ========== loops ======
 # ==========================
 snippet recurseFolder
+
 recurseFolder(){
 	# :h for name only
 	# :t for name with extension
-	for file in \$1/* ; do
+	
+	local deep=$2
+	# create a local variable
+	for file in $1/* ; do
 		if [[ -d $file ]]
 		then
-			recurseFolder $file
+			recurseFolder $file $((deep+1))
 		else
-			${1:echo " file $file"}
+			# use () instead of [[]] for some examples
+			if [[ $DRY_RUN == 1 ]]
+			then
+				prt=""
+				# add '-' for each level of deep
+				for (( i=0;i<$deep;i++ )); do
+					prt="$prt=="
+				done
+				file="${file:t}"
+				echo "$prt $file"
+			else
+				echo "To Implement"
+			fi
 		fi
 	done
 }
+
 endsnippet
 
 snippet cfor
