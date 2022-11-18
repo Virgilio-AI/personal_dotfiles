@@ -288,7 +288,7 @@ snippet sk
 
 
 # edit this
-PATH=""
+FILE_PATH=""
 WARNING=""
 VERBOSE=0
 
@@ -302,7 +302,7 @@ while [[ $# -gt 0 ]]; do
 			shift
 			;;
 		-p|--path)
-			PATH="\$2"
+			FILE_PATH="\$2"
 			shift
 			shift
 			;;
