@@ -22,6 +22,10 @@
 
 !/.config/qutebrowser
 /.config/qutebrowser/*
+
+!/.config/zsh
+!/.config/zsh/*
+
 !/.config/qutebrowser/autoconfig.yml
 
 !/.config/lazygit
@@ -40,6 +44,8 @@
 
 !/.config/mpd
 !/.config/mpd/*
+!/.config/mpd/playlist
+!/.config/mpd/playlist/*
  
 !/.config/neofetch
 !/.config/neofetch/*
@@ -81,17 +87,13 @@
 !/.config/vlc/*
 
 
-!/.config/xmodmap
-!/.config/xmodmap/*
 
-!/.config/xmodmap/configurations
-!/.config/xmodmap/configurations/*
-
-
-
-
+ 
 !/.config/mimeapps.list
 !/.config/pavucontrol.ini
+
+!/.config/xmodmap
+!/.config/xmodmap/*
 
 
  
@@ -127,9 +129,6 @@
 !/images/rightbg
 !/images/rightbg/*
 
-.config/mpd/log
-.config/mpd/database
-.config/mpd/pid
 
 .config/pavucontrol.ini
 
@@ -194,16 +193,10 @@
 .config/zsh/.zdirs
 
 
-# include .leetcode 
-!.leetcode
-!.leetcode/*
-
 
 
 !version.txt
 
-.leetcode/Problems
-
-!.config/zsh
-!.config/zsh/*
+!.leetcode
+!.leetcode/*
 

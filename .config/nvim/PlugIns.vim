@@ -2,13 +2,10 @@
 call plug#begin('~/.config/nvim/PlugIns/')
 
 " for color and personalization
-" Plug 'rafi/awesome-vim-colorschemes' "ide
-" Plug 'vim-airline/vim-airline' "personalization for vim
+
 Plug 'luochen1990/rainbow' " for colors in brackets and operators
 Plug 'itchyny/lightline.vim'
-" Plug 'pacha/vem-tabline' " for the tabline
 "
-" Plug 'vim-airline/vim-airline-themes' "temas
 Plug 'ryanoasis/vim-devicons' "vim icons for windows 10
 Plug 'junegunn/vim-easy-align' " for easy alignment
 " =================================
@@ -21,8 +18,6 @@ Plug 'easymotion/vim-easymotion'  " jump into words using a mapped array of posi
 " =================================
 " ========== for debbuging 
 " =================================
-
-Plug 'puremourning/vimspector' "debugging
 
 " functionalities
 Plug 'skywind3000/asyncrun.vim' "for Asyncrinous features
@@ -53,7 +48,6 @@ Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } } " for nvim in 
 
 " plugisn for c# and unity
 Plug 'OmniSharp/omnisharp-vim'
-" Plug 'dense-analysis/ale',{'for':['csharp','python'] } " for errors
 
 " plugin for file exploring
 Plug 'preservim/nerdtree'
@@ -61,11 +55,6 @@ Plug 'wesQ3/vim-windowswap'
 
 " for colors in vim
 Plug 'KabbAmine/vCoolor.vim'
-
-" Plug 'RRethy/vim-hexokinase',{ 'do': 'make hexokinase' }
-
-" now a plugin for live editing html css and bootstrap
-" Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
 
 
 " water Linux plugins
@@ -93,5 +82,16 @@ Plug 'Virgilio-AI/skeleton_neovim'
 Plug 'github/copilot.vim'
 
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+
+
+" for the sql
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
+Plug 'kristijanhusak/vim-dadbod-completion'
+
+
+" xonsh python
+Plug 'linkinpark342/xonsh-vim'
+
 call plug#end()
 

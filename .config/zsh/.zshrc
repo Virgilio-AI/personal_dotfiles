@@ -147,3 +147,4 @@ prompt mytheme
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+xonsh

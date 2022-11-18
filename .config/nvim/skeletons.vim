@@ -99,6 +99,14 @@ augroup pythonSkeleton
 	autocmd BufEnter *.py :ExpandSkeleton sk
 augroup END
 
+" =================================
+" ========== xonsh 
+" =================================
+augrou xonshSkeleton
+	autocmd!
+	autocmd BufEnter *.xsh :ExpandSkeleton sk
+augroup END
+
 
 
 " =================================
