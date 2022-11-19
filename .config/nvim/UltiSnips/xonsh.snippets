@@ -1,3 +1,31 @@
+# General
+# {{{1
+# infoj -- for head in jupyter notebooks
+# sec -- for a section commented
+# subsec -- for a subsection commented
+# }}}
+# Python
+# {{{1
+# basic_sh_usage -- for basic shell usage
+# forString -- for loop over a string
+# doubleFor -- for loop using zip
+# dir -- for listing the loop
+# heap -- for heap
+# bit_masquing -- for bit masquing
+# sort -- for sorting
+# bit_count -- for counting bits
+# sublists -- for a sublist
+# file_open -- for opening a file
+# file_write -- for writing a file
+# file_append -- for appending to a file
+# forFolder -- for a for loop in a folder
+# recurseFolder -- for a recursive for loop in a folder
+# relPath -- for a relative path
+# ====== POOHelp ======
+# POOHelp -- for help on POO
+# inheritance -- for inheritance
+# raise -- for raising an exception
+# }}}
 # for pandas dataframe
 # {{{1
 # encode -- for encoding a string
@@ -665,14 +693,30 @@ def main(sdic):
 
 
 
-
+# The arguments
+# {{{1
 
 arguments = {
-	'path':{
-		'short':'-p',
-		'long':'--path',
+	'search_text':{
+		'short':'-s',
+		'long':'--search-text',
 		'completer':'path',
-		'help':'Path to the file',
+		'help':'The file containing the text to search',
+		'required':True,
+		'type':str,
+		},
+	'replace_text':{
+		'short':'-r',
+		'long':'--replace-text',
+		'completer':'path',
+		'help':'the file containing the text to be replaced',
+		'required':True,
+		'type':str,
+		},
+	'target_file':{
+		'short':'-t',
+		'long':'--target-file',
+		'help':'the target file to search and replace',
 		'required':True,
 		'type':str,
 		},
@@ -682,28 +726,28 @@ arguments = {
 		'help':'Dry run',
 		'required':False,
 		'type':bool,
-		'default':False,
 		},
-	'number':{
-		'short':'-n',
-		'long':'--number',
-		'help':'Basic Number',
+	"verbose":{
+		'short':'-v',
+		'long':'--verbose',
+		'help':'for verbose output',
 		'required':False,
-		'type':int,
-		'default':10,
+		'type':bool,
 		},
-	"Name":{
-		'short':'-N',
-		'long':'--Name',
-		'help':'Name',
+	"silent":{
+		'long':'--silent',
+		'help':'for no output',
 		'required':False,
-		'type':str,
-		'default':'defname',
+		'type':bool,
+		},
+	"no_confirm":{
+		'long':'--no-confirm',
+		'help':'for confirmation of changes',
+		'required':False,
+		'type':bool,
 		},
 	}
 
-for arg in arguments:
-	print(arg)
 if __name__ == '__main__':
 	# list arguments
 
@@ -713,10 +757,25 @@ if __name__ == '__main__':
 		arg = arguments[arg]
 		required = arg['required']
 		type = arg['type']
+		if type == bool:
+			if 'short' in arg:
+				parser.add_argument(arg['short'],arg['long'],help=arg['help'],required=required,action="store_true")
+			else:
+				parser.add_argument(arg['long'],help=arg['help'],required=required,action="store_true")
+			continue
+
+
+
 		if 'short' in arg:
-			parser.add_argument(arg['short'],arg['long'],help=arg['help'],required=required,type=type)
+			if	'default' in arg:
+				parser.add_argument(arg['short'],arg['long'],help=arg['help'],required=required,type=type,default=arg['default'])
+			else:
+				parser.add_argument(arg['short'],arg['long'],help=arg['help'],required=required,type=type)
 		else:
-			parser.add_argument(arg['long'],help=arg['help'],required=required,type=type)
+			if 'default' in arg:
+				parser.add_argument(arg['long'],help=arg['help'],required=required,type=type,default=arg['default'])
+			else:
+				parser.add_argument(arg['long'],help=arg['help'],required=required,type=type)
 		# add completer
 
 	argcomplete.autocomplete(parser)
@@ -726,7 +785,11 @@ if __name__ == '__main__':
 
 	#sdic['path']
 	#sdic['Name']
+	# add parameters that require no input
+
 	main(sdic)
+
+# }}}
 
 endsnippet
 
@@ -754,9 +817,47 @@ snippet subsec
 endsnippet
 
 
+
+# ==========================
+# ========== Python ======
+# ==========================
+
+# options im-> inword
+snippet basic_sh_usage "for a basic sh usage"
+1 + 1
+
+d = {'xonsh': True}
+d.get('bash', False)
+
+
+$HOME
+'/home/snail'
+
+$GOAL = 'Become the Lord of the Files'
+print($GOAL)
+Become the Lord of the Files
+del $GOAL
+
+${'HO' + 'ME'}
+'/home/snail'
+
+$(ls -l)
+
+x = 'xonsh'
+y = 'party'
+echo @(x + ' ' + y)
+
+out = $(echo @(x + ' ' + y))
+out
+'xonsh party\n'
+@("ech" + "o") "hey"
+hey
+endsnippet
 # ==========================
 # ========== system interaction ======
 # ==========================
+
+
 
 snippet shOutput
 ${1:strinName}=str(subprocess.check_output([${2:list_commands}]).decode('utf-8'))
