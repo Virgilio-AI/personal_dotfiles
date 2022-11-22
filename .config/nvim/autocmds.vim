@@ -1,8 +1,22 @@
+function SetXonsh()
+	if getline(1) =~'#!/usr/bin/xonsh'
+		set filetype=xonsh
+	endif
+endfunction
+
+
+
+augroup xonsh
+	autocmd!
+	autocmd BufNewFile,BufRead * call SetXonsh()
+augroup END
+
 " snippets
+"
 augroup snippets
 	autocmd!
 	autocmd BufEnter *.snippets set foldmethod=marker
- augroup END
+augroup END
 
 " =================================
 " ========== Latex 

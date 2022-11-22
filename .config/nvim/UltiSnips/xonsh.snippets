@@ -625,6 +625,10 @@ import argcomplete  # Tab completion support with xontrib-argcomplete
 from argcomplete.completers import ChoicesCompleter
 import os
 
+
+# import colored for terminal color
+from termcolor import colored
+
 # dic = defaultdict(int)
 # set = set() # .remove(val),.add(val),.discard(val),.pop(),.clear()
 # dic = {} # .remove(id),dic[key] = val, dic.get(key,0)
@@ -994,12 +998,12 @@ endsnippet
 # options im-> inword
 snippet recurseFolder "to recurse a folder iteractively"
 def recurseFolder(path):
-	for filename in os.listdir(directory):
+	for filename in os.listdir(path):
 		f = os.path.join(path,filename)
-	if os.path.isfile(f):
-		print(f)
-	else:
-		recurseFolder(minusOne
+		if os.path.isfile(f):
+			print(f)
+		else:
+			recurseFolder(f)
 endsnippet
 # options im-> inword
 snippet fmkdir "for creating a directory and it's parent directories"

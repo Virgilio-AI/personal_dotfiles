@@ -1376,6 +1376,10 @@ with warnings.catch_warnings():
 endsnippet
 
 snippet install_kaggle
+# %%
+# !pip install databricks
+# !pip install pyspark
+
 # upgrade pip
 !pip install --upgrade pip
 # dependencies
@@ -1439,6 +1443,10 @@ from textblob import TextBlob
 # set matplotlib formats
 %matplotlib inline
 import time
+
+# now for big data
+import databricks.koalas as ks
+from pyspark.sql import SparkSession
 endsnippet
 
 
