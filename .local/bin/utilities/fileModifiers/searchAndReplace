@@ -1,0 +1,811 @@
+#!/usr/bin/xonsh
+# {{{
+# Date: 19/November/2022 - Saturday
+# Author: Virgilio Murillo Ochoa
+# personal github: Virgilio-AI
+# linkedin: https://www.linkedin.com/in/virgilio-murillo-ochoa-b29b59203
+# contact: virgiliomurilloochoa1@gmail.com
+# web: virgiliomurillo.com
+
+from typing import *
+import heapq as hp
+from collections import deque
+from collections import defaultdict
+import sys
+import argparse
+import argcomplete  # Tab completion support with xontrib-argcomplete
+from argcomplete.completers import ChoicesCompleter
+import os
+# import colored for terminal color
+from termcolor import colored
+# import re for regular expressions
+import re
+
+
+# dic = defaultdict(int)
+# set = set() # .remove(val),.add(val),.discard(val),.pop(),.clear()
+# dic = {} # .remove(id),dic[key] = val, dic.get(key,0)
+# arr = [] # .append(val),.pop(),.remove(val),.sort(),.reverse(),.insert(pos,val),.clear()
+
+
+# def input(f=open(".searchAndReplace_In1.txt")): return f.readline().rstrip() # uncomment for debugging
+# }}}
+# =============
+# ==== global variables =====
+# =============
+sdic = {}
+# =============
+# ==== helper functions =====
+# =============
+def check_replace_text(replace_text_fn):
+	# {{{1
+	text = open(replace_text_fn).read()
+	if len(text) == 0:
+		print(colored("The file is empty, nothing to replace", "red"))
+		return False
+	
+	stack = []
+	tokens = []
+	tmpText = ""
+	scaped = False
+
+	for ch in text:
+		if scaped:
+			if ch == "{" or ch == "}" or ch == "\\":
+				tmpText += ch
+				scaped = False
+			else:
+				print(colored("Invalid escape sequence", "red"))
+				return False
+			continue
+		elif ch == "\\":
+			scaped = True
+		elif ch == "{" and len(stack) > 0:
+			print(colored("Error: nested brackets are not allowed", "red"))
+			return False
+		elif ch == "}" and (len(stack) == 0 or len(stack) > 1):
+			print(colored("Error: nested brackets are not allowed", "red"))
+			return False
+		elif ch == "}":
+			stack.pop()
+			tokens.append(tmpText)
+			tmpText = ""
+		elif ch == "{":
+			stack.append(ch)
+		else:
+			tmpText += ch
+
+
+	tokenDic = defaultdict(int)
+	number = 0
+	if len(tokens) %2 != 0:
+		print(colored("incorrect replace.txt syntax missing impair arguments", "red"))
+		return False
+	for i in range(len(tokens)):
+		if i%2 == 0:
+			# check if the token is a number
+			try:
+				number = int(tokens[i])
+			except:
+				print(colored("The file is not well formed, the token is not a number", "red"))
+				return False
+			if number in tokenDic:
+				print(colored("The file is not well formed, the token is repeated", "red"))
+				return False
+		else:
+			tokenDic[number] = tokens[i]
+	return True
+	# }}}
+
+def get_token_replace_dic(replace_text_fn):
+	# {{{1
+	text = open(replace_text_fn).read()
+
+	stack = []
+	tokens = []
+	tmpText = ""
+	scaped = False
+
+	for ch in text:
+		if scaped:
+			if ch == "{" or ch == "}" or ch == "\\":
+				tmpText += ch
+				scaped = False
+			else:
+				print(colored("Invalid escape sequence", "red"))
+				return False
+			continue
+		elif ch == "\\":
+			scaped = True
+		elif ch == "{" and len(stack) > 0:
+			print(colored("Error: nested brackets are not allowed", "red"))
+			return False
+		elif ch == "}" and (len(stack) == 0 or len(stack) > 1):
+			print(colored("Error: nested brackets are not allowed", "red"))
+			return False
+		elif ch == "}":
+			stack.pop()
+			tokens.append(tmpText)
+			tmpText = ""
+		elif ch == "{":
+			stack.append(ch)
+		else:
+			tmpText += ch
+
+	tokenDic = defaultdict(int)
+	number = 0
+	for i in range(len(tokens)):
+		if i%2 == 0:
+			number = int(tokens[i])
+		else:
+			tokenDic[number] = tokens[i]
+	return tokenDic
+	# }}}
+
+def check_search_text_pattern(search_text_fn,len_tokens):
+	# {{{1
+	text = open(search_text_fn).read()
+	if len(text) == 0:
+		print(colored("The file is empty, nothing to search", "red"))
+		return False
+	
+	stack = []
+	tokendics = []
+	upperPattern = ""
+	lowerPattern = ""
+	number = ""
+	scaped = False
+	# step 1: check for {
+	# step 2: upperPattern += ch until {
+	# step 3: now that stack=['{','{'] then number += ch until } is found
+	# step 4: lowerPattern += ch until } is found and repeat to step 1 and insert a new dictionary to the tokendics
+	step = 1
+
+	for ch in text:
+		if step == 1:
+			if ch == '{':
+				stack.append(ch)
+				step = 2
+			else:
+				if ch == '\n' or ch == '\t' or ch == ' ':
+					continue
+				print(colored("The file is not well formed, missing '{'", "red"))
+				return False
+		elif step == 2:
+			if ch == '{' and scaped or ch == '}' and scaped:
+				scaped = False
+				upperPattern += ch
+				continue
+			elif ch != '{' and ch != '}' and scaped:
+				scaped = False
+				upperPatter += '\\'
+				upperPattern += ch
+				continue
+			elif ch == '\\':
+				scaped = True
+				continue
+			if ch == '{':
+				stack.append(ch)
+				step = 3
+			else:
+				upperPattern += ch
+		elif step == 3:
+			if ch == '}':
+				stack.pop()
+				step = 4
+			elif ch.isdigit():
+				number += ch
+			else:
+				print(colored("The file is not well formed, missing '}'", "red"))
+				return False
+		elif step == 4:
+			if ch == '{' and scaped or ch == '}' and scaped:
+				scaped = False
+				lowerPattern += ch
+				continue
+			elif ch != '{' and ch != '}' and scaped:
+				scaped = False
+				lowerPatter += '\\'
+				lowerPattern += ch
+				continue
+			elif ch == '\\':
+				scaped = True
+				continue
+			if ch == '}':
+				stack.pop()
+				step = 1
+				if upperPattern == "" or number == "" or lowerPattern == "":
+					print(colored("The file is not well formed, missing number, lower pattern or upper pattern", "red"))
+					return False
+				tokendics.append({'upper':upperPattern,'lower':lowerPattern,'number':number})
+				upperPattern = ""
+				lowerPattern = ""
+				number = ""
+			else:
+				lowerPattern += ch
+	if len(stack) > 1:
+		print(colored("The file is not well formed, missing '}'", "red"))
+		return False
+	return True
+	#}}}
+
+def get_search_text_patterns(search_text_fn):
+	# {{{1
+	text = open(search_text_fn).read()
+
+	stack = []
+	tokendics = []
+	upperPattern = ""
+	lowerPattern = ""
+	number = ""
+	scaped = False
+	# step 1: check for {
+	# step 2: upperPattern += ch until {
+	# step 3: now that stack=['{','{'] then number += ch until } is found
+	# step 4: lowerPattern += ch until } is found and repeat to step 1 and insert a new dictionary to the tokendics
+	step = 1
+
+	for ch in text:
+		if step == 1:
+			if ch == '{':
+				stack.append(ch)
+				step = 2
+			else:
+				if ch == '\n' or ch == '\t' or ch == ' ':
+					continue
+				print(colored("The file is not well formed, missing '{'", "red"))
+				return False
+		elif step == 2:
+			if ch == '{' and scaped or ch == '}' and scaped:
+				scaped = False
+				upperPattern += ch
+				continue
+			elif ch != '{' and ch != '}' and scaped:
+				scaped = False
+				upperPatter += '\\'
+				upperPattern += ch
+				continue
+			elif ch == '\\':
+				scaped = True
+				continue
+			if ch == '{':
+				stack.append(ch)
+				step = 3
+			else:
+				upperPattern += ch
+		elif step == 3:
+			if ch == '}':
+				stack.pop()
+				step = 4
+			elif ch.isdigit():
+				number += ch
+			else:
+				print(colored("The file is not well formed, missing '}'", "red"))
+				return False
+		elif step == 4:
+			if ch == '{' and scaped or ch == '}' and scaped:
+				scaped = False
+				lowerPattern += ch
+				continue
+			elif ch != '{' and ch != '}' and scaped:
+				scaped = False
+				lowerPatter += '\\'
+				lowerPattern += ch
+				continue
+			elif ch == '\\':
+				scaped = True
+				continue
+			if ch == '}':
+				stack.pop()
+				step = 1
+				if upperPattern == "" or number == "" or lowerPattern == "":
+					print(colored("The file is not well formed, missing number, lower pattern or upper pattern", "red"))
+					return False
+				tokendics.append({'upper':upperPattern,'lower':lowerPattern,'number':number})
+				upperPattern = ""
+				lowerPattern = ""
+				number = ""
+			else:
+				lowerPattern += ch
+	return tokendics
+	# }}}
+
+def search_and_replace_pattern_function(target_text,upperStr,lowerStr,token,number):
+	# {{{1
+	# search for all the indexes of the upper string in the target text without using regex
+	upIdxs = []
+	for i in range(len(target_text)):
+		if target_text[i:i+len(upperStr)] == upperStr:
+			upIdxs.append(i)
+	lowIdxs = []
+	for i in range(len(target_text)):
+		if target_text[i:i+len(lowerStr)] == lowerStr:
+			lowIdxs.append(i)
+	
+
+	uplen = len(upIdxs)
+	lowlen = len(lowIdxs)
+
+	# start to search and replace
+	limit = -1
+	l = 0
+	u = 0
+	while u < lowlen and l < uplen:
+		if upIdxs[u] > limit and upIdxs[u] < lowIdxs[l] and lowIdxs[l] > upIdxs[u] + len(upperStr):
+			limit = lowIdxs[l] + len(lowerStr) -1
+			target_text = target_text[:upIdxs[u]] + token + target_text[lowIdxs[l] + len(lowerStr):]
+			print(colored("Replaced with token at range from "+ str(upIdxs[u]) + " to " + str(lowIdxs[l] + len(lowerStr)) + ", token number: " + str(number), "green"))
+			u+=1
+			l+=1
+		elif upIdxs[u] <= limit:
+			u+=1
+		elif upIdxs[u] >= lowIdxs[l] or lowIdxs[l] <= upIdxs[u] + len(upperStr):
+			l+=1
+	return target_text
+	# }}}
+
+def search_and_replace_pattern(target_text,search_pattern,token_replace):
+	# {{{1
+	print(colored("entering for","yellow"))
+
+	upperStr = search_pattern['upper']
+	lowerStr = search_pattern['lower']
+	number = search_pattern['number']
+	target_text_colored = target_text
+	target_text = search_and_replace_pattern_function(target_text,upperStr,lowerStr,token_replace,number)
+	
+	# now print in color to see the replaced pattern
+	token_replace_colored = colored(token_replace,"red")
+
+	target_text_colored = search_and_replace_pattern_function(target_text_colored,upperStr, lowerStr,token_replace_colored,number)
+	if not sdic['silent']:
+		print_colored_replaced(token_replace_colored,target_text_colored)
+	
+
+
+	return target_text
+	# }}}
+
+def sarpattern_text(target_file):
+	# {{{1
+	if not check_replace_text(sdic['replace_text']):
+		print("returned false")
+		return
+	tokenReplaceDic = get_token_replace_dic(sdic['replace_text'])
+	if not check_search_text_pattern(sdic['search_text'],len(tokenReplaceDic)):
+		print("returned false")
+		return
+	searchTextPatterns = get_search_text_patterns(sdic['search_text'])
+
+	if len(searchTextPatterns) != len(tokenReplaceDic):
+		print(colored("The number of patterns in the search text and the replace text are not equal", "red"))
+		return
+
+	# search and replace the pattern in the text file
+
+	# get the target text
+	target_text = open(target_file).read()
+
+	for searchPattern, tokenReplace in zip(searchTextPatterns, tokenReplaceDic):
+		target_text = search_and_replace_pattern(target_text,searchPattern,tokenReplaceDic[tokenReplace])
+
+	
+	# write into file
+	if sdic['no_confirm']:
+		f = open(target_file,'w')
+		f.write(target_text)
+		f.close()
+		print(colored("The file has been modified", "green"))
+	print(colored("Are you sure you want to modify the file? (y/N)", "yellow"))
+	confirm = input()
+	if confirm == "y" or confirm == "Y":
+		f = open(target_file,'w')
+		f.write(target_text)
+		f.close()
+		print(colored("The file has been modified", "green"))
+	else:
+		print(colored("The file has not been modified", "red"))
+	print(colored(" ======================================================================= ","blue"))
+	# }}}
+
+def recurse_sarpattern_dir(target_file):
+	# {{{1
+	def recurseFolder(path):
+		for filename in os.listdir(path):
+			f = os.path.join(path,filename)
+			if os.path.isfile(f):
+				file_extension = str(os.path.splitext(f)[1])
+				if sdic['file_extension'] is None or file_extension == sdic['file_extension']:
+					print(colored("replacing contents of: " + f,"yellow"))
+					sarpattern_text(f)
+			else:
+				print(colored("recursing into: " + f,"red"))
+				recurseFolder(f)
+	recurseFolder(target_file)
+	# }}}
+
+def recurse_sar_dir(target_file):
+	# {{{1
+	def recurseFolder(path):
+		for filename in os.listdir(path):
+			f = os.path.join(path,filename)
+			if os.path.isfile(f):
+				if sdic['file_extension'] is None or f.endswith(sdic['file_extension']):
+					print(colored("replacing contents of: " + f,"yellow"))
+					sar_text(f)
+			else:
+				print(colored("recursing into: " + f,"red"))
+				recurseFolder(f)
+	recurseFolder(target_file)
+	# }}}
+
+def print_colored_replaced(replace_txt_token_colored,target_text_replaced_colored):
+	# {{{1
+	indexes = []
+	for i in range(len(target_text_replaced_colored)):
+		if target_text_replaced_colored[i:i+len(replace_txt_token_colored)] == replace_txt_token_colored:
+			indexes.append(i)
+
+	for idx in indexes:
+		print(colored(" ====== to_replace ======  in " + str(sdic['target_file']), color = "green"))
+		print(target_text_replaced_colored[max(0,idx - 20):idx + len(replace_txt_token_colored) + 20])
+	# }}}
+def sar_text(target_fn):
+	# {{{1
+	print(sdic)
+	print("debug 1")
+	# the file name
+	replace_fn = sdic['replace_text']
+	search_fn = sdic['search_text']
+
+
+	replace_tx = open(replace_fn).read()
+	target_tx = open(target_fn).read()
+	search_tx = open(search_fn).read()
+	target_tx = target_tx.replace(search_tx,replace_tx)
+
+
+	replace_tx_colored = open(replace_fn).read()
+	replace_tx_colored = colored(replace_tx_colored,'red')
+	target_tx_colored = open(target_fn).read()
+	search_tx_colored = open(search_fn).read()
+	target_tx_colored = target_tx_colored.replace(search_tx_colored,replace_tx_colored)
+
+	# search the indexes of all the ocurrences of search_tx_colored in target_tx_colored
+	# and store them in a list
+
+	if sdic['verbose']:
+		print(colored(" ====== target after replacement ====== ",color="yellow"))
+		print(target_tx_colored)
+		print(colored(" ====== to search ====== ",color="yellow"))
+		print(search_tx_colored)
+		print(colored(" ====== to replace ====== ",color="yellow"))
+		print(replace_tx_colored)
+
+	if sdic['no_confirm']:
+		if sdic['silent']:
+			open(target_fn,'w').write(target_tx)
+		else:
+			print("writing to file")
+			open(target_fn,'w').write(target_tx)
+			print("done")
+		return
+
+	print("debug2")
+
+	if sdic['silent'] == False:
+		print_colored_replaced(replace_tx_colored,target_tx_colored)
+
+	if sdic['dry_run']:
+		return
+	print("are you sure you want to replace the above text? (y/N)")
+	confirm = input()
+	if confirm == 'y' or confirm == 'Y':
+		open(target_fn,'w').write(target_tx)
+		print(colored("done",color="green"))
+	else:
+		print(colored("no changes made",color="yellow"))
+	print(colored(" ================================================================================ ","blue"))
+	# }}}
+
+
+
+def check_vim_command(command):
+	counter = 0
+	for i in range(1,len(command)):
+		if command[i] == "/" and command[i-1] != "\\":
+			counter += 1
+	print(counter)
+	return counter == 1
+
+def vimsar_dir(target_file):
+	# {{{1
+	def recurseFolder(path):
+		for filename in os.listdir(path):
+			f = os.path.join(path,filename)
+			if os.path.isfile(f):
+				if sdic['file_extension'] is None or f.endswith(sdic['file_extension']):
+					print(colored("replacing contents of: " + f,"yellow"))
+					vimsar(f)
+			else:
+				print(colored("recursing into: " + f,"red"))
+				recurseFolder(f)
+	recurseFolder(target_file)
+	# }}}
+
+def vimsar(target_file):
+	print("Entered vim sar")
+	command = sdic['vim']
+	original = command
+
+
+	if not check_vim_command(command):
+		print("command not valid, correct syntax = 'pattern/to_replace")
+		return
+
+	if sdic["no_confirm"]:
+		command = ":% s/" + command + "/g"
+	else:
+		command = ":% s/" + command + "/gc"
+
+	if not $(nvim --version):
+		print("neovim not available in the system, install it to continue")
+		return
+	
+	if sdic['no_confirm']:
+		nvim -c @(command) -c ":wq" @(target_file)
+	else:
+		print(colored("entering " + str(target_file) + "press (n,Enter)","green"))
+		enter = input()
+		if enter == "n":
+			print(colored("no changes made","yellow"))
+			return
+		else:
+			nvim -c @(command) -c ":wq" @(target_file)
+
+
+# hola mundo 
+# hola mundo
+# hola mundo
+
+# classificator functions
+# {{{1
+def check_error(target_file):
+	if sdic['silent'] is True and  sdic['no_confirm'] is False :
+		print("error: silent mode requires no_confirm mode")
+		return False
+	elif sdic['silent'] and sdic['verbose']:
+		print("Error: silent and verbose can't be True at the same time")
+		return False
+	elif sdic['pattern'] and sdic['vim'] is not None:
+		print("Error: vim and pattern can't be True at the same time")
+		return False
+	elif ( sdic['replace_text'] is not None or sdic['search_text'] is not None ) and sdic['vim'] is not None:
+		print("Error: vim and [replace_text or search_text] can't be True at the same time")
+		return False
+	elif (sdic['search_text'] or sdic['replace_text']) == True and (sdic['search_text'] and sdic['replace_text']) == False:
+		print("search_text and replace text must be both used or none used")
+		return False
+	elif not sdic['dir'] and os.path.isdir(target_file):
+		print("the given target_file is a folder and --dir is not set")
+		return False
+
+# %%
+
+def check_dir_pattern(target_file):
+	ans = True
+	ans = ans and sdic['replace_text']
+	ans = ans and sdic['pattern']
+	ans = ans and os.path.isdir(target_file)
+	ans = ans and sdic['dir']
+	return ans
+def check_dir_text(target_file):
+	ans = True
+	ans = ans and sdic['replace_text']
+	ans = ans and not sdic['pattern']
+	ans = ans and os.path.isdir(target_file)
+	ans = ans and sdic['dir']
+	return ans
+def check_text(target_file):
+	ans = True
+	ans = ans and sdic['replace_text']
+	ans = ans and not sdic['pattern']
+	ans = ans and not os.path.isdir(target_file)
+	return ans
+def check_pattern(target_file):
+	ans = True
+	ans = ans and sdic['replace_text']
+	ans = ans and sdic['pattern']
+	ans = ans and not os.path.isdir(target_file)
+	return ans
+def check_vimsar_dir(target_file):
+	ans = True
+	ans = ans and sdic['target_file']
+	ans = ans and sdic['replace_text'] is None
+	ans = ans and sdic['search_text'] is None
+	ans = ans and sdic['vim']
+	ans = ans and os.path.isdir(target_file)
+	ans = ans and sdic['dir']
+	return ans
+def check_vimsar(target_file):
+	ans = True
+	ans = ans and sdic['target_file']
+	ans = ans and sdic['replace_text'] is None
+	ans = ans and sdic['search_text'] is None
+	ans = ans and sdic['vim']
+	ans = ans and not os.path.isdir(target_file)
+	return ans
+
+def clasificator():
+	target_file = sdic['target_file']
+	if check_error(target_file):
+		return
+	elif check_dir_pattern(target_file):
+		recurse_sarpattern_dir(target_file)
+	elif check_dir_text(target_file):
+		recurse_sar_dir(target_file)
+	elif check_text(target_file):
+		sar_text(target_file)
+	elif check_pattern(target_file):
+		sarpattern_text(target_file)
+	elif check_vimsar_dir(target_file):
+		vimsar_dir(target_file)
+	elif check_vimsar(target_file):
+		vimsar(target_file)
+	else:
+		print("error: no valid option found")
+
+# }}}
+
+
+
+def main():
+	# {{{ 1
+
+	clasificator()
+#	if sdic['silent'] is True and  sdic['no_confirm'] is False :
+#		print("error: silent mode requires no_confirm mode")
+#		return
+#	elif sdic['silent'] and sdic['verbose']:
+#		print("Error: silent and verbose can't be True at the same time")
+#		return
+#	elif sdic['replace_text'] is not None and sdic['pattern']:
+#		target_fn = sdic['target_file']
+#		if os.path.isdir(target_fn):
+#			recurse_sarpattern_dir(sdic['target_file'])
+#		else:
+#			sarpattern_text(sdic['target_file'])
+#	elif sdic['replace_text'] is not None:
+#		target_fn = sdic['target_file']
+#		if os.path.isdir(target_fn) and sdic['dir']:
+#			recurse_sar_dir(sdic['target_file'])
+#		elif os.path.isdir(target_fn):
+#			print("error: target is a directory, use --dir to replace all files in the directory")
+#			return
+#		else:
+#			sar_text(sdic['target_file'])
+	# }}}
+
+# The arguments
+# {{{1
+
+arguments = {
+	'target_file':{
+		'short':'-t',
+		'long':'--target-file',
+		'help':'the target file to search and replace',
+		'required':True,
+		'type':str,
+		},
+'search_text':{
+	'short':'-s',
+	'long':'--search-text',
+	'completer':'path',
+	'help':'The file containing the text to search',
+	'required':False,
+	'type':str,
+	},
+	'replace_text':{
+		'short':'-r',
+		'long':'--replace-text',
+		'completer':'path',
+		'help':'the file containing the text to be replaced',
+		'required':False,
+		'type':str,
+		},
+	'directory':{
+		'short':'-d',
+		'long':'--dir',
+		'completer':['True','False'],
+		'help':'to specify that you want to search and replace in a directory',
+		'required':False,
+		'type':bool,
+		},
+	'dry-run':{
+		'long':'--dry-run',
+		'completer':['True','False'],
+		'help':'Dry run',
+		'required':False,
+		'type':bool,
+		},
+	"verbose":{
+		'short':'-v',
+		'long':'--verbose',
+		'help':'for verbose output',
+		'required':False,
+		'type':bool,
+		},
+	"silent":{
+		'long':'--silent',
+		'help':'for no output',
+		'required':False,
+		'type':bool,
+		},
+	"no_confirm":{
+		'long':'--no-confirm',
+		'help':'for confirmation of changes',
+		'required':False,
+		'type':bool,
+		},
+	"file_extension":{
+		'long':'--file-extension',
+		'help':'for specifying the file extension in case of directory search',
+		'required':False,
+		'type':str,
+		},
+	"pattern":{
+		'long':'--pattern',
+		'help':'for a pattern search instead of a plain text search',
+		'required':False,
+		'type':bool,
+		},
+	"vim":{
+		'long':'--vim',
+		'help':'for vim search and replace on a file or folder',
+		'required':False,
+		'type':str,
+		},
+	}
+
+if __name__ == '__main__':
+	# list arguments
+
+	parser = argparse.ArgumentParser()
+
+	for arg in arguments:
+		arg = arguments[arg]
+		required = arg['required']
+		type = arg['type']
+		if type == bool:
+			if 'short' in arg:
+				parser.add_argument(arg['short'],arg['long'],help=arg['help'],required=required,action="store_true")
+			else:
+				parser.add_argument(arg['long'],help=arg['help'],required=required,action="store_true")
+			continue
+
+
+
+		if 'short' in arg:
+			if	'default' in arg:
+				parser.add_argument(arg['short'],arg['long'],help=arg['help'],required=required,type=type,default=arg['default'])
+			else:
+				parser.add_argument(arg['short'],arg['long'],help=arg['help'],required=required,type=type)
+		else:
+			if 'default' in arg:
+				parser.add_argument(arg['long'],help=arg['help'],required=required,type=type,default=arg['default'])
+			else:
+				parser.add_argument(arg['long'],help=arg['help'],required=required,type=type)
+		# add completer
+
+	argcomplete.autocomplete(parser)
+	args = parser.parse_args()
+
+	sdic = args.__dict__
+
+	#sdic['path']
+	#sdic['Name']
+	# add parameters that require no input
+
+	main()
+
+# }}}
