@@ -1376,73 +1376,114 @@ with warnings.catch_warnings():
 endsnippet
 
 snippet install_kaggle
-# %%
-# !pip install databricks
-# !pip install pyspark
 
 # upgrade pip
 !pip install --upgrade pip
 # dependencies
 !pip install --upgrade chart_studio
 # necessary
-# !pip install --upgrade numpy
-# !pip install --upgrade pandas
-# !pip install --upgrade matplotlib
-# !pip install --upgrade seaborn
-# for visualization tools
-# !pip install --upgrade cufflinks
-# !pip install --upgrade plotly
-# !pip install --upgrade numpy
-# for machine learning
+
+# ==========================
+# ========== general ======
+# ==========================
+# !pip install gc
+# !pip install os
+#
+# ==========================
+# ========== for machine learning ======
+# ==========================
 # !pip install --upgrade sklearn
 # !pip install --upgrade xgboost
 # !pip install --upgrade lightgbm
 # !pip install --upgrade catboost
 # !pip install --upgrade keras
 # !pip install --upgrade tensorflow
-# for data cleaning
-!pip install --upgrade textblob
-# for importing pickle files
-!pip install --upgrade pickle5
-# for plotting maps
-!pip install --upgrade folium
+
+# ==========================
+# ========== for data cleaning ======
+# ==========================
+# !pip install --upgrade textblob
+# !pip install --upgrade pickle5
+# !pip install --upgrade numpy
+# !pip install --upgrade numpy
+# !pip install --upgrade pandas
+
+
+# ==========================
+# ========== for plotting ======
+# ==========================
+# !pip install --upgrade folium
+# !pip install --upgrade matplotlib
+# !pip install --upgrade seaborn
+# for visualization tools
+# !pip install --upgrade cufflinks
+# !pip install --upgrade plotly
+# !pip install --upgrade ipython
+# !pip install --upgrade pylab
+# !pip install --upgrade mpl_toolkits
+
+# ==========================
+# ========== Big Data ======
+# ==========================
+
+# %%
+# !pip install databricks
+# !pip install pyspark
+
+
+
 endsnippet
 
 # options im-> inword
 snippet import_kaggle "for importing the necessary for machine learning plotting and other things"
+# ==========================
+# ========== for machine learning ======
+# ==========================
 %config InlineBackend.figure_formats = ['svg']
-# from sklearn.ensemble import RandomForestRegressor # random forest regressor
-# from sklearn.model_selection import cross_val_score # the cross validation module
-# Setup feedback system
-# from learntools.core import binder # the binder
-# binder.bind(globals())
-# from learntools.feature_engineering_new.ex2 import * # for importing all in feature engineering
-# import matplotlib.pyplot as plt # for importing matplotlib
-# import numpy as np # for importing numpy
-# import pandas as pd # for importing pandas
-# import seaborn as sns # seaborn is used to plot
-# from numpy.random import randint
-# import random
-# from matplotlib.patches import Polygon
-# from matplotlib.animation import FuncAnimation
-# import pickle as pkl
-# import plotly.offline as py # for importing plotly
-# import cufflinks as cf
-# import plotly.graph_objects as go
-# import plotly.express as px
-# import plotly.figure_factory as ff
-# from plotly.subplots import make_subplots
-# plot maps
-import folium
-# for data cleaning
+from sklearn.ensemble import RandomForestRegressor # random forest regressor
+from sklearn.model_selection import cross_val_score # the cross validation module
+
+# ==========================
+# ========== data cleaning ======
+# ==========================
 from textblob import TextBlob
-# offline interactive plotly
-# cf.go_offline()
-# themes
-# import mplcyberpunk
-# set matplotlib formats
-%matplotlib inline
+import pickle as pkl
+from numpy.random import randint
+import numpy as np # for importing numpy
+import pandas as pd # for importing pandas
+
+# ==========================
+# ========== plotting ======
+# ==========================
+import matplotlib.pyplot as plt # for importing matplotlib
+cf.go_offline()
+import folium
+import plotly.offline as py # for importing plotly
+import cufflinks as cf
+import plotly.graph_objects as go
+import plotly.express as px
+import plotly.figure_factory as ff
+from plotly.subplots import make_subplots
+from matplotlib.patches import Polygon
+from matplotlib.animation import FuncAnimation
+import seaborn as sns # seaborn is used to plot
+from matplotlib.animation import ArtistAnimation
+from mpl_toolkits.mplot3d import Axes3D
+from pylab import meshgrid
+from Ipython.display import Image, display, HTML
+
+# ==========================
+# ========== general ======
+# ==========================
 import time
+%matplotlib inline
+import random
+import gc
+import os
+
+# ==========================
+# ========== Big Data ======
+# ==========================
 
 # now for big data
 import databricks.koalas as ks
