@@ -8,7 +8,7 @@
 # #########################################
 
 # use the command dragon to get the location of the file we want to drag
-input=$( dragon-drag-and-drop --target )
+input=$( /home/rockhight/.local/bin/dragon --target )
 
 # create and array of strings for iterating for each file
 IFS=$'\n' array=$( echo $input )

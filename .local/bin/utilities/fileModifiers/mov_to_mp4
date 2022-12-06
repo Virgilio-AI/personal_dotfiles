@@ -1,0 +1,146 @@
+#!/usr/bin/xonsh
+# ffmpeg -i "P_snippet_Uberboyo_89.mp4" -vcodec mjpeg -q:v 2 -acodec pcm_s16be -q:a 0 -f mov "P_snippet_Uberboyo_89.mov"
+
+
+# Date: 02/December/2022 - Friday
+# Author: Virgilio Murillo Ochoa
+# personal github: Virgilio-AI
+# linkedin: https://www.linkedin.com/in/virgilio-murillo-ochoa-b29b59203
+# contact: virgiliomurilloochoa1@gmail.com
+# web: virgiliomurillo.com
+
+from typing import *
+import heapq as hp
+from collections import deque
+from collections import defaultdict
+import sys
+import argparse
+import argcomplete  # Tab completion support with xontrib-argcomplete
+from argcomplete.completers import ChoicesCompleter
+import os
+
+sdic = {}
+from termcolor import colored
+
+def recurse_folder(file):
+	# iterate over files in
+	# that directory
+	for filename in os.listdir(file):
+		f = os.path.join(file, filename)
+	# checking if it is a file
+		if os.path.isfile(f):
+			if checkmov(f):
+				convert_file(f)
+
+
+
+
+def convert_file(file):
+	lst = file.split('.')
+	lst = lst[:-1]
+	basename = ""
+	basename = basename.join(lst)
+	mp4 = basename + '.mp4'
+	mov = basename + '.mov'
+	if sdic['dry_run']:
+		print("converting " + mov + " to " + mp4 )
+		return
+	ffmpeg -i @(mov) -q:v 0 @(mp4)
+
+
+def checkmov(file):
+	lst = file.split('.')
+	extension = lst[-1]
+	if extension != 'mov':
+		return False
+	else:
+		return True
+
+def main():
+	print(sdic)
+	sdic['file'] = os.path.abspath(sdic['file'])
+	if os.path.isdir(sdic['file']) and sdic['recurse'] == False:
+		print("pass --help for help")
+	file = sdic['file']
+	recurse = sdic['recurse']
+
+	if recurse:
+		recurse_folder(file)
+	else:
+		if checkmov(file):
+			convert_file(file)
+		else:
+			print("not mov file")
+			return
+
+
+
+# The arguments
+# {{{1
+
+arguments = {
+	'file':{
+		'short':'-f',
+		'long':'--file',
+		'help':'the target file or folder',
+		'required':True,
+		'type':str,
+		},
+	'recurse':{
+		'short':'-r',
+		'long':'--recurse',
+		'help':'specify that you want to convert an entire folder',
+		'required':False,
+		'type':bool,
+		},
+	'dry_run':{
+		'long':'--dry-run',
+		'help':'for a dry run operation',
+		'required':False,
+		'type':bool,
+		},
+	}
+
+if __name__ == '__main__':
+	# list arguments
+
+	parser = argparse.ArgumentParser()
+
+	for arg in arguments:
+		arg = arguments[arg]
+		required = arg['required']
+		type = arg['type']
+		if type == bool:
+			if 'short' in arg:
+				parser.add_argument(arg['short'],arg['long'],help=arg['help'],required=required,action="store_true")
+			else:
+				parser.add_argument(arg['long'],help=arg['help'],required=required,action="store_true")
+			continue
+
+
+
+		if 'short' in arg:
+			if	'default' in arg:
+				parser.add_argument(arg['short'],arg['long'],help=arg['help'],required=required,type=type,default=arg['default'])
+			else:
+				parser.add_argument(arg['short'],arg['long'],help=arg['help'],required=required,type=type)
+		else:
+			if 'default' in arg:
+				parser.add_argument(arg['long'],help=arg['help'],required=required,type=type,default=arg['default'])
+			else:
+				parser.add_argument(arg['long'],help=arg['help'],required=required,type=type)
+		# add completer
+
+	argcomplete.autocomplete(parser)
+	args = parser.parse_args()
+
+	sdic = args.__dict__
+
+	#sdic['path']
+	#sdic['Name']
+	# add parameters that require no input
+
+	main()
+
+# }}}
+

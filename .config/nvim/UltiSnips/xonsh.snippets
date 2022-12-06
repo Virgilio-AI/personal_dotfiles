@@ -625,6 +625,8 @@ import argcomplete  # Tab completion support with xontrib-argcomplete
 from argcomplete.completers import ChoicesCompleter
 import os
 
+sdic = {}
+
 
 # import colored for terminal color
 from termcolor import colored
@@ -659,7 +661,7 @@ arguments = {
 
 
 
-def main(sdic):
+def main():
 	print(sdic)
 	$1
 
@@ -791,7 +793,7 @@ if __name__ == '__main__':
 	#sdic['Name']
 	# add parameters that require no input
 
-	main(sdic)
+	main()
 
 # }}}
 

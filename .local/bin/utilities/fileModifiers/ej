@@ -1,213 +1,86 @@
-#!/usr/bin/xonsh
-# Date: 21/November/2022 - Monday
-# Author: Virgilio Murillo Ochoa
-# personal github: Virgilio-AI
-# linkedin: https://www.linkedin.com/in/virgilio-murillo-ochoa-b29b59203
-# contact: virgiliomurilloochoa1@gmail.com
-# web: virgiliomurillo.com
+#!/usr/bin/zsh
 
-from typing import *
-import heapq as hp
-from collections import deque
-from collections import defaultdict
-import sys
-import argparse
-import argcomplete  # Tab completion support with xontrib-argcomplete
-from argcomplete.completers import ChoicesCompleter
-import os
+currect_dir=$(pwd)
 
 
-# import colored for terminal color
-from termcolor import colored
-
-# dic = defaultdict(int)
-# set = set() # .remove(val),.add(val),.discard(val),.pop(),.clear()
-# dic = {} # .remove(id),dic[key] = val, dic.get(key,0)
-# arr = [] # .append(val),.pop(),.remove(val),.sort(),.reverse(),.insert(pos,val),.clear()
-
-
-# def input(f=open(".ej_In1.txt")): return f.readline().rstrip() # uncomment for debugging
-
-
-# =============
-# ==== global variables =====
-# =============
-current_dir = $(pwd)
-sdic = {}
-
-def configure_jupyter_ascending():
+configure_jupyter_ascending(){
 	jupyter nbextension install --py --sys-prefix jupyter_ascending
 	jupyter nbextension     enable jupyter_ascending --sys-prefix --py
 	jupyter serverextension enable jupyter_ascending --sys-prefix --py
+}
 
-
-def configure_ipwidgets():
+configure_ipywidgets(){
 	jupyter nbextension enable --py widgetsnbextension
-
-def activate_venv():
-	# check if the venv folder exists
-	# if not, create it
-	# if yes, activate it
-	# if the venv folder exists, but the venv is not activated, activate it
-	if not os.path.exists('venv'):
-		xontrib load vox
-		vox activate venv
-		# requirements for the notebook to work correctly with neovim
-		pip install jupyterlab jupyter-ascending pynvim jupytext ipywidgets widgetsnbextension
-		# personal commonly used packages
-		pip install numpy pandas matplotlib seaborn scikit-learn scipy statsmodels plotly cufflinks textblob pickle5 mplcyberpunk
-		configure_jupyter_ascending
-		configure_ipywidgets
-	else:
-		xontrib load vox
-		vox activate venv
-
-
-
-def convert_to_ipynb(file):
-	# convert the python file to a jupyter notebook
-	jupytext @(file) --to ipynb
-
-def convert_to_py(file):
-	# convert the jupyter notebook to a python file
-	jupytext @(file) --to py:percent
-
-def rename(file,to_rename):
-	# convert the ipynb file to a python file
-	mv @(file) @(to_rename)
-
-def create_notebook(file):
-	python $HOME/.local/bin/utilities/create_notebook.py @(file)
-
-def create_python(file):
-	touch @(file)
+}
+activate_venv(){
+# check if the venv folder exists
+# if not, create it
+# if yes, activate it
+# if the venv folder exists, but the venv is not activated, activate it
+if [[ ! -d venv ]] ; then
+	python3 -m venv venv
+	source venv/bin/activate
+	# requirements for the notebook to work correctly with neovim
+	pip install jupyterlab jupyter-ascending pynvim jupytext ipywidgets widgetsnbextension
+	# personal commonly used packages
+	pip install numpy pandas matplotlib seaborn scikit-learn scipy statsmodels plotly cufflinks textblob pickle5 mplcyberpunk
+	configure_jupyter_ascending
+	configure_ipywidgets
+else
+	source venv/bin/activate
+fi
+}
 
 
+if [[ "$1" == *.sync.py  || "$1" == *.py ]] ; then
+	echo "error: you choosed the python file"
+	exit
+fi
 
+activate_venv
+if [[ "$1" == *.sync.ipynb ]] ; then
+	echo "primero"
+	name=$(basename $1 .sync.ipynb)
+	if [ ! -f "$1" ] ; then
+		python $HOME/.local/bin/utilities/create-notebook.py $name ;
+	fi
 
+	if [ -f "$1:r.py" ] ; then
+		jupytext $1 --to py:percent ;
+	else
+		echo "file doesn't exist"
+	fi
+	jupyter-notebook --browser=chromium $1 &
+	st -e sh -c "nvim $1:r.py" &
+elif [[ "$1" == *.ipynb ]] ; then
+	echo "segundo"
+	name=$(basename $1 .ipynb)
+	if [ ! -f "$1" ] ; then
+		python $HOME/.local/bin/utilities/create-notebook.py $name
+	else
+		mv $1 $name.sync.ipynb 
+	fi
 
-
-
-
-def main():
-	file = sdic['file']
-	# store the original name in a variable
-	original_name = file
-	# check if the file has the correct format name
-	if not (file.endswith('.sync.ipynb') or file.endswith(".sync.py")):
-		print(colored("The file name is not correct, please use the correct format. it has to be .sync.py or .sync.ipynb", "red"))
-		return
-	basename = file.split(".")[-3]
-	# check if the file exists if not create it
-	if not os.path.exists(file):
-		# check if the file is a python file
-		if file.endswith(".sync.py"):
-			create_python(file)
-		# check if the file is a jupyter notebook
-		elif file.endswith(".sync.ipynb"):
-			create_notebook(file)
-	
-	if file.endswith(".sync.py"):
-		if os.path.exists(basename + ".sync.ipynb"):
-			print(colored("The jupyter already exists, please use a different name", "red"))
-			return
-		else:
-			convert_to_ipynb(file)
-	elif file.endswith(".sync.ipynb"):
-		if os.path.exists(basename + ".sync.py"):
-			print(colored("The python file already exists, please use a different name", "red"))
-			return
-		else:
-			convert_to_py(file)
-
-	activate_venv()
-
-	jupyter-notebook --browser=chromium @(basename).sync.ipynb &
-	command = "nvim " + basename + ".sync.py"
-	st -e xonsh -c @(command) &
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# The arguments
-# {{{1
-
-arguments = {
-	"file":{
-		"help":"file to be processed",
-		"long":"--file",
-		"short":"-f",
-		"required":True,
-		"type":str
-		},
-	"silent":{
-		'long':'--silent',
-		'help':'for no output',
-		'required':False,
-		'type':bool,
-		},
-	}
-
-if __name__ == '__main__':
-	# list arguments
-
-	parser = argparse.ArgumentParser()
-
-	for arg in arguments:
-		arg = arguments[arg]
-		required = arg['required']
-		type = arg['type']
-		if type == bool:
-			if 'short' in arg:
-				parser.add_argument(arg['short'],arg['long'],help=arg['help'],required=required,action="store_true")
-			else:
-				parser.add_argument(arg['long'],help=arg['help'],required=required,action="store_true")
-			continue
-
-
-
-		if 'short' in arg:
-			if	'default' in arg:
-				parser.add_argument(arg['short'],arg['long'],help=arg['help'],required=required,type=type,default=arg['default'])
-			else:
-				parser.add_argument(arg['short'],arg['long'],help=arg['help'],required=required,type=type)
-		else:
-			if 'default' in arg:
-				parser.add_argument(arg['long'],help=arg['help'],required=required,type=type,default=arg['default'])
-			else:
-				parser.add_argument(arg['long'],help=arg['help'],required=required,type=type)
-		# add completer
-
-	argcomplete.autocomplete(parser)
-	args = parser.parse_args()
-
-	sdic = args.__dict__
-
-	#sdic['path']
-	#sdic['Name']
-	# add parameters that require no input
-
-	main()
-
-# }}}
-
+	if [ -f "$name.sync.py" ] ; then
+		jupytext $name.sync.ipynb --to py:percent ;
+	else
+		echo "file does not exist"
+	fi
+	jupyter-notebook --browser=chromium $name.sync.ipynb &
+	st -e sh -c "nvim $name.sync.py" &
+else
+	echo "tercero"
+	ne=.sync.ipynb
+	nm=$1
+	notebook_name=$nm$ne
+	if [ ! -f "$notebook_name" ] ; then
+		python $HOME/.local/bin/utilities/create-notebook.py $1 ;
+	fi
+	if [ -f "$1.py" ] ; then
+		jupytext $notebook_name --to py:percent ;
+	else
+		echo "file exists"
+	fi
+	jupyter-notebook --browser=chromium $notebook_name &
+	st -e sh -c "nvim $1.sync.py" &
+fi

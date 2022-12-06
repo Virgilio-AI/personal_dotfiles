@@ -1,3 +1,15 @@
+# General
+# {{{1
+# infoj -- for head in jupyter notebooks
+# sec -- for a section commented
+# subsec -- for a subsection commented
+# }}}
+
+# jupyter
+# {{{1
+# progress -- for a progress bar
+# }}}
+
 # for pandas dataframe
 # {{{1
 # encode -- for encoding a string
@@ -45,8 +57,11 @@
 # graphsSubplots -- for subplots
 # igraphs -- for interactive graphs
 # pairplot -- for creating a pairplot
+# pltannotate -- for annotation description with an arrow
 # matplotlib -- for help on matplotlib plt
 # folium -- for help on folium
+# animation -- for animating
+# plotText -- for plotting text
 # }}}1
 # ========== Kaggle ======
 # {{{1
@@ -634,6 +649,17 @@ snippet subsec
 # ======== $1
 endsnippet
 
+
+# ==========================
+# ========== jupyter ======
+# ==========================
+# options im-> inword
+snippet progress "progress bar"
+from tqdm import tqdm
+
+for i in tqdm(range(100)):
+	# do something
+endsnippet
 
 # ==========================
 # ========== system interaction ======
@@ -1273,10 +1299,19 @@ snippet mapFunction "for applying a basic function to all cells in a column"
 endsnippet
 
 
+# options im-> inword
+snippet pltannotate "for annotation description with an arrow"
 
-# ==========================
-# ========== matplotlib ======
-# ==========================
+fig, ax = plt.subplots(figsize=(10,8))
+
+# annotations blocks
+bbox_args = dict(boxstyle='round',fc = "0.8")
+arrow_args = dict(arrowstyle="->", color = 'black', linewidth = 2)
+
+ax.annotate('global minimum\n$f(x) = 0$', xy = (0,0), xytext = (-2,8), bbox = bbox_args,arrowprops = arrow_args)
+
+endsnippet
+
 
 # options im-> inword
 snippet matplotlib "for matplotlib information"
@@ -1357,6 +1392,102 @@ for i in range(0,len(data)):
 			fill=True,
 			fill_color='crimson'
 			).add_to(m)
+
+endsnippet
+
+
+# options im-> inword
+snippet animation "for animation"
+
+
+# %%
+def f(x):
+	return np.sin(x) + 
+
+def f_prime(x):
+	return np.cos(x)
+
+# %%
+
+
+
+# %%
+def animation():
+
+	# generate a random name of 6 characters
+	fps = 2
+	letters = 'qwertyuiopasdfghjklzxcvbnm'
+	images = []
+	name = ""
+
+
+	fig, ax = plt.subplots(figsize = (5,10))
+	for i in range(10):
+		name += random.choice(letters)
+
+	name += ".gif"
+
+
+	folder = 'gifs/'
+	if not os.path.exists(folder):
+		os.mkdir(folder)
+	name = folder + name
+
+
+	iterations = 40
+	# function plot
+	px = 0.0
+	py = 1
+
+	x = np.arange(0,30,0.01)
+	fun = plt.plot(x,f(x), color = 'blue')
+	for frame in range(iterations):
+
+		px += 0.8
+		py = f(px)
+
+
+		tx = np.arange(px -2, px + 2, 0.1)
+		slope = f_prime(px)
+		y_intercept = py - slope * px
+		ty = tx * slope + y_intercept
+
+
+
+
+		tangent = plt.plot(tx,ty,color = 'red')
+
+		point = plt.scatter(px,py,color = 'red')
+
+
+		# plot point to track
+		images.append([fun[0], tangent[0], point])
+
+
+
+	anim = ArtistAnimation(fig,images)
+	anim.save(name,writer = 'imagemagic',fps = fps)
+
+	html = '<img src="'+name+'">'
+	plt.close()
+	return html,name
+
+
+# %%
+html,name = animation()
+HTML(html)
+
+endsnippet
+
+
+# options im-> inword
+snippet plotText "for plotting text"
+
+# Plot text info
+bbox_args = dict(boxstyle="round", fc="0.8")
+arrow_args = dict(arrowstyle = '->', color = 'b', linewidth = 1)
+text = f'Iteration: {frame}\nPoint: ({px:.2f}, {py:.2f})\nSlope: {slope:.2f}\nStep: {step:.4f}'
+text = ax.annotate(text, xy = (px, py), xytext = (0.7, 0.9), textcoords = 'axes fraction', bbox = bbox_args, arrowprops=arrow_args, fontsize = 12)
 
 endsnippet
 
@@ -1470,7 +1601,7 @@ import seaborn as sns # seaborn is used to plot
 from matplotlib.animation import ArtistAnimation
 from mpl_toolkits.mplot3d import Axes3D
 from pylab import meshgrid
-from Ipython.display import Image, display, HTML
+from IPython.display import Image, display, HTML
 
 # ==========================
 # ========== general ======
