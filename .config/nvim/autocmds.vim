@@ -1,8 +1,22 @@
+
+
 function SetXonsh()
 	if getline(1) =~'#!/usr/bin/xonsh'
 		set filetype=xonsh
 	endif
 endfunction
+
+
+"function ChangeTRWText()
+"	:%s/\.//g
+"	:%s/\,//g
+"	:normal! ggVGU
+"endfunction
+
+" augroup theRealWorld
+" 	autocmd!
+" 	autocmd BufWritePost *.trw call ChangeTRWText()
+" endfunction
 
 
 

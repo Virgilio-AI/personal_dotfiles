@@ -1,4 +1,23 @@
 #!/usr/bin/zsh
+###############################
+# Author: Virgilio Murillo Ochoa
+# Date: 26/December/2022 - Monday
+# personal github: Virgilio-AI
+# linkedin: https://www.linkedin.com/in/virgilio-murillo-ochoa-b29b59203
+# contact: virgiliomurilloochoa1@gmail.com
+# web: virgiliomurillo.com
+# #########################################
+
+
+# read the second argument
+PYTHON_EXECUTABLE=$2
+
+echo "Python executable: $PYTHON_EXECUTABLE"
+# ==========================
+# ========== Body ======
+# ==========================
+#  SCRIPT LOGIC GOES HERE
+
 
 currect_dir=$(pwd)
 
@@ -18,7 +37,12 @@ activate_venv(){
 # if yes, activate it
 # if the venv folder exists, but the venv is not activated, activate it
 if [[ ! -d venv ]] ; then
-	python3 -m venv venv
+	# check if PYTHON_EXECUTABLE is empty
+	if [[ $PYTHON_EXECUTABLE == "" ]] ; then
+		python3 -m venv venv
+	else
+		virtualenv -p $PYTHON_EXECUTABLE venv
+	fi
 	source venv/bin/activate
 	# requirements for the notebook to work correctly with neovim
 	pip install jupyterlab jupyter-ascending pynvim jupytext ipywidgets widgetsnbextension
@@ -41,22 +65,20 @@ activate_venv
 if [[ "$1" == *.sync.ipynb ]] ; then
 	echo "primero"
 	name=$(basename $1 .sync.ipynb)
-	if [ ! -f "$1" ] ; then
-		python $HOME/.local/bin/utilities/create-notebook.py $name ;
+	# check if $1 doesn't exists
+	if [[ ! -f $1 ]] ; then
+		create-notebook $name
 	fi
 
-	if [ -f "$1:r.py" ] ; then
-		jupytext $1 --to py:percent ;
-	else
-		echo "file doesn't exist"
-	fi
+	jupytext $1 --to py:percent ;
+
 	jupyter-notebook --browser=chromium $1 &
 	st -e sh -c "nvim $1:r.py" &
 elif [[ "$1" == *.ipynb ]] ; then
 	echo "segundo"
 	name=$(basename $1 .ipynb)
-	if [ ! -f "$1" ] ; then
-		python $HOME/.local/bin/utilities/create-notebook.py $name
+	if [ ! -f $1 ] ; then
+		create-notebook $name
 	else
 		mv $1 $name.sync.ipynb 
 	fi
@@ -73,8 +95,8 @@ else
 	ne=.sync.ipynb
 	nm=$1
 	notebook_name=$nm$ne
-	if [ ! -f "$notebook_name" ] ; then
-		python $HOME/.local/bin/utilities/create-notebook.py $1 ;
+	if [ ! -f $notebook_name ] ; then
+		create-notebook $1 ;
 	fi
 	if [ -f "$1.py" ] ; then
 		jupytext $notebook_name --to py:percent ;
@@ -84,3 +106,7 @@ else
 	jupyter-notebook --browser=chromium $notebook_name &
 	st -e sh -c "nvim $1.sync.py" &
 fi
+
+# -----------------------------------------------------------------
+
+
