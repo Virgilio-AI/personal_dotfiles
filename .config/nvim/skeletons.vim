@@ -99,14 +99,12 @@ augroup pythonSkeleton
 	autocmd BufEnter *.py :ExpandSkeleton sk
 augroup END
 
-
-
 " =================================
-" ========== for databases 
+" ========== xonsh 
 " =================================
-augroup mariadb_skeleton
+augrou xonshSkeleton
 	autocmd!
-	autocmd BufEnter *.sql :ExpandSkeleton info
+	autocmd BufEnter *.xsh :ExpandSkeleton sk
 augroup END
 
 
@@ -130,7 +128,8 @@ augroup END
 
 augroup sql_squeletons
 	autocmd!
-	autocmd! BufEnter *.sql :ExpandSkeleton sk
+	autocmd! BufEnter *.sql :ExpandSkeleton info
+" 	autocmd! BufEnter *-query-* :ExpandSkeleton info
 augroup END
 
 " =================================

@@ -178,18 +178,35 @@ endsnippet
 # ========== loops ======
 # ==========================
 snippet recurseFolder
+
 recurseFolder(){
 	# :h for name only
 	# :t for name with extension
-	for file in \$1/* ; do
+	
+	local deep=$2
+	# create a local variable
+	for file in $1/* ; do
 		if [[ -d $file ]]
 		then
-			recurseFolder $file
+			recurseFolder $file $((deep+1))
 		else
-			${1:echo " file $file"}
+			# use () instead of [[]] for some examples
+			if [[ $DRY_RUN == 1 ]]
+			then
+				prt=""
+				# add '-' for each level of deep
+				for (( i=0;i<$deep;i++ )); do
+					prt="$prt=="
+				done
+				file="${file:t}"
+				echo "$prt $file"
+			else
+				echo "To Implement"
+			fi
 		fi
 	done
 }
+
 endsnippet
 
 snippet cfor
@@ -258,6 +275,7 @@ endsnippet
 # ==========================
 
 snippet sk
+
 #!/usr/bin/zsh
 ###############################
 # Author: Virgilio Murillo Ochoa
@@ -270,34 +288,32 @@ snippet sk
 
 
 # edit this
-shortOptions="vdm"
-longOptions="verbose,debug,memory:"
+FILE_PATH=""
+WARNING=""
+VERBOSE=0
 
-
-
-# NOTE: This requires GNU getopt.  On Mac OS X and FreeBSD, you have to install this
-# separately; see below.
-TEMP=$(getopt -o $shortOptions: --long $longOptions \
-	-n 'javawrap' -- "$@")
-
-	if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
-
-# Note the quotes around '$TEMP': they are essential!
-eval set -- "$TEMP"
 
 # edit this
-VERBOSE=false
-DEBUG=false
-MEMORY=
-DEBUGFILE=
-JAVA_MISC_OPT=
-while true; do
-	case "" in
-		-v | --verbose ) VERBOSE=true; shift ;;
-		-d | --debug ) DEBUG=true; shift ;;
-		-m | --memory ) MEMORY=""; shift 2 ;;
-		-- ) shift; break ;;
-		* ) break ;;
+while [[ $# -gt 0 ]]; do
+	case \$1 in
+		-w|--warnig)
+			WARNING="\$2"
+			shift
+			shift
+			;;
+		-p|--path)
+			FILE_PATH="\$2"
+			shift
+			shift
+			;;
+		-v|--verbose)
+			VERBOSE=1
+			shift
+			;;
+		*)
+			echo "Invalid argument "
+			exit 1
+			;;
 	esac
 done
 
@@ -307,19 +323,23 @@ done
 #  SCRIPT LOGIC GOES HERE
 
 $1
+
 # -----------------------------------------------------------------
+
 
 endsnippet
 
 snippet info
-# #############################
-# Date: `date +%d/%B/%Y\ -\ %A`
+
+###############################
 # Author: Virgilio Murillo Ochoa
+# Date: `date +%d/%B/%Y\ -\ %A`
 # personal github: Virgilio-AI
 # linkedin: https://www.linkedin.com/in/virgilio-murillo-ochoa-b29b59203
 # contact: virgiliomurilloochoa1@gmail.com
 # web: virgiliomurillo.com
-# ############################
+# #########################################
+
 endsnippet
 
 

@@ -34,6 +34,18 @@
 # showCurUser -- for showing the current user
 
 
+# ======== functions ========
+# func_ms_sql_server -- for the function for the ms sql server
+# func_mysql -- for the function for the mysql
+
+
+# ======= microsoft sql server =======
+# bak_import -- for importing a bak file
+# bak_export -- for exporting a bak file
+# stable_help -- for getting help on the table
+# stored_procedures -- for storing procedures
+# UserDefinedFunctions -- for user defined functions
+
 
 
 
@@ -185,10 +197,17 @@ foreign key (${1:name_of_key_in_this_table}) references ${2:foreign_table}(${3:v
 endsnippet
 
 snippet createTable
-
+-- mysql , mariadb
 create table if not exists ${1:table_name}(
 	$2
 );
+
+-- ms sql server
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tbl_name' and xtype='U')
+CREATE TABLE tbl_name (
+		Name varchar(64) not null
+	)
+GO
 endsnippet
 # options im-> inword
 snippet helpTable "for help on the table creating and deletion"
@@ -269,6 +288,39 @@ endsnippet
 
 
 
+# ==========================
+# ========== functions ======
+# ==========================
+
+# options im-> inword
+snippet func_ms_sql_server "function in ms server"
+
+
+CREATE FUNCTION getNthHighestSalary(@N INT) RETURNS INT AS
+BEGIN
+	RETURN (
+		/* Write your T-SQL query statement below. */
+
+	);
+END
+
+endsnippet
+
+# options im-> inword
+snippet func_mysql "for mysql"
+
+
+CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
+BEGIN
+	RETURN (
+		# Write your MySQL query statement below.
+
+	);
+END
+
+endsnippet
+
+
 snippet deleteRow
 -- to delete a row from the table
 delete from ${1:name_of_table} where ${2:condition} ;
@@ -282,5 +334,83 @@ create table ${1:trigger test} (
 	message varchar(100)
 	);
 endsnippet
+
+
+
+
+
+# ==========================
+# ========== microsoft sql server ======
+# ==========================
+
+# options im-> inword
+snippet bak_import "for importing bak ms file"
+-- copy bak file to the folder because of ms user permissions
+-- /var/opt/mssql/data
+
+
+-- to see the database
+-- restore filelistonly from disk = N'/var/opt/mssql/data/adventure-works-2008r2-lt.bak'
+
+restore database AdventureWorksLT2008
+from disk = N'/var/opt/mssql/data/adventure-works-2008r2-lt.bak'
+with move 'AdventureWorksLT2008_Data' to '/var/opt/mssql/data/AdventureWorksLT2008_Data.mdf',
+move 'AdventureWorksLT2008_Log' to '/var/opt/mssql/data/AdventureWorksLT2008_log.LDF'
+go
+
+
+
+
+endsnippet
+
+
+# options im-> inword
+snippet bak_export "for exporting a database"
+-- missing
+endsnippet
+
+# options im-> inword
+snippet stable_help "table information"
+
+exec sp_help '${1:table_name}' ;
+
+endsnippet
+
+# options im-> inword
+snippet stored_procedures "for storing procedures"
+create proc ${1:procedure_name}
+@var as varchar(30).
+@cantidad as int
+as
+select @var,@cantidad from Production where @var = 'var'
+endsnippet
+
+
+
+# options im-> inword
+snippet UserDefinedFunctions "for information on functions"
+
+--  return scalar value
+
+create or alter function ${2:name} (${1:@variables,@var2})
+returns int as
+begin
+	return 1
+end
+
+
+create or alter function ${2:name} (${1:@year,@var2})
+returns table as
+return
+select * from
+Employee
+where year(BirdtDate) = @year
+
+
+
+
+endsnippet
+
+
 
 

@@ -1,0 +1,157 @@
+#!/usr/bin/zsh
+###############################
+# Author: Virgilio Murillo Ochoa
+# Date: 17/November/2022 - Thursday
+# personal github: Virgilio-AI
+# linkedin: https://www.linkedin.com/in/virgilio-murillo-ochoa-b29b59203
+# contact: virgiliomurilloochoa1@gmail.com
+# web: virgiliomurillo.com
+# #########################################
+#
+# Example:
+# convertJP --path /folder --verbose --to-jupyter
+
+
+# edit this
+FILE_PATH=""
+DRY_RUN=0
+VERBOSE=0
+TO_JUPYTER=0
+TO_PYTHON=0
+
+
+# edit this
+while [[ $# -gt 0 ]]; do
+	case $1 in
+		--dry-run)
+			DRY_RUN=1
+			shift
+			;;
+		-p|--path)
+			FILE_PATH="$2"
+			shift
+			shift
+			;;
+		-v|--verbose)
+			VERBOSE=1
+			shift
+			;;
+		--to-jupyter)
+			TO_JUPYTER=1
+			shift
+			;;
+		--to-python)
+			TO_PYTHON=1
+			shift
+			;;
+		-d|--dir)
+			DIR=1
+			shift
+			;;
+		*)
+			echo "Invalid argument "
+			exit 1
+			;;
+	esac
+done
+
+
+# ==========================
+# ========== function ======
+# ==========================
+
+to_jupyter()
+{
+	name=$1
+	if [[ $name == *.py ]]
+	then
+		jupytext $name --to ipynb
+	fi
+}
+to_python()
+{
+	name=$1
+	if [[ $name == *.ipynb ]]
+	then
+		jupytext $name --to py:percent
+	fi
+}
+convert()
+{
+	name=$1
+	# use () instead of [[]] for some examples
+	if [[ $TO_JUPYTER -eq 1 ]]
+	then
+		to_jupyter $name
+	elif [[ $TO_PYTHON -eq 1 ]]
+	then
+		to_python $name
+	fi
+}
+
+
+# ==========================
+# ========== Body ======
+# ==========================
+
+# use () instead of [[]] for some examples
+if [[ $TO_JUPYTER -eq 0 && $TO_PYTHON -eq 0 ]]
+then
+	echo "you must specify --to-jupyter or --to-python"
+	exit 1
+fi
+
+if [[ $FILE_PATH == "" ]]
+then
+	echo "no path specified"
+	exit 1
+fi
+
+
+recurseFolder(){
+	# :h for name only
+	# :t for name with extension
+	
+	local deep=$2
+	# create a local variable
+	for file in $1/* ; do
+		if [[ -d $file ]]
+		then
+			recurseFolder $file $((deep+1))
+		else
+			# use () instead of [[]] for some examples
+			if [[ $DRY_RUN -eq 1 || $VERBOSE -eq 1 ]]
+			then
+				prt=""
+				# add '-' for each level of deep
+				for (( i=0;i<$deep;i++ )); do
+					prt="$prt=="
+				done
+				local tmp="${file:t}"
+				echo "$prt $tmp converted"
+			fi
+			if [[ $DRY_RUN -eq 0 ]]
+			then
+				convert $file
+			fi
+		fi
+	done
+}
+
+# use () instead of [[]] for some examples
+if [[ $DIR -eq 1 ]]
+then
+	recurseFolder $FILE_PATH 0
+else
+	# check if the file is a directory
+	if [[ -d $FILE_PATH ]]
+	then
+		echo "the path is a directory, use -d to convert all files in the directory"
+		exit 1
+	fi
+	convert $FILE_PATH
+fi
+
+# -----------------------------------------------------------------
+
+
